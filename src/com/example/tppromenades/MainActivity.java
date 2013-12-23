@@ -17,6 +17,8 @@ public class MainActivity extends MapActivity  {
 =======
 		System.out.println("test");
 >>>>>>> master
+
+		System.out.println("testmc");
 	}
 
 	@Override
