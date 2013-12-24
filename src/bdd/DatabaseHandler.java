@@ -10,13 +10,13 @@ import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 	//-- Base de données
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "PromenadeDB";
 	
 	//-- Table promenade
 	public static final String PROMENADE_TABLE_CREATE =
 	    "CREATE TABLE promenade (" +
-	    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+	    "id_prom INTEGER PRIMARY KEY AUTOINCREMENT, " +
 	    "intitule TEXT NOT NULL, " +
 	    "difficulte INTEGER);";
 	public static final String PROMENADE_TABLE_DROP = "DROP TABLE IF EXISTS promenade;";
@@ -39,13 +39,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
 	//-- Opérations CRUD
 	public static final String TABLE_NAME = "promenade";
-	public static final String ID = "id";
+	public static final String ID = "id_prom";
 	public static final String INTITULE = "intitule";
 	public static final String DIFFICULTE = "difficulte";
 	public static final String[] COLUMNS = {ID,INTITULE,DIFFICULTE};
 	
 	public void ajouter(Promenade p) {
-		Log.d("addBook", p.toString());
+		Log.d("ajout", p.toString());
 		SQLiteDatabase db = this.getWritableDatabase();
 		//Création d'un ContentValues (fonctionne comme une HashMap)
 		ContentValues values = new ContentValues();

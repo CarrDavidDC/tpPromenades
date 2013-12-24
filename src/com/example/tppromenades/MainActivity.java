@@ -22,6 +22,8 @@ public class MainActivity extends Activity {
         db.ajouter(p2);       
 
         db.supprimer(p1);
+        
+        System.out.println("c");
 	}
 
 	@Override
