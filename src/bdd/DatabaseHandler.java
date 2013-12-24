@@ -14,14 +14,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public static final String PROMENADE_TABLE_CREATE =
 	    "CREATE TABLE " + PROMENADE_TABLE_NAME + " (" +
 	    		PROMENADE_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-	    		PROMENADE_INTITULE + " TEXT, " +
+	    		PROMENADE_INTITULE + " TEXT NOT NULL, " +
 	    		PROMENADE_DIFFICULTE + " INTEGER);";
 	public static final String PROMENADE_TABLE_DROP = "DROP TABLE IF EXISTS " + PROMENADE_TABLE_NAME + ";";
 
-	public DatabaseHandler(Context context, String name, CursorFactory factory,
-			int version) {
+	public DatabaseHandler(Context context, String name, CursorFactory factory, int version) {
 		super(context, name, factory, version);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
