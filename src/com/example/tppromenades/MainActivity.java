@@ -1,5 +1,6 @@
 package com.example.tppromenades;
 
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -19,7 +20,6 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
        // map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
      //   map.moveCamera(CameraUpdateFactory.newLatLngZoom(MUMBAI, 15));
- 
         // Zoom in, animating the camera.
      //   map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 	}

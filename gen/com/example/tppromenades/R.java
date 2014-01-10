@@ -323,6 +323,10 @@ containing a value of this type.
          */
         public static final int common_signin_button_text_long=0x7f060013;
         public static final int hello_world=0x7f06001c;
+        public static final int new_location=0x7f06001f;
+        public static final int provider_disabled=0x7f06001e;
+        public static final int provider_enabled=0x7f06001d;
+        public static final int provider_new_status=0x7f060020;
     }
     public static final class style {
         /** 
