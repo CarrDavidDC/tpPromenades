@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.support.v4.app.FragmentActivity;
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements LocaltionListener {
 
 	 static final LatLng MUMBAI = new LatLng(19.0144100, 72.8479400);
      private GoogleMap map;
