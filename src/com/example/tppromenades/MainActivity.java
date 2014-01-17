@@ -1,6 +1,9 @@
 package com.example.tppromenades;
 
+import java.util.ArrayList;
+
 import bdd.DatabaseHandler;
+import bdd.TablePromenade;
 import metier.Promenade;
 import android.os.Bundle;
 import android.app.Activity;
@@ -14,16 +17,17 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		DatabaseHandler db = new DatabaseHandler(this);
-		 
-        Promenade p1 = new Promenade("Caluire", 4);
-        Promenade p2 = new Promenade("Lyon", 3);
-       
-        db.ajouter(p1);   
-        db.ajouter(p2);       
-
-        db.supprimer(p1);
+        ArrayList<Promenade> promenades = new ArrayList<Promenade>();
+        Promenade p1 = new Promenade("Caluire");
+        Promenade p2 = new Promenade("Lyon");
+        promenades.add(p1);
+        promenades.add(p2);
         
-        System.out.println("c");
+        TablePromenade tp = new TablePromenade(db,promenades);
+        tp.selectionnerTout();
+        tp.supprimerTout();
+        tp.selectionnerTout();
+        System.out.println("AAAAAA");
 	}
 
 	@Override
