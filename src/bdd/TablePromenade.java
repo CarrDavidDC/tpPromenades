@@ -19,6 +19,7 @@ public class TablePromenade {
 	
 	public TablePromenade(DatabaseHandler db, ArrayList<Promenade> promenades) {
 		_db = db;
+		this.supprimerTout();
 		for(int i=0 ; i<promenades.size() ; i++) {
 			ajouter(promenades.get(i));
 		}
@@ -61,7 +62,7 @@ public class TablePromenade {
 	    	Promenade p = new Promenade();
 	    	p.set_gid(Integer.parseInt(c.getString(0)));
 	    	p.set_name(c.getString(1));
-	    	Log.d("Nouvelle ligne : ", p.toString());
+	    	System.out.println("Promenade SQLITE : " + p.toString());
 	    }
 	}
 	
