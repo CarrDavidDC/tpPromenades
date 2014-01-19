@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AjoutFichierGPS" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Ajout d&apos;un fichier GPS"
+        android:textSize="20dp" />
+
+    <ImageButton
+        android:id="@+id/ibPrecedentAjoutFichierGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_toLeftOf="@+id/textView1"
+        android:src="@drawable/ic_action_back" />
+
+    <Button
+        android:id="@+id/btnParcourirAjoutFichierGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ibPrecedentAjoutRandonnee"
+        android:layout_below="@+id/ibPrecedentAjoutRandonnee"
+        android:layout_marginTop="55dp"
+        android:text="Parcourir" />
+
+    <TextView
+        android:id="@+id/tvNomFichierAjoutFichierGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnParcourirAjoutFichierGPS"
+        android:layout_below="@+id/ibPrecedentAjoutRandonnee"
+        android:layout_marginTop="32dp"
+        android:text="'Chemin du fichier'" />
+
+    <Button
+        android:id="@+id/btnEnregistrerAjoutFichierGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="20dp"
+        android:text="Enregistrer" />
+
+</RelativeLayout>

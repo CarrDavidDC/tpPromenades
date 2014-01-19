@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MdpOublie" >
+
+    <TextView
+        android:id="@+id/tvMdpOublie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="Mot de passe oublié"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/etMdpOublieMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tvMdpOublie"
+        android:layout_below="@+id/tvMdpOublie"
+        android:layout_marginTop="72dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/ibPrecedentMdpOublie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_action_back" />
+
+    <TextView
+        android:id="@+id/tvMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etMdpOublieMail"
+        android:layout_alignLeft="@+id/etMdpOublieMail"
+        android:layout_marginBottom="39dp"
+        android:text="Adresse email" />
+
+    <Button
+        android:id="@+id/btnEnvoiMdpOublie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etMdpOublieMail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
+        android:text="Envoi" />
+
+</RelativeLayout>
