@@ -72,10 +72,6 @@ public class MainActivity extends MapActivity  {
         }
 
 		setContentView(R.layout.activity_main);
-<<<<<<< HEAD
-		System.out.println("dev44 hugo");
-=======
-		System.out.println("test");
 	}
 
 	@Override
@@ -86,9 +82,6 @@ public class MainActivity extends MapActivity  {
 		Toast.makeText(getBaseContext(),
 				"Location change to : Latitude = " + lat + " Longitude = " + lng,
 				Toast.LENGTH_SHORT).show();
-		/*GeoPoint p = new GeoPoint((int) (lat * 1E6), (int) (lng * 1E6));
-		mc.animateTo(p);
-		mc.setCenter(p);*/
 	}
 
 }
