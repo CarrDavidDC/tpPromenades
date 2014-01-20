@@ -30,6 +30,6 @@ public class Accueil extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.accueil, menu);
 		return true;
-	}
+	} 
 
 }

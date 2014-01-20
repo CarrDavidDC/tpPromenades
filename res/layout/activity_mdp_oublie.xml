@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/etMdpOublieMail"
-        android:layout_width="wrap_content"
+        android:layout_width="wrap_content" 
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/tvMdpOublie"
         android:layout_below="@+id/tvMdpOublie"

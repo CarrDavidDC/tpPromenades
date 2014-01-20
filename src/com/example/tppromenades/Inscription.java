@@ -33,7 +33,7 @@ public class Inscription extends Activity {
 			startActivity(intent);
 			}
 		});
-		
+		 
 	}
 
 	@Override

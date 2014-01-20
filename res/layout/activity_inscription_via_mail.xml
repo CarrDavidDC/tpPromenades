@@ -17,7 +17,7 @@
         android:text="Mot de passe" />
 
     <TextView
-        android:id="@+id/tvPasswordConfirm"
+        android:id="@+id/tvPasswordConfirm" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etPasswordConfirmInscriptionViaMail"

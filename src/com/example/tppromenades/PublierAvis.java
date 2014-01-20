@@ -19,4 +19,4 @@ public class PublierAvis extends Activity {
 		return true;
 	}
 
-}
+} 

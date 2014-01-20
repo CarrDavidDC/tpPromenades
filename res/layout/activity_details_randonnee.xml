@@ -17,7 +17,7 @@
         android:textSize="15dp" />
 
     <ImageButton
-        android:id="@+id/ibPrecedentDetailsRandonnee"
+        android:id="@+id/ibPrecedentDetailsRandonnee" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

@@ -29,7 +29,7 @@ public class InscriptionViaMail extends Activity {
 			startActivity(intent);
 			}
 		});
-		
+		 
 		final Button btnEnregistrer = (Button) findViewById(R.id.btnEnregistrer);
 		btnEnregistrer.setOnClickListener(new OnClickListener() {
 				

@@ -18,5 +18,5 @@ public class DetailsRandonnee extends Activity {
 		getMenuInflater().inflate(R.menu.details_randonnee, menu);
 		return true;
 	}
-
+ 
 }

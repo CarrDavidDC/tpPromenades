@@ -18,5 +18,5 @@ public class AjoutFichierGPS extends Activity {
 		getMenuInflater().inflate(R.menu.ajout_fichier_g, menu);
 		return true;
 	}
-
+ 
 }

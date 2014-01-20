@@ -19,7 +19,7 @@
         android:text="Inscription via mail" />
 
     <Button
-        android:id="@+id/btnInscriptionFB"
+        android:id="@+id/btnInscriptionFB" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnInscriptionMail"

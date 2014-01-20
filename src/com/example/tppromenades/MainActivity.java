@@ -29,7 +29,7 @@ public class MainActivity extends Activity  {
 			Intent intent = new Intent(MainActivity.this, Inscription.class);
 			startActivity(intent);
 			}
-		});
+		}); 
 		
 		final Button btnConnexion = (Button) findViewById(R.id.btnConnexion);
 		btnConnexion.setOnClickListener(new OnClickListener() {

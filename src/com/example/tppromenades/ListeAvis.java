@@ -19,4 +19,4 @@ public class ListeAvis extends Activity {
 		return true;
 	}
 
-}
+} 

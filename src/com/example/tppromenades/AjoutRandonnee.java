@@ -18,5 +18,5 @@ public class AjoutRandonnee extends Activity {
 		getMenuInflater().inflate(R.menu.ajout_randonnee, menu);
 		return true;
 	}
-
+ 
 }

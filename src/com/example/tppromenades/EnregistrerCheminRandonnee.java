@@ -18,5 +18,5 @@ public class EnregistrerCheminRandonnee extends Activity {
 		getMenuInflater().inflate(R.menu.enregistrer_chemin_randonnee, menu);
 		return true;
 	}
-
+ 
 }

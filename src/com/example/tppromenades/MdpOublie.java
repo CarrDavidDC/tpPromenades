@@ -27,7 +27,7 @@ public class MdpOublie extends Activity {
 				Intent intent = new Intent(MdpOublie.this, MainActivity.class);
 				startActivity(intent);
 			}
-		});
+		}); 
 		
 		final Button btnEnvoi = (Button) findViewById(R.id.btnEnvoiMdpOublie);
 		btnEnvoi.setOnClickListener(new OnClickListener() {
