@@ -77,13 +77,13 @@ public class MainActivity extends Activity implements LocationListener{
                 
             }
         }
-		setContentView(R.layout.activity_main);
 
 		ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 
 		if (mWifi.isConnected()) {
 			DatabaseHandler db = new DatabaseHandler(this);
+			Toast.makeText(this.getApplicationContext(), "Create file database ok", Toast.LENGTH_LONG).show();
 			DownloadData d = (DownloadData) new DownloadData(this, db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
 		}
 		else {
