@@ -46,6 +46,7 @@ public class MainActivity extends Activity implements LocationListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         setContentView(R.layout.activity_main);
         if (map == null) {
         	map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
@@ -99,6 +100,9 @@ public class MainActivity extends Activity implements LocationListener{
 		Toast.makeText(getBaseContext(),
 				"Location change to : Latitude = " + lat + " Longitude = " + lng,
 				Toast.LENGTH_SHORT).show();
+=======
+		setContentView(R.layout.activity_main);
+>>>>>>> refs/remotes/origin/dev_matthieu
 	}
 
 	@Override

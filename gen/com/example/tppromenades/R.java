@@ -177,6 +177,7 @@ containing a value of this type.
         public static final int activity_vertical_margin=0x7f080001;
     }
     public static final class drawable {
+<<<<<<< HEAD
         public static final int common_signin_btn_icon_dark=0x7f020000;
         public static final int common_signin_btn_icon_disabled_dark=0x7f020001;
         public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020002;
@@ -206,8 +207,13 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f02001a;
         public static final int ic_plusone_standard_off_client=0x7f02001b;
         public static final int ic_plusone_tall_off_client=0x7f02001c;
+=======
+        public static final int ic_launcher=0x7f020000;
+        public static final int randonneur=0x7f020001;
+>>>>>>> refs/remotes/origin/dev_matthieu
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int action_settings=0x7f050006;
         public static final int hybrid=0x7f050004;
         public static final int map=0x7f050005;
@@ -218,6 +224,14 @@ containing a value of this type.
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
+=======
+        public static final int Titre=0x7f080002;
+        public static final int action_settings=0x7f080005;
+        public static final int logo=0x7f080001;
+        public static final int mapView=0x7f080000;
+        public static final int tfLogin=0x7f080004;
+        public static final int tfPassword=0x7f080003;
+>>>>>>> refs/remotes/origin/dev_matthieu
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
