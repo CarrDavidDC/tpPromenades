@@ -1,7 +1,6 @@
 package com.example.tppromenades;
 
 
-import com.example.tppromenades.CreateCourse;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,13 +27,13 @@ import android.content.Context;
 import android.view.Menu;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
+
 public class MainActivity extends Activity implements LocationListener{
 
 	 static final LatLng MUMBAI = new LatLng(19.0144100, 72.8479400);
      private GoogleMap map;
  	private double							lat								= 0;
  	private double							lng								= 0;
-public class MainActivity extends MapActivity  {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +69,6 @@ public class MainActivity extends MapActivity  {
                 
             }
         }
-
-		setContentView(R.layout.activity_main);
 	}
 
 	@Override
