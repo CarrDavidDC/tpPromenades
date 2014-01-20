@@ -3,15 +3,9 @@
     package="com.example.tppromenades"
     android:versionCode="1"
     android:versionName="1.0" >
-    
-    <uses-permission android:name="android.permission.INTERNET">
-    </uses-permission>
-    
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
     <uses-sdk
         android:minSdkVersion="8"
-<<<<<<< HEAD
         android:targetSdkVersion="17" />
 	<uses-feature
         android:glEsVersion="0x00020000"
@@ -30,10 +24,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 	
-=======
-        android:targetSdkVersion="18" />
-
->>>>>>> refs/remotes/origin/dev_matthieu
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -47,7 +37,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-<<<<<<< HEAD
+
         </activity>
           <meta-data android:name="com.google.android.gms.version"
   android:value="@integer/google_play_services_version" />
@@ -55,11 +45,6 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCFTBLjsfp_84xx3Sntqwf4VVYtAuAbiNQ" />
         
-        <uses-library android:name="com.google.android.maps" />
-        
-=======
-        </activity>
-
         <uses-library android:name="com.google.android.maps" />
 
         <activity
@@ -102,13 +87,6 @@
             android:name="com.example.tppromenades.EnregistrerCheminRandonnee"
             android:label="@string/title_activity_enregistrer_chemin_randonnee" >
         </activity>
->>>>>>> refs/remotes/origin/dev_matthieu
     </application>
-<<<<<<< HEAD
-</manifest>
-=======
-
     <uses-permission android:name="android.permission.INTERNET" />
-
 </manifest>
->>>>>>> refs/remotes/origin/dev_matthieu

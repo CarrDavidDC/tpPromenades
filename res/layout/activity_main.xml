@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-	<TextView
+    <TextView
         android:id="@+id/tvTitre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,45 +13,64 @@
         android:textSize="15sp" />
 
     <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/ivLogo"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="14dp"
         android:src="@drawable/randonneur" />
 
-    <TextView
-        android:id="@+id/Titre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true"
-        android:text="tpPromenades" />
-
     <EditText
-        android:id="@+id/tfPassword"
+        android:id="@+id/etPasswordMainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp"
+        android:layout_centerVertical="true"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Mot de passe"
         android:inputType="textPassword" >
 
         <requestFocus />
     </EditText>
 
-    <EditText
-        android:id="@+id/tfLogin"
+    <Button
+        android:id="@+id/btnMdpOublie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tfPassword"
-        android:layout_alignLeft="@+id/tfPassword"
-        android:layout_alignRight="@+id/tfPassword"
-        android:layout_marginBottom="60dp"
+        android:layout_below="@+id/btnConnexion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="Mot de passe oublié" />
+
+    <Button
+        android:id="@+id/btnConnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPasswordMainActivity"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/btnInscription"
+        android:text="Connexion" />
+
+    <Button
+        android:id="@+id/btnInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnConnexion"
+        android:layout_alignBottom="@+id/btnConnexion"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="35dp"
+        android:text="Inscription" />
+
+    <EditText
+        android:id="@+id/etLoginMainActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etPasswordMainActivity"
+        android:layout_alignRight="@+id/etPasswordMainActivity"
+        android:layout_marginBottom="19dp"
         android:ems="10"
-        android:hint="Login" />
+        android:hint="Identifiant" />
 
 </RelativeLayout>

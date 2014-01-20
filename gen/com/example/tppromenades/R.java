@@ -9,7 +9,7 @@ package com.example.tppromenades;
 
 public final class R {
     public static final class array {
-        public static final int lstDifficulte=0x7f060000;
+        public static final int lstDifficulte=0x7f090000;
     }
     public static final class attr {
         /** 
@@ -180,7 +180,6 @@ containing a value of this type.
         public static final int activity_vertical_margin=0x7f080001;
     }
     public static final class drawable {
-<<<<<<< HEAD
         public static final int common_signin_btn_icon_dark=0x7f020000;
         public static final int common_signin_btn_icon_disabled_dark=0x7f020001;
         public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020002;
@@ -205,95 +204,82 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020015;
         public static final int common_signin_btn_text_pressed_dark=0x7f020016;
         public static final int common_signin_btn_text_pressed_light=0x7f020017;
-        public static final int ic_launcher=0x7f020018;
-        public static final int ic_plusone_medium_off_client=0x7f020019;
-        public static final int ic_plusone_small_off_client=0x7f02001a;
-        public static final int ic_plusone_standard_off_client=0x7f02001b;
-        public static final int ic_plusone_tall_off_client=0x7f02001c;
-        public static final int randonneur=0x7f02001d;
-=======
-        public static final int ic_action_back=0x7f020000;
-        public static final int ic_action_new=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int randonneur=0x7f020003;
->>>>>>> refs/remotes/origin/dev_matthieu
+        public static final int ic_action_back=0x7f020018;
+        public static final int ic_action_new=0x7f020019;
+        public static final int ic_launcher=0x7f02001a;
+        public static final int ic_plusone_medium_off_client=0x7f02001b;
+        public static final int ic_plusone_small_off_client=0x7f02001c;
+        public static final int ic_plusone_standard_off_client=0x7f02001d;
+        public static final int ic_plusone_tall_off_client=0x7f02001e;
+        public static final int randonneur=0x7f02001f;
     }
     public static final class id {
-<<<<<<< HEAD
-        public static final int Titre=0x7f050007;
-        public static final int action_settings=0x7f05000a;
+        public static final int action_settings=0x7f05003e;
+        public static final int btnConnexion=0x7f050031;
+        public static final int btnDebutEnregistrerCheminRandonnee=0x7f05001a;
+        public static final int btnEnregistrer=0x7f050029;
+        public static final int btnEnregistrerAjoutFichierGPS=0x7f05000c;
+        public static final int btnEnregistrerAjoutRandonnee=0x7f050015;
+        public static final int btnEnregistrerEnregistrerCheminRandonnee=0x7f05001c;
+        public static final int btnEnvoiMdpOublie=0x7f050037;
+        public static final int btnFinEnregistrerCheminRandonnee=0x7f05001b;
+        public static final int btnInscription=0x7f050032;
+        public static final int btnInscriptionFB=0x7f05001e;
+        public static final int btnInscriptionMail=0x7f05001d;
+        public static final int btnMdpOublie=0x7f050030;
+        public static final int btnParcourirAjoutFichierGPS=0x7f050009;
+        public static final int btnPublierAvisRandonnee=0x7f05003d;
+        public static final int ddlDifficulteAcces=0x7f050014;
+        public static final int ddlDifficulteParcours=0x7f050013;
+        public static final int etAvis=0x7f05003b;
+        public static final int etLoginInscriptionViaMail=0x7f050025;
+        public static final int etLoginMainActivity=0x7f050033;
+        public static final int etMailInscriptionViaMail=0x7f050028;
+        public static final int etMdpOublieMail=0x7f050035;
+        public static final int etNomRandonnee=0x7f05000e;
+        public static final int etPasswordConfirmInscriptionViaMail=0x7f050023;
+        public static final int etPasswordInscriptionViaMail=0x7f050021;
+        public static final int etPasswordMainActivity=0x7f05002f;
         public static final int hybrid=0x7f050004;
-        public static final int logo=0x7f050006;
-        public static final int map=0x7f050005;
+        public static final int ibAddRandonneeAccueil=0x7f050006;
+        public static final int ibPrecedent=0x7f050027;
+        public static final int ibPrecedentAjoutFichierGPS=0x7f050008;
+        public static final int ibPrecedentAjoutRandonnee=0x7f05000a;
+        public static final int ibPrecedentDetailsRandonnee=0x7f050017;
+        public static final int ibPrecedentInscription=0x7f05001f;
+        public static final int ibPrecedentInscriptionViaMail=0x7f050024;
+        public static final int ibPrecedentMdpOublie=0x7f050036;
+        public static final int ibPrecedentPublierAvis=0x7f050039;
+        public static final int ivLogo=0x7f05002e;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
-        public static final int tfLogin=0x7f050009;
-        public static final int tfPassword=0x7f050008;
+        public static final int textView1=0x7f050007;
+        public static final int tvAcces=0x7f050011;
+        public static final int tvAccueil=0x7f050005;
+        public static final int tvAjoutRandonnee=0x7f05000d;
+        public static final int tvAvis=0x7f05003c;
+        public static final int tvDetailsRandonnee=0x7f050016;
+        public static final int tvDifficulteDuParcours=0x7f050010;
+        public static final int tvDistanceRandonnee=0x7f050012;
+        public static final int tvEnregistrementParcoursEnregistrerCheminRandonnee=0x7f050019;
+        public static final int tvInscription=0x7f05002a;
+        public static final int tvListeAvis=0x7f05002c;
+        public static final int tvLoginInscriptionViaMail=0x7f05002b;
+        public static final int tvMail=0x7f050026;
+        public static final int tvMdpOublie=0x7f050034;
+        public static final int tvNomFichierAjoutFichierGPS=0x7f05000b;
+        public static final int tvNomRandonnee=0x7f05000f;
+        public static final int tvNomRandonneeDetailsRandonnee=0x7f050018;
+        public static final int tvNomRandonneePublierAvis=0x7f05003a;
+        public static final int tvPassword=0x7f050020;
+        public static final int tvPasswordConfirm=0x7f050022;
+        public static final int tvPublierAvis=0x7f050038;
+        public static final int tvTitre=0x7f05002d;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
-=======
-        public static final int action_settings=0x7f090039;
-        public static final int btnConnexion=0x7f09002c;
-        public static final int btnDebutEnregistrerCheminRandonnee=0x7f090015;
-        public static final int btnEnregistrer=0x7f090024;
-        public static final int btnEnregistrerAjoutFichierGPS=0x7f090007;
-        public static final int btnEnregistrerAjoutRandonnee=0x7f090010;
-        public static final int btnEnregistrerEnregistrerCheminRandonnee=0x7f090017;
-        public static final int btnEnvoiMdpOublie=0x7f090032;
-        public static final int btnFinEnregistrerCheminRandonnee=0x7f090016;
-        public static final int btnInscription=0x7f09002d;
-        public static final int btnInscriptionFB=0x7f090019;
-        public static final int btnInscriptionMail=0x7f090018;
-        public static final int btnMdpOublie=0x7f09002b;
-        public static final int btnParcourirAjoutFichierGPS=0x7f090004;
-        public static final int btnPublierAvisRandonnee=0x7f090038;
-        public static final int ddlDifficulteAcces=0x7f09000f;
-        public static final int ddlDifficulteParcours=0x7f09000e;
-        public static final int etAvis=0x7f090036;
-        public static final int etLoginInscriptionViaMail=0x7f090020;
-        public static final int etLoginMainActivity=0x7f09002e;
-        public static final int etMailInscriptionViaMail=0x7f090023;
-        public static final int etMdpOublieMail=0x7f090030;
-        public static final int etNomRandonnee=0x7f090009;
-        public static final int etPasswordConfirmInscriptionViaMail=0x7f09001e;
-        public static final int etPasswordInscriptionViaMail=0x7f09001c;
-        public static final int etPasswordMainActivity=0x7f09002a;
-        public static final int ibAddRandonneeAccueil=0x7f090001;
-        public static final int ibPrecedent=0x7f090022;
-        public static final int ibPrecedentAjoutFichierGPS=0x7f090003;
-        public static final int ibPrecedentAjoutRandonnee=0x7f090005;
-        public static final int ibPrecedentDetailsRandonnee=0x7f090012;
-        public static final int ibPrecedentInscription=0x7f09001a;
-        public static final int ibPrecedentInscriptionViaMail=0x7f09001f;
-        public static final int ibPrecedentMdpOublie=0x7f090031;
-        public static final int ibPrecedentPublierAvis=0x7f090034;
-        public static final int ivLogo=0x7f090029;
-        public static final int textView1=0x7f090002;
-        public static final int tvAcces=0x7f09000c;
-        public static final int tvAccueil=0x7f090000;
-        public static final int tvAjoutRandonnee=0x7f090008;
-        public static final int tvAvis=0x7f090037;
-        public static final int tvDetailsRandonnee=0x7f090011;
-        public static final int tvDifficulteDuParcours=0x7f09000b;
-        public static final int tvDistanceRandonnee=0x7f09000d;
-        public static final int tvEnregistrementParcoursEnregistrerCheminRandonnee=0x7f090014;
-        public static final int tvInscription=0x7f090025;
-        public static final int tvListeAvis=0x7f090027;
-        public static final int tvLoginInscriptionViaMail=0x7f090026;
-        public static final int tvMail=0x7f090021;
-        public static final int tvMdpOublie=0x7f09002f;
-        public static final int tvNomFichierAjoutFichierGPS=0x7f090006;
-        public static final int tvNomRandonnee=0x7f09000a;
-        public static final int tvNomRandonneeDetailsRandonnee=0x7f090013;
-        public static final int tvNomRandonneePublierAvis=0x7f090035;
-        public static final int tvPassword=0x7f09001b;
-        public static final int tvPasswordConfirm=0x7f09001d;
-        public static final int tvPublierAvis=0x7f090033;
-        public static final int tvTitre=0x7f090028;
->>>>>>> refs/remotes/origin/dev_matthieu
     }
     public static final class layout {
         public static final int activity_accueil=0x7f030000;
@@ -309,24 +295,19 @@ containing a value of this type.
         public static final int activity_publier_avis=0x7f03000a;
     }
     public static final class menu {
-<<<<<<< HEAD
-        public static final int main=0x7f0a0000;
-=======
-        public static final int accueil=0x7f080000;
-        public static final int ajout_fichier_g=0x7f080001;
-        public static final int ajout_randonnee=0x7f080002;
-        public static final int details_randonnee=0x7f080003;
-        public static final int enregistrer_chemin_randonnee=0x7f080004;
-        public static final int inscription=0x7f080005;
-        public static final int inscription_via_mail=0x7f080006;
-        public static final int liste_avis=0x7f080007;
-        public static final int main=0x7f080008;
-        public static final int mdp_oublie=0x7f080009;
-        public static final int publier_avis=0x7f08000a;
->>>>>>> refs/remotes/origin/dev_matthieu
+        public static final int accueil=0x7f0b0000;
+        public static final int ajout_fichier_g=0x7f0b0001;
+        public static final int ajout_randonnee=0x7f0b0002;
+        public static final int details_randonnee=0x7f0b0003;
+        public static final int enregistrer_chemin_randonnee=0x7f0b0004;
+        public static final int inscription=0x7f0b0005;
+        public static final int inscription_via_mail=0x7f0b0006;
+        public static final int liste_avis=0x7f0b0007;
+        public static final int main=0x7f0b0008;
+        public static final int mdp_oublie=0x7f0b0009;
+        public static final int publier_avis=0x7f0b000a;
     }
     public static final class string {
-<<<<<<< HEAD
         public static final int action_settings=0x7f06001b;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be
@@ -430,26 +411,18 @@ containing a value of this type.
         public static final int provider_disabled=0x7f06001e;
         public static final int provider_enabled=0x7f06001d;
         public static final int provider_new_status=0x7f060020;
+        public static final int title_activity_accueil=0x7f060026;
+        public static final int title_activity_ajout_fichier_gps=0x7f06002d;
+        public static final int title_activity_ajout_randonnee=0x7f060029;
+        public static final int title_activity_details_randonnee=0x7f06002a;
+        public static final int title_activity_enregistrer_chemin_randonnee=0x7f06002e;
         public static final int title_activity_hello_google_map=0x7f060022;
-=======
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
-        public static final int mapKey=0x7f050005;
-        public static final int menu_settings=0x7f050003;
-        public static final int title_activity_accueil=0x7f050008;
-        public static final int title_activity_ajout_fichier_gps=0x7f05000f;
-        public static final int title_activity_ajout_randonnee=0x7f05000b;
-        public static final int title_activity_details_randonnee=0x7f05000c;
-        public static final int title_activity_enregistrer_chemin_randonnee=0x7f050010;
-        public static final int title_activity_hello_google_map=0x7f050004;
-        public static final int title_activity_inscription=0x7f050007;
-        public static final int title_activity_inscription_via_mail=0x7f05000a;
-        public static final int title_activity_liste_avis=0x7f05000e;
-        public static final int title_activity_main=0x7f050006;
-        public static final int title_activity_mdp_oublie=0x7f050009;
-        public static final int title_activity_publier_avis=0x7f05000d;
->>>>>>> refs/remotes/origin/dev_matthieu
+        public static final int title_activity_inscription=0x7f060025;
+        public static final int title_activity_inscription_via_mail=0x7f060028;
+        public static final int title_activity_liste_avis=0x7f06002c;
+        public static final int title_activity_main=0x7f060024;
+        public static final int title_activity_mdp_oublie=0x7f060027;
+        public static final int title_activity_publier_avis=0x7f06002b;
     }
     public static final class style {
         /** 
@@ -473,19 +446,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-<<<<<<< HEAD
-        public static final int AppBaseTheme=0x7f090000;
-=======
-        public static final int AppBaseTheme=0x7f070000;
->>>>>>> refs/remotes/origin/dev_matthieu
+        public static final int AppBaseTheme=0x7f0a0000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-<<<<<<< HEAD
-        public static final int AppTheme=0x7f090001;
-=======
-        public static final int AppTheme=0x7f070001;
->>>>>>> refs/remotes/origin/dev_matthieu
+        public static final int AppTheme=0x7f0a0001;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.

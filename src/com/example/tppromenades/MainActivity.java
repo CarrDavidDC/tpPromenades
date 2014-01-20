@@ -14,12 +14,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapController;
 
 import android.location.Location;
 import android.location.LocationManager;
-import com.google.android.maps.MapActivity;
 
 import java.util.ArrayList;
 
@@ -54,7 +51,6 @@ public class MainActivity extends Activity implements LocationListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-<<<<<<< HEAD
         setContentView(R.layout.activity_main);
         final Context context = this;
 		
@@ -106,7 +102,7 @@ public class MainActivity extends Activity implements LocationListener{
 			}
 		});
 		
-        if (map == null) {
+       /* if (map == null) {
         	map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                                 .getMap();
             // Check if we were successful in obtaining the map.
@@ -135,7 +131,7 @@ public class MainActivity extends Activity implements LocationListener{
                 toast.show();
                 
             }
-        }
+        }*/
 
 		ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
@@ -158,9 +154,7 @@ public class MainActivity extends Activity implements LocationListener{
 		Toast.makeText(getBaseContext(),
 				"Location change to : Latitude = " + lat + " Longitude = " + lng,
 				Toast.LENGTH_SHORT).show();
-=======
 		setContentView(R.layout.activity_main);
->>>>>>> refs/remotes/origin/dev_matthieu
 	}
 
 	@Override
