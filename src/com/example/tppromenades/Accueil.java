@@ -22,7 +22,7 @@ public class Accueil extends Activity {
 			Intent intent = new Intent(Accueil.this, AjoutRandonnee.class);
 			startActivity(intent);
 			}
-		});
+		}); 
 	}
 
 	@Override
