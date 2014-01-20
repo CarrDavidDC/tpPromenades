@@ -31,22 +31,11 @@ public class MainActivity extends Activity implements LocationListener{
      private GoogleMap map;
  	private double							lat								= 0;
  	private double							lng								= 0;
- 	private MapController				mc								= null;
-    /* private static final LatLng MELBOURNE = new LatLng(-37.813, 144.962);
-     private Marker melbourne = map.addMarker(new MarkerOptions()
-                               .position(MELBOURNE)
-                               .title("Melbourne")
-                               .snippet("Population: 4,137,400")
-                               .icon(BitmapDescriptorFactory.fromResource(R.drawable.arrow)));*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    //    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-     //   map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        // Do a null check to confirm that we have not already instantiated the map.
-        
         if (map == null) {
         	map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                                 .getMap();
@@ -56,48 +45,21 @@ public class MainActivity extends Activity implements LocationListener{
             	Toast toast = Toast.makeText(getApplicationContext(), "LA MAP N EST PAS NULL", Toast.LENGTH_SHORT);
                 toast.show();
                 map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                map.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Hello world"));
                 
-                LatLng MELBOURNE = new LatLng(-37.813, 144.962);
-                Marker melbourne = map.addMarker(new MarkerOptions()
-                                          .position(MELBOURNE)
-                                          .title("Melbourne")
-                                          .snippet("Population: 4,137,400"));
-                
-                PolygonOptions rectOptions = new PolygonOptions()
-                .add(new LatLng(37.35, -122.0),
-                     new LatLng(37.45, -122.0),
-                     new LatLng(37.45, -122.2),
-                     new LatLng(37.35, -122.2),
-                     new LatLng(37.35, -122.0));
-
-                // Get back the mutable Polygon
-                Polygon polygon = map.addPolygon(rectOptions);
-                LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                CreateCourse createCourse = new CreateCourse("Ma première course","Description de la course",map);
+                createCourse.createCourse();
+                Polygon polygon = map.addPolygon(createCourse.getRectOptions());
+               
                 map.setMyLocationEnabled(true);
                 map.animateCamera(CameraUpdateFactory.zoomIn());
-                LatLngBounds.Builder builder = new LatLngBounds.Builder();
                 toast = Toast.makeText(getApplicationContext(), "Builder OK", Toast.LENGTH_SHORT);
                 toast.show();
                 
-                builder.include(melbourne.getPosition());
-                LatLngBounds bounds = builder.build();
-                toast = Toast.makeText(getApplicationContext(), "Include OK", Toast.LENGTH_SHORT);
-                toast.show();
-                int padding = 0; // offset from edges of the map in pixels
-                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-                toast = Toast.makeText(getApplicationContext(), "Camera OK", Toast.LENGTH_SHORT);
-                toast.show();
-                //map.moveCamera(cu);
-                toast = Toast.makeText(getApplicationContext(), "Move OK", Toast.LENGTH_SHORT);
-                toast.show();
-               // map.animateCamera(cu);
-                
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(MELBOURNE).zoom(14.0f).build();
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(createCourse.getLatLng().get(0)).zoom(10.0f).build();
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                map.moveCamera(cameraUpdate);   
+                map.moveCamera(cameraUpdate);                  
+                
+                
             }else{
             	Toast toast = Toast.makeText(getApplicationContext(), "LA MAP EST NULL", Toast.LENGTH_SHORT);
                 toast.show();
