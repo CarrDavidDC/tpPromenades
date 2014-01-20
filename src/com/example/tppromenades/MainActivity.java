@@ -12,13 +12,6 @@ public class MainActivity extends MapActivity  {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-<<<<<<< HEAD
-		System.out.println("dev44 hugo");
-=======
-		System.out.println("test");
->>>>>>> master
-
-		System.out.println("testmc");
 	}
 
 	@Override
