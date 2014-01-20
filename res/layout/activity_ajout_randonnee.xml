@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AjoutRandonnee" >
+
+    <TextView
+        android:id="@+id/tvAjoutRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Ajout randonnée"
+        android:textSize="20dp" /> 
+
+    <ImageButton
+        android:id="@+id/ibPrecedentAjoutRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_action_back" />
+
+    <EditText
+        android:id="@+id/etNomRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tvAjoutRandonnee"
+        android:layout_below="@+id/ibPrecedentAjoutRandonnee"
+        android:layout_marginTop="42dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvNomRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etNomRandonnee"
+        android:layout_below="@+id/ibPrecedentAjoutRandonnee"
+        android:layout_marginTop="28dp"
+        android:text="Nom de la randonnée" />
+
+    <TextView
+        android:id="@+id/tvDifficulteDuParcours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etNomRandonnee"
+        android:layout_marginTop="142dp"
+        android:text="Difficulté du parcours" />
+
+    <TextView
+        android:id="@+id/tvAcces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDifficulteDuParcours"
+        android:layout_below="@+id/tvDifficulteDuParcours"
+        android:layout_marginTop="30dp"
+        android:text="Difficulté d'accès" />
+
+    <TextView
+        android:id="@+id/tvDistanceRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAcces"
+        android:layout_below="@+id/tvAcces"
+        android:layout_marginTop="35dp"
+        android:text="Distance" />
+
+    <Spinner
+        android:id="@+id/ddlDifficulteParcours"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvAcces"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/tvNomRandonnee"
+        android:entries="@array/lstDifficulte" />
+
+    <Spinner
+        android:id="@+id/ddlDifficulteAcces"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvDistanceRandonnee"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/tvNomRandonnee"
+        android:entries="@array/lstDifficulte" />
+
+    <Button
+        android:id="@+id/btnEnregistrerAjoutRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ddlDifficulteAcces"
+        android:layout_centerHorizontal="true"
+        android:text="Envoyer" />
+
+</RelativeLayout>

@@ -11,4 +11,25 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_hello_google_map">HelloGoogleMapActivity</string>
     <string name="mapKey">AIzaSyCFTBLjsfp_84xx3Sntqwf4VVYtAuAbiNQ</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_inscription">Inscription</string>
+    <string name="title_activity_accueil">Accueil</string>
+    <string name="title_activity_mdp_oublie">MdpOublie</string>
+    <string name="title_activity_inscription_via_mail">InscriptionViaMail</string>
+    <string name="title_activity_ajout_randonnee">AjoutRandonnee</string>
+
+    <string-array name="lstDifficulte">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="title_activity_details_randonnee">DetailsRandonnee</string>
+    <string name="title_activity_publier_avis">PublierAvis</string>
+    <string name="title_activity_liste_avis">ListeAvis</string>
+    <string name="title_activity_ajout_fichier_gps">AjoutFichierGPS</string>
+    <string name="title_activity_enregistrer_chemin_randonnee">EnregistrerCheminRandonnee</string>
+
 </resources>

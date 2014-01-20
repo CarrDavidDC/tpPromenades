@@ -32,9 +32,17 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.Menu;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity implements LocationListener{
 
@@ -48,6 +56,56 @@ public class MainActivity extends Activity implements LocationListener{
 		super.onCreate(savedInstanceState);
 <<<<<<< HEAD
         setContentView(R.layout.activity_main);
+        final Context context = this;
+		
+		final Button btnInscription = (Button) findViewById(R.id.btnInscription);
+		btnInscription.setOnClickListener(new OnClickListener() {
+				
+		  public void onClick(View v) {
+			Intent intent = new Intent(MainActivity.this, Inscription.class);
+			startActivity(intent);
+			}
+		}); 
+		
+		final Button btnConnexion = (Button) findViewById(R.id.btnConnexion);
+		btnConnexion.setOnClickListener(new OnClickListener() {
+				
+		  public void onClick(View v) {
+			  EditText etLogin = (EditText)findViewById(R.id.etLoginMainActivity);
+			  EditText etPassword = (EditText)findViewById(R.id.etPasswordMainActivity);
+			  String login = etLogin.getText().toString();
+			  String pass = etPassword.getText().toString();
+			  if(login.equals(pass))
+			  {
+				Intent intent = new Intent(MainActivity.this, Accueil.class);
+				startActivity(intent);
+			  }
+			  else
+			  {
+				  AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+				  alertDialogBuilder.setTitle("Erreur !");
+				  alertDialogBuilder.setMessage("(Pour l'instant) Le mot de passe doit être identique au login");
+				  alertDialogBuilder.setCancelable(false);
+				  alertDialogBuilder.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							dialog.cancel();
+						}
+					});
+					AlertDialog alertDialog = alertDialogBuilder.create();
+					alertDialog.show();
+			  }
+			}
+		});
+		
+		final Button btnMdpOublie = (Button) findViewById(R.id.btnMdpOublie);
+		btnMdpOublie.setOnClickListener(new OnClickListener() {
+				
+		  public void onClick(View v) {
+			Intent intent = new Intent(MainActivity.this, MdpOublie.class);
+			startActivity(intent);
+			}
+		});
+		
         if (map == null) {
         	map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                                 .getMap();

@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Inscription" >
+
+    <Button
+        android:id="@+id/btnInscriptionMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="94dp"
+        android:text="Inscription via mail" />
+
+    <Button
+        android:id="@+id/btnInscriptionFB" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnInscriptionMail"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/btnInscriptionMail"
+        android:layout_marginTop="172dp"
+        android:text="Inscription via Facebook" />
+
+    <ImageButton
+        android:id="@+id/ibPrecedentInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_action_back" />
+
+</RelativeLayout>

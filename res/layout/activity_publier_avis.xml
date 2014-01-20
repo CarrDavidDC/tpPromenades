@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".PublierAvis" >
+
+    <TextView
+        android:id="@+id/tvPublierAvis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Publier un avis" />
+
+    <ImageButton
+        android:id="@+id/ibPrecedentPublierAvis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" 
+        android:src="@drawable/ic_action_back" />
+
+    <TextView
+        android:id="@+id/tvNomRandonneePublierAvis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ibPrecedentPublierAvis"
+        android:layout_below="@+id/ibPrecedentPublierAvis"
+        android:layout_marginTop="15dp"
+        android:text="'Nom de la randonnée'" />
+
+    <EditText
+        android:id="@+id/etAvis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNomRandonneePublierAvis"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:width="500dp" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvAvis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etAvis"
+        android:layout_below="@+id/ibPrecedentPublierAvis"
+        android:layout_marginTop="54dp"
+        android:text="Avis" />
+
+    <Button
+        android:id="@+id/btnPublierAvisRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Publier" />
+
+</RelativeLayout>
