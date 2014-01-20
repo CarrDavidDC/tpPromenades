@@ -101,6 +101,7 @@ public class MainActivity extends Activity implements LocationListener{
             }else{
             	Toast toast = Toast.makeText(getApplicationContext(), "LA MAP EST NULL", Toast.LENGTH_SHORT);
                 toast.show();
+                
             }
         }
 
