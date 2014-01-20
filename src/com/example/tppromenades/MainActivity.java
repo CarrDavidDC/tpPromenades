@@ -20,6 +20,8 @@ import com.google.android.maps.MapController;
 
 import android.location.Location;
 import android.location.LocationManager;
+import com.google.android.maps.MapActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -32,6 +34,7 @@ public class MainActivity extends Activity implements LocationListener{
      private GoogleMap map;
  	private double							lat								= 0;
  	private double							lng								= 0;
+public class MainActivity extends MapActivity  {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,11 @@ public class MainActivity extends Activity implements LocationListener{
             }
         }
 
+		setContentView(R.layout.activity_main);
+<<<<<<< HEAD
+		System.out.println("dev44 hugo");
+=======
+		System.out.println("test");
 	}
 
 	@Override

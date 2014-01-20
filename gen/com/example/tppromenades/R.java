@@ -9,6 +9,7 @@ package com.example.tppromenades;
 
 public final class R {
     public static final class attr {
+<<<<<<< HEAD
         /** 
     The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
     MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, or
@@ -165,6 +166,8 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_pressed=0x7f040005;
         public static final int common_signin_btn_text_dark=0x7f04000a;
         public static final int common_signin_btn_text_light=0x7f04000b;
+=======
+>>>>>>> master
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -173,6 +176,7 @@ containing a value of this type.
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
+<<<<<<< HEAD
         public static final int activity_horizontal_margin=0x7f080000;
         public static final int activity_vertical_margin=0x7f080001;
     }
@@ -218,11 +222,23 @@ containing a value of this type.
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
+=======
+        public static final int activity_horizontal_margin=0x7f040000;
+        public static final int activity_vertical_margin=0x7f040001;
+    }
+    public static final class drawable {
+        public static final int ic_launcher=0x7f020000;
+    }
+    public static final class id {
+        public static final int action_settings=0x7f080001;
+        public static final int mapView=0x7f080000;
+>>>>>>> master
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
     }
     public static final class menu {
+<<<<<<< HEAD
         public static final int main=0x7f0a0000;
     }
     public static final class string {
@@ -327,6 +343,17 @@ containing a value of this type.
         public static final int provider_disabled=0x7f06001e;
         public static final int provider_enabled=0x7f06001d;
         public static final int provider_new_status=0x7f060020;
+=======
+        public static final int main=0x7f070000;
+    }
+    public static final class string {
+        public static final int action_settings=0x7f050001;
+        public static final int app_name=0x7f050000;
+        public static final int hello_world=0x7f050002;
+        public static final int mapKey=0x7f050005;
+        public static final int menu_settings=0x7f050003;
+        public static final int title_activity_hello_google_map=0x7f050004;
+>>>>>>> master
     }
     public static final class style {
         /** 
@@ -350,6 +377,7 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
+<<<<<<< HEAD
         public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
@@ -654,4 +682,12 @@ containing a value of this type.
         */
         public static final int MapAttrs_zOrderOnTop = 13;
     };
+=======
+        public static final int AppBaseTheme=0x7f060000;
+        /**  Application theme. 
+ All customizations that are NOT specific to a particular API-level can go here. 
+         */
+        public static final int AppTheme=0x7f060001;
+    }
+>>>>>>> master
 }
