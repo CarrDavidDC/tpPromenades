@@ -21,6 +21,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.mapexplore.permission.MAPS_RECEIVE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     
     <application
         android:allowBackup="true"
@@ -40,7 +42,7 @@
   android:value="@integer/google_play_services_version" />
           <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyD-sSMOT2W2kUwgPEqjfHRvXZ1BCL2bPCs" />
+            android:value="AIzaSyCFTBLjsfp_84xx3Sntqwf4VVYtAuAbiNQ" />
     </application>
 
     <!-- Your API key needs to be added over here -->
