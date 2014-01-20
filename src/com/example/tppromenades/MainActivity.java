@@ -102,7 +102,7 @@ public class MainActivity extends Activity implements LocationListener{
 			}
 		});
 		
-       /* if (map == null) {
+      /*  if (map == null) {
         	map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                                 .getMap();
             // Check if we were successful in obtaining the map.
