@@ -72,6 +72,8 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 	
 	@Override
 	protected Long doInBackground(Void... params) {
+
+		System.out.println("A");
 		try {
 			if(_url == _urlSentiers) {
 				JSONObject object = new JSONObject(readData());
