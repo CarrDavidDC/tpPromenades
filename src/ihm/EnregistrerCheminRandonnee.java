@@ -1,4 +1,8 @@
-package com.example.tppromenades;
+package ihm;
+
+import com.example.tppromenades.R;
+import com.example.tppromenades.R.layout;
+import com.example.tppromenades.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;

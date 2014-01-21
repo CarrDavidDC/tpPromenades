@@ -48,43 +48,43 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name="com.example.tppromenades.Inscription"
+            android:name="ihm.Inscription"
             android:label="@string/title_activity_inscription" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.Accueil"
+            android:name="ihm.Accueil"
             android:label="@string/title_activity_accueil" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.MdpOublie"
+            android:name="ihm.MdpOublie"
             android:label="@string/title_activity_mdp_oublie" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.InscriptionViaMail"
+            android:name="ihm.InscriptionViaMail"
             android:label="@string/title_activity_inscription_via_mail" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.AjoutRandonnee"
+            android:name="ihm.AjoutRandonnee"
             android:label="@string/title_activity_ajout_randonnee" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.DetailsRandonnee"
+            android:name="ihm.DetailsRandonnee"
             android:label="@string/title_activity_details_randonnee" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.PublierAvis"
+            android:name="ihm.PublierAvis"
             android:label="@string/title_activity_publier_avis" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.ListeAvis"
+            android:name="ihm.ListeAvis"
             android:label="@string/title_activity_liste_avis" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.AjoutFichierGPS"
+            android:name="ihm.AjoutFichierGPS"
             android:label="@string/title_activity_ajout_fichier_gps" >
         </activity>
         <activity
-            android:name="com.example.tppromenades.EnregistrerCheminRandonnee"
+            android:name="ihm.EnregistrerCheminRandonnee"
             android:label="@string/title_activity_enregistrer_chemin_randonnee" >
         </activity>
     </application>
