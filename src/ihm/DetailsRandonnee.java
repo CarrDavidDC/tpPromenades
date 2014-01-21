@@ -13,6 +13,7 @@ public class DetailsRandonnee extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		int j = 0;
 		setContentView(R.layout.activity_details_randonnee);
 	}
 
