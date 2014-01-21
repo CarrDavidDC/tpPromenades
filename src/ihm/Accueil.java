@@ -1,33 +1,40 @@
-package com.example.tppromenades;
+package ihm;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.Polygon;
-
-import android.os.Bundle;
+import map.CreateCourse;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import com.google.android.gms.maps.MapFragment;
 
-public class Accueil extends Activity {
+import com.example.tppromenades.R;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Polygon;
+
+public class Accueil extends Activity implements OnClickListener {
 
 	 private GoogleMap map;
-	 	private double							lat								= 0;
-	 	private double							lng								= 0;
+	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_accueil);
 		
 		final ImageButton btnAjout = (ImageButton) findViewById(R.id.ibAddRandonneeAccueil);
+		btnAjout.setOnClickListener(this);
 		
+		createMap();
+	}
+
+	public void createMap()
+	{
 		if (map == null) {
         	map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
             // Check if we were successful in obtaining the map.
@@ -46,7 +53,7 @@ public class Accueil extends Activity {
                 toast = Toast.makeText(getApplicationContext(), "Builder OK", Toast.LENGTH_SHORT);
                 toast.show();
                 
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(createCourse.getLatLng().get(0)).zoom(10.0f).build();
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(createCourse.getLatLng().get(0)).zoom(16.0f).build();
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
                 map.moveCamera(cameraUpdate);             
                 
@@ -57,20 +64,26 @@ public class Accueil extends Activity {
                 
             }
 		}
-		btnAjout.setOnClickListener(new OnClickListener() {
-				
-		  public void onClick(View v) {
-			Intent intent = new Intent(Accueil.this, AjoutRandonnee.class);
-			startActivity(intent);
-			}
-		});
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.accueil, menu);
 		return true;
 	} 
+	
+	public void onClick(View v) {
+		Intent intent = null;
+		
+		switch (v.getId()) {
+			case R.id.ibAddRandonneeAccueil:
+				intent = new Intent(Accueil.this, AjoutRandonnee.class);	
+				break;
+			default:
+				break;
+		}
+		startActivity(intent);
+	}
 
 }

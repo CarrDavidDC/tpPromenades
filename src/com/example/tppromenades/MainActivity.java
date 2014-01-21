@@ -18,6 +18,10 @@ import com.google.android.gms.maps.model.PolygonOptions;
 import android.location.Location;
 import android.location.LocationManager;
 
+import ihm.Accueil;
+import ihm.Inscription;
+import ihm.MdpOublie;
+
 import java.util.ArrayList;
 
 import bdd.DatabaseHandler;
