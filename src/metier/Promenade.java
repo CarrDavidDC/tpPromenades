@@ -1,6 +1,8 @@
 package metier;
 
-public class Promenade {
+import java.io.Serializable;
+
+public class Promenade implements Serializable {
     private int _gid;
     private String _name;
     private float _length;
@@ -19,6 +21,15 @@ public class Promenade {
     	
     }
     	
+    
+    
+	public Promenade(String _name, double _length, String _duration) {
+		super();
+		this._name = _name;
+		this._length = (float) _length;
+		this._duration = _duration;
+	}
+
 	public Promenade(int _gid, String _name, float _length, String _duration,
 			String _theme, String _difficulty, String _id, String _project) {
 		super();

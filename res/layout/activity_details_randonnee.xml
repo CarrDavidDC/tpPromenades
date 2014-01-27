@@ -8,14 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".DetailsRandonnee" >
 
-    <TextView
-        android:id="@+id/tvDetailsRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Détails de la randonnée"
-        android:textSize="15dp" />
-
     <ImageButton
         android:id="@+id/ibPrecedentDetailsRandonnee" 
         android:layout_width="wrap_content"
@@ -25,12 +17,48 @@
         android:src="@drawable/ic_action_back" />
 
     <TextView
-        android:id="@+id/tvNomRandonneeDetailsRandonnee"
+        android:id="@+id/tvDetailsRandonnee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_below="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_marginTop="25dp"
-        android:text="&apos;Nom de la randonnée&apos;" />
+        android:layout_alignRight="@+id/name"
+        android:layout_alignTop="@+id/ibPrecedentDetailsRandonnee"
+        android:layout_marginRight="23dp"
+        android:text="Détails de la randonnée"
+        android:textSize="15dp" />
+    
 
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ibPrecedentDetailsRandonnee"
+        android:layout_below="@+id/ibPrecedentDetailsRandonnee"
+        android:layout_marginTop="16dp"
+        android:text="Nom : " />
+
+    <TextView
+        android:id="@+id/length"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="5dp"
+        android:text="Distance" />
+    
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/length"
+        android:layout_marginTop="5dp"
+        android:text="Détails de la randonnée" />
+    
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="500dp"
+        android:layout_height="400dp"
+        android:layout_below="@+id/duration"
+        android:layout_marginTop="31dp" />
 </RelativeLayout>
