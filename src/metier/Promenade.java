@@ -20,8 +20,6 @@ public class Promenade implements Serializable {
     public Promenade() {
     	
     }
-    	
-    
     
 	public Promenade(String _name, double _length, String _duration) {
 		super();
