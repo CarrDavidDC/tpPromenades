@@ -31,5 +31,5 @@
     <string name="title_activity_liste_avis">ListeAvis</string>
     <string name="title_activity_ajout_fichier_gps">AjoutFichierGPS</string>
     <string name="title_activity_enregistrer_chemin_randonnee">EnregistrerCheminRandonnee</string>
-
+    
 </resources>

@@ -24,13 +24,16 @@
         android:layout_below="@+id/tvAccueil"
         android:src="@drawable/ic_action_new" />
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.MapFragment"
-        android:layout_width="500dp"
-        android:layout_height="400dp"
-        android:layout_alignRight="@+id/ibAddRandonneeAccueil"
+    <ListView
+        android:id="@+id/listViewAccueil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/ibAddRandonneeAccueil"
-        android:layout_marginTop="31dp" />
-	
+        android:layout_marginTop="22dp" >
+
+    </ListView>
+
 </RelativeLayout>

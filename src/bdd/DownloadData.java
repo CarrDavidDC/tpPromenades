@@ -79,10 +79,10 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 				for (int i = 0; i < values.length(); i++) {
 					JSONArray prom = values.getJSONArray(i);
 					String name = prom.getString(0);
-					float length = Float.parseFloat(prom.getString(1));
+					double length = Float.parseFloat(prom.getString(1));
 					String duration = prom.getString(2);
 					String theme = prom.getString(3);
-					String difficulty = prom.getString(4);
+					float difficulty = Float.valueOf(prom.getString(4));
 					String id = prom.getString(5);
 					String project = prom.getString(6);
 					Integer gid = Integer.parseInt(prom.getString(7));

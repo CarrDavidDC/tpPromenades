@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Ajout randonnée"
-        android:textSize="20dp" /> 
+        android:textSize="20dp" />
 
     <ImageButton
         android:id="@+id/ibPrecedentAjoutRandonnee"
@@ -25,16 +25,33 @@
         android:src="@drawable/ic_action_back" />
 
     <EditText
-        android:id="@+id/etNomRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/tvAjoutRandonnee"
-        android:layout_below="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_marginTop="42dp"
-        android:ems="10" >
+        android:id="@+id/distanceRandonnee"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/tvAjoutRandonnee"
+        android:layout_alignRight="@+id/btnEnregistrerAjoutRandonnee"
+        android:layout_below="@+id/tvDistanceRandonnee"
+        android:ems="10" />
 
-        <requestFocus />
-    </EditText>
+    <Button
+        android:id="@+id/btnPlus"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/distanceRandonnee"
+        android:layout_alignRight="@+id/etNomRandonnee"
+        android:layout_below="@+id/tvDistanceRandonnee"
+        android:layout_toRightOf="@+id/distanceRandonnee"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/btnMoins"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/distanceRandonnee"
+        android:layout_toLeftOf="@+id/distanceRandonnee"
+        android:text="-" />
 
     <TextView
         android:id="@+id/tvNomRandonnee"
@@ -42,60 +59,80 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/etNomRandonnee"
         android:layout_below="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="14dp"
         android:text="Nom de la randonnée" />
+
+    <EditText
+        android:id="@+id/etNomRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tvAjoutRandonnee"
+        android:layout_below="@+id/tvNomRandonnee"
+        android:ems="10" />
 
     <TextView
         android:id="@+id/tvDifficulteDuParcours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ibPrecedentAjoutRandonnee"
         android:layout_below="@+id/etNomRandonnee"
-        android:layout_marginTop="142dp"
         android:text="Difficulté du parcours" />
 
-    <TextView
-        android:id="@+id/tvAcces"
+    <RatingBar
+        android:id="@+id/difficulteRandonnee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDifficulteDuParcours"
         android:layout_below="@+id/tvDifficulteDuParcours"
-        android:layout_marginTop="30dp"
-        android:text="Difficulté d'accès" />
-
-    <TextView
-        android:id="@+id/tvDistanceRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvAcces"
-        android:layout_below="@+id/tvAcces"
-        android:layout_marginTop="35dp"
-        android:text="Distance" />
-
-    <Spinner
-        android:id="@+id/ddlDifficulteParcours"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvAcces"
-        android:layout_marginBottom="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/tvNomRandonnee"
-        android:entries="@array/lstDifficulte" />
-
-    <Spinner
-        android:id="@+id/ddlDifficulteAcces"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvDistanceRandonnee"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/tvNomRandonnee"
-        android:entries="@array/lstDifficulte" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/btnEnregistrerAjoutRandonnee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ddlDifficulteAcces"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp"
         android:text="Envoyer" />
+
+    <TextView
+        android:id="@+id/labelTemps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDistanceRandonnee"
+        android:layout_below="@+id/distanceRandonnee"
+        android:layout_marginTop="15dp"
+        android:text="Temps" />
+
+    <Spinner
+        android:id="@+id/listeboxMinute"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/labelHeure"
+        android:layout_alignRight="@+id/btnPlus"
+        android:layout_marginRight="14dp" />
+
+    <TextView
+        android:id="@+id/tvDistanceRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etNomRandonnee"
+        android:layout_below="@+id/difficulteRandonnee"
+        android:text="Distance (km)" />
+
+    <Spinner
+        android:id="@+id/listboxHeure"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/distanceRandonnee"
+        android:layout_alignTop="@+id/labelTemps" />
+
+    <TextView
+        android:id="@+id/labelHeure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/listboxHeure"
+        android:layout_alignRight="@+id/tvNomRandonnee"
+        android:text="H"
+        android:textSize="15dp" />
 
 </RelativeLayout>
