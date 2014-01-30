@@ -25,7 +25,12 @@ public class TablePromenade {
 		}
 	}
 	
-	public void ajouter(Promenade p) {
+	public TablePromenade(DatabaseHandler db, Promenade p) {
+		_db = db;
+		ajouter(p);
+	}
+	
+	private void ajouter(Promenade p) {
 		Log.d("ajout", p.toString());
 		String c = null;
 		SQLiteDatabase db = _db.getWritableDatabase();

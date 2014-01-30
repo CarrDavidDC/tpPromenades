@@ -1,14 +1,18 @@
 package metier;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import bdd.SingletonConnection;
+import bdd.TablePromenade;
 
 public class Promenade implements Serializable {
     private int _gid;
     private String _name;
-    private float _length;
+    private double _length;
     private String _duration;
     private String _theme;
-    private String _difficulty;
+    private float _difficulty;
     private String _id;
     private String _project;
     
@@ -21,15 +25,26 @@ public class Promenade implements Serializable {
     	
     }
     
+    
+    
+	public Promenade(String _name, double _length, String _duration,
+			float _difficulty) {
+		super();
+		this._name = _name;
+		this._length = _length;
+		this._duration = _duration;
+		this._difficulty = _difficulty;
+	}
+
 	public Promenade(String _name, double _length, String _duration) {
 		super();
 		this._name = _name;
-		this._length = (float) _length;
+		this._length =  _length;
 		this._duration = _duration;
 	}
 
-	public Promenade(int _gid, String _name, float _length, String _duration,
-			String _theme, String _difficulty, String _id, String _project) {
+	public Promenade(int _gid, String _name, double _length, String _duration,
+			String _theme, float _difficulty, String _id, String _project) {
 		super();
 		this._gid = _gid;
 		this._name = _name;
@@ -41,6 +56,23 @@ public class Promenade implements Serializable {
 		this._project = _project;
 	}
 	
+	
+	
+	public void ajoutRandonneeBd()
+	{		
+		TablePromenade tableProme = new TablePromenade(SingletonConnection.getInstance().getDatabaseHandler(), this);
+	}
+	
+	
+	
+	/******************************************
+	 * 
+	 * 			GET & SET
+	 * 	
+	 * 
+	 * ****************************************
+	 */
+	
 	@Override
 	public String toString() {
 		return "Promenade [_gid=" + _gid + ", _name=" + _name + ", _length="
@@ -49,6 +81,7 @@ public class Promenade implements Serializable {
 				+ ", _project=" + _project + "]";
 	}
 
+	
 	public int get_gid() {
 		return _gid;
 	}
@@ -65,11 +98,11 @@ public class Promenade implements Serializable {
 		this._name = _name;
 	}
 
-	public float get_length() {
+	public double get_length() {
 		return _length;
 	}
 
-	public void set_length(float _length) {
+	public void set_length(double _length) {
 		this._length = _length;
 	}
 
@@ -89,11 +122,11 @@ public class Promenade implements Serializable {
 		this._theme = _theme;
 	}
 
-	public String get_difficulty() {
+	public float get_difficulty() {
 		return _difficulty;
 	}
 
-	public void set_difficulty(String _difficulty) {
+	public void set_difficulty(float _difficulty) {
 		this._difficulty = _difficulty;
 	}
 

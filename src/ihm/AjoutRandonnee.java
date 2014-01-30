@@ -1,35 +1,36 @@
 package ihm;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.ArrayList;
+import java.util.List;
 
-import listener.CounterClickListener;
-
-import com.example.tppromenades.R;
-import com.example.tppromenades.R.id;
-import com.example.tppromenades.R.layout;
-import com.example.tppromenades.R.menu;
-
-import android.os.Bundle;
-import android.os.Handler;
+import listener.CounterListener;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.tppromenades.R;
 
 public class AjoutRandonnee extends Activity implements OnClickListener{
 
 	private double pas = 0.1;
 	private Button btnPlus;
 	private Button btnMoins;
+	private Button btnEnregistrerAjoutRandonnee;
 	private EditText distanceRandonnee;
+	private EditText etNomRandonnee;
+	private RatingBar difficulteRandonnee;
+	private Spinner listeboxMinute;
+	private Spinner listeboxHeure;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,9 +40,13 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 		btnRetour.setOnClickListener(this);
 		btnPlus = (Button) findViewById(R.id.btnPlus);
 		distanceRandonnee = (EditText) findViewById(R.id.distanceRandonnee);
-		
-		CounterClickListener listenerIncrement = new CounterClickListener("+", distanceRandonnee,pas);
-		CounterClickListener listenerDecrement = new CounterClickListener("-", distanceRandonnee,pas);
+		etNomRandonnee = (EditText) findViewById(R.id.etNomRandonnee);
+		difficulteRandonnee = (RatingBar)findViewById(R.id.difficulteRandonnee);
+		listeboxMinute= (Spinner)findViewById(R.id.listeboxMinute);
+		listeboxHeure= (Spinner)findViewById(R.id.listboxHeure);
+		CounterListener listenerIncrement = new CounterListener("+", distanceRandonnee,pas,this);
+		CounterListener listenerDecrement = new CounterListener("-", distanceRandonnee,pas,this);
+		CounterListener listenerValidation = new CounterListener("validation", distanceRandonnee,pas,this);
 		
 		btnPlus.setOnClickListener(listenerIncrement);
 		btnPlus.setOnTouchListener(listenerIncrement);
@@ -51,6 +56,11 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 		btnMoins.setOnTouchListener(listenerDecrement);
 	
 		distanceRandonnee.setText("0");
+		
+		btnEnregistrerAjoutRandonnee = (Button) findViewById(R.id.btnEnregistrerAjoutRandonnee);
+		btnEnregistrerAjoutRandonnee.setOnClickListener(listenerValidation);
+		addItemsOnSpinnerHeures();
+		addItemsOnSpinnerMinutes();
 	}
 
 	@Override
@@ -68,16 +78,6 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 			case R.id.ibPrecedentAjoutRandonnee:
 				intent = new Intent(AjoutRandonnee.this, Accueil.class);
 				break;
-			case R.id.btnPlus:
-				 int a=Integer.parseInt(distanceRandonnee.getText().toString());
-
-	                int b=a-1;
-
-	                distanceRandonnee.setText(new Integer(b).toString());
-				break;
-			case R.id.btnMoins:
-				changerDistance("-");				
-				break;
 			default:
 				break;
 		}
@@ -85,25 +85,56 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 	}
  
 	
-	private void changerDistance(String signe)
-	{
-		Toast.makeText(getApplicationContext(), "Signe : " + signe, Toast.LENGTH_LONG).show();
-		String distRando = "";
-		Double laDistance = 0.0;
-		distRando = distanceRandonnee.getText().toString();
-		Toast.makeText(getApplicationContext(), "distRando : " + distRando, Toast.LENGTH_LONG).show();
-		
-		laDistance = Double.valueOf(distRando);
-		Toast.makeText(getApplicationContext(), "laDistance : " + laDistance, Toast.LENGTH_LONG).show();
-		Toast.makeText(getApplicationContext(), "pas : " + pas, Toast.LENGTH_LONG).show();
-		
-		if(signe == "+"){
-			laDistance += pas;
-		}else if(signe == "-"){
-			laDistance -= pas;
+	private void addItemsOnSpinnerHeures() {
+		 
+		Spinner listeboxMinute = (Spinner) findViewById(R.id.listeboxMinute);
+		List<String> list = new ArrayList<String>();
+		for(int i = 0; i < 60; i++)
+		{
+			list.add(String.valueOf(i));
 		}
-		Toast.makeText(getApplicationContext(), "laDistanceF : " + laDistance, Toast.LENGTH_LONG).show();
-		
-		distanceRandonnee.setText(String.valueOf(laDistance));
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		listeboxMinute.setAdapter(dataAdapter);
+	  }
+	
+	private void addItemsOnSpinnerMinutes() {
+		 
+		Spinner listboxHeure = (Spinner) findViewById(R.id.listboxHeure);
+		List<String> list = new ArrayList<String>();
+		for(int i = 0; i < 13; i++)
+		{
+			list.add(String.valueOf(i));
+		}
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		listboxHeure.setAdapter(dataAdapter);
+	  }
+
+	public EditText getDistanceRandonnee() {
+		return distanceRandonnee;
 	}
+
+
+	public EditText getEtNomRandonnee() {
+		return etNomRandonnee;
+	}
+
+
+	public RatingBar getDifficulteRandonnee() {
+		return difficulteRandonnee;
+	}
+
+
+	public Spinner getListeboxMinute() {
+		return listeboxMinute;
+	}
+
+
+	public Spinner getListeboxHeure() {
+		return listeboxHeure;
+	}
+	
+	
+	
 }

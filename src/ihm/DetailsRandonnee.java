@@ -42,7 +42,7 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 
 		tvName.setText("Nom : " + maPromenade.get_name());
 		tvDuration.setText("Durée : " + maPromenade.get_duration());
-		tvLength.setText("Distance : " + Float.toString(maPromenade.get_length()));
+		tvLength.setText("Distance : " + maPromenade.get_length());
 		Toast.makeText(getApplicationContext(), "Nom : " + maPromenade.get_name(), Toast.LENGTH_SHORT).show();
 		
 	}
