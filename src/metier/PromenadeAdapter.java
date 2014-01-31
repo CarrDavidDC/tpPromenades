@@ -77,7 +77,7 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
         }
 
         holder.duration.setText("Durée : " + p.get_duration());
-        holder.length.setText("Distance : " + p.get_length());
+        holder.length.setText("Distance : " + p.get_length()+ "kms");
         holder.name.setText(p.get_name());
         holder.description.setText(p.get_description());
         return view;

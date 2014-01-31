@@ -47,10 +47,10 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 		listePromenade.clear();
 		listePromenade.add(new Promenade("Premande grand Lyon", "Magnifique sur Lyon qui va faire l'application android et puis par la suite ca va être trop génial car il faut que....", 45.6, "1H30",1));
 		listePromenade.add(new Promenade("Marennes city","De la campagne encore et encore....", 75.6, "4H42",3));
-		listePromenade.add(new Promenade("Caluire","La ville autrement", 23, "2H30",1.5));
+		listePromenade.add(new Promenade("Caluire","La ville autrement", 23, "2h30",1.5));
 		listePromenade.add(new Promenade("Ecully","Chemin de l'INPS", 12, "30min",2));
-		listePromenade.add(new Promenade("Tartimuche","Raclette party", 32, "3H",3));
-		listePromenade.add(new Promenade("Premande grand Lyon", 45.6, "1H30",4));
+		listePromenade.add(new Promenade("Tartimuche","Raclette party", 32, "3h",3));
+		listePromenade.add(new Promenade("Premande grand Lyon", 45.6, "1h30",4));
 	}
 	
 	@Override
