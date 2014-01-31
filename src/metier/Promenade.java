@@ -3,7 +3,6 @@ package metier;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import bdd.SingletonConnection;
 import bdd.TablePromenade;
 
 public class Promenade implements Serializable {
@@ -66,13 +65,6 @@ public class Promenade implements Serializable {
 		this._difficulty = _difficulty;
 		this._id = _id;
 		this._project = _project;
-	}
-	
-	
-	
-	public void ajoutRandonneeBd()
-	{		
-		TablePromenade tableProme = new TablePromenade(SingletonConnection.getInstance().getDatabaseHandler(), this);
 	}
 	
 	

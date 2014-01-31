@@ -16,10 +16,13 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
+import bdd.DatabaseHandler;
+import bdd.TablePromenade;
 
 import com.example.tppromenades.R;
 
@@ -44,13 +47,12 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 	private void remplirPromenade()
 	{
 		// pour l'instant pas avec le fichier de bd
+		TablePromenade tP = new TablePromenade(new DatabaseHandler(this));
+		ArrayList<Promenade> listePromenadeBd = tP.selectionnerTout();
+		EditText nbPromenade = (EditText)findViewById(R.id.nbPromenade);
+		nbPromenade.setText("Nb Promenade (supp plus tard...) : " + listePromenadeBd.size());
 		listePromenade.clear();
-		listePromenade.add(new Promenade("Premande grand Lyon", "Magnifique sur Lyon qui va faire l'application android et puis par la suite ca va être trop génial car il faut que....", 45.6, "1H30",1));
-		listePromenade.add(new Promenade("Marennes city","De la campagne encore et encore....", 75.6, "4H42",3));
-		listePromenade.add(new Promenade("Caluire","La ville autrement", 23, "2h30",1.5));
-		listePromenade.add(new Promenade("Ecully","Chemin de l'INPS", 12, "30min",2));
-		listePromenade.add(new Promenade("Tartimuche","Raclette party", 32, "3h",3));
-		listePromenade.add(new Promenade("Premande grand Lyon", 45.6, "1h30",4));
+		listePromenade = listePromenadeBd;
 	}
 	
 	@Override
@@ -84,7 +86,6 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 	public void onItemClick(AdapterView<?> adapter, View arg1, int position, long arg3) {
 		// TODO Auto-generated method stub
 		Promenade value = (Promenade) adapter.getItemAtPosition(position); 
-		Toast.makeText(getApplicationContext(), "Nom : " + value.get_name(), Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(Accueil.this, DetailsRandonnee.class);
 		intent.putExtra("Promenade", value);
 		startActivity(intent);

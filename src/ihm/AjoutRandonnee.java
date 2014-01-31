@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+import bdd.DatabaseHandler;
 
 import com.example.tppromenades.R;
 
@@ -29,6 +30,7 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 	private Button btnEnregistrerAjoutRandonnee;
 	private EditText distanceRandonnee;
 	private EditText etNomRandonnee;
+	private EditText etDescription;
 	private RatingBar difficulteRandonnee;
 	private Spinner listeboxMinute;
 	private Spinner listeboxHeure;
@@ -41,13 +43,15 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 		btnRetour.setOnClickListener(this);
 		btnPlus = (Button) findViewById(R.id.btnPlus);
 		distanceRandonnee = (EditText) findViewById(R.id.distanceRandonnee);
+		etDescription = (EditText) findViewById(R.id.etDescription);
 		etNomRandonnee = (EditText) findViewById(R.id.etNomRandonnee);
 		difficulteRandonnee = (RatingBar)findViewById(R.id.difficulteRandonnee);
 		listeboxMinute= (Spinner)findViewById(R.id.listeboxMinute);
 		listeboxHeure= (Spinner)findViewById(R.id.listboxHeure);
-		CounterListener listenerIncrement = new CounterListener("+", distanceRandonnee,pas,this);
-		CounterListener listenerDecrement = new CounterListener("-", distanceRandonnee,pas,this);
-		CounterListener listenerValidation = new CounterListener("validation", distanceRandonnee,pas,this);
+		DatabaseHandler db = new DatabaseHandler(this);
+		CounterListener listenerIncrement = new CounterListener("+", distanceRandonnee,pas,this,this);
+		CounterListener listenerDecrement = new CounterListener("-", distanceRandonnee,pas,this,this);
+		CounterListener listenerValidation = new CounterListener("validation", distanceRandonnee,pas,this,this);
 		
 		btnPlus.setOnClickListener(listenerIncrement);
 		btnPlus.setOnTouchListener(listenerIncrement);
@@ -137,7 +141,9 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 	public Spinner getListeboxHeure() {
 		return listeboxHeure;
 	}
-	
+	public EditText getEtDescription() {
+		return etDescription;
+	}
 	
 	
 }

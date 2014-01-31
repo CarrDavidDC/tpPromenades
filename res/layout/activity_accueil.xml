@@ -19,4 +19,15 @@
 
     </ListView>
 
+    <EditText
+        android:id="@+id/nbPromenade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/listViewAccueil"
+        android:layout_alignParentTop="true"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
 </RelativeLayout>

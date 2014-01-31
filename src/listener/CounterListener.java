@@ -1,11 +1,20 @@
 package listener;
 
+import ihm.Accueil;
 import ihm.AjoutRandonnee;
+import ihm.Connexion;
 
 import java.util.HashMap;
 
+import bdd.DatabaseHandler;
+import bdd.TablePromenade;
+
 import metier.Promenade;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +30,8 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 	private double pas;
 	private Handler mHandler;
 	private AjoutRandonnee ajoutRandonnee;
+	private Context context;
+	
     int compteur = 0;
     double pasTemp = pas;
 	Runnable mAddition = new Runnable() {  	            
@@ -50,12 +61,13 @@ public class CounterListener implements OnClickListener,OnTouchListener{
     };
     
 	public CounterListener(String signe, EditText distanceRandonnee,
-			double pas,AjoutRandonnee ajoutRando) {
+			double pas,AjoutRandonnee ajoutRando,Context c) {
 		super();
 		this.action = signe;
 		this.distanceRandonnee = distanceRandonnee;
 		this.pas = pas;
 		this.ajoutRandonnee = ajoutRando;
+		this.context  = c;
 	}
 	
 	@Override
@@ -106,7 +118,37 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 		double distance = Double.valueOf(ajoutRandonnee.getDistanceRandonnee().getText().toString());
 		int heure = Integer.valueOf(ajoutRandonnee.getListeboxHeure().getSelectedItem().toString());
 		int minute = Integer.valueOf(ajoutRandonnee.getListeboxMinute().getSelectedItem().toString());
-		Promenade maPromenade = new Promenade(nomRandonnee, distance,heure+"H"+minute,difficulte);
-		maPromenade.ajoutRandonneeBd();
+		String description = ajoutRandonnee.getEtDescription().getText().toString();
+		if(nomRandonnee.equals("") || distance == 0 || heure == 0 || minute == 0 || difficulte == 0 || description.equals(""))
+		{
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+			 alertDialogBuilder.setTitle("Erreur !");
+			  alertDialogBuilder.setMessage("Vous devez renseigner l'ensemble des champs du formulaire");
+			  alertDialogBuilder.setCancelable(false);
+			  alertDialogBuilder.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						dialog.cancel();
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+		}else{
+			Promenade maPromenade = new Promenade(nomRandonnee, description, distance,heure+"h"+minute,difficulte);
+			TablePromenade tableProme = new TablePromenade(new DatabaseHandler(context));
+			tableProme.ajouter(maPromenade);
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+			alertDialogBuilder.setTitle("Ajout !");
+			 alertDialogBuilder.setMessage("Votre randonnée a été correctement ajoutée.");
+			  alertDialogBuilder.setCancelable(false);
+			  alertDialogBuilder.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						dialog.cancel();
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+			Intent intent = new Intent(ajoutRandonnee, Accueil.class);	
+			ajoutRandonnee.startActivity(intent);
+		}
 	}
 }

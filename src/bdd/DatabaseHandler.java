@@ -8,7 +8,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	//-- Base de données
 	private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "PromenadeDB.db";
-	
+    private Context context;
 	//-- Table promenade
 	public static final String PROMENADE_TABLE_CREATE =
 	    "CREATE TABLE promenade (" +
@@ -18,6 +18,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		this.context = context;
 	}
 
 	@Override
@@ -30,4 +31,5 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(PROMENADE_TABLE_DROP);
 		onCreate(db);
 	}	
+	
 }

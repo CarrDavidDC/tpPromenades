@@ -25,12 +25,11 @@ public class TablePromenade {
 		}
 	}
 	
-	public TablePromenade(DatabaseHandler db, Promenade p) {
+	public TablePromenade(DatabaseHandler db) {
 		_db = db;
-		ajouter(p);
 	}
 	
-	private void ajouter(Promenade p) {
+	public void ajouter(Promenade p) {
 		Log.d("ajout", p.toString());
 		String c = null;
 		SQLiteDatabase db = _db.getWritableDatabase();
@@ -53,7 +52,7 @@ public class TablePromenade {
         Log.d("supprimer","suppression des enregistrements");
 	}
 	
-	public void selectionnerTout() {
+	public ArrayList<Promenade> selectionnerTout() {
 		SQLiteDatabase db = _db.getReadableDatabase();
 		Cursor c = db.query(TABLE_NAME, 				// nom de la table
 				COLUMNS,  								// liste des colonnes
@@ -63,12 +62,15 @@ public class TablePromenade {
 				null, 									// clause HAVING
 				null, 									// clause ORDER BY
 				null);									// limite
+		ArrayList<Promenade> listePromenade = new ArrayList<Promenade>();
 	    while (c.moveToNext()) {
 	    	Promenade p = new Promenade();
 	    	p.set_gid(Integer.parseInt(c.getString(0)));
 	    	p.set_name(c.getString(1));
 	    	System.out.println("Promenade SQLITE : " + p.toString());
+	    	listePromenade.add(p);
 	    }
+	    return listePromenade;
 	}
 	
 	/*public Promenade selectionner(int id) {
