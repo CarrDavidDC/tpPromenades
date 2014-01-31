@@ -8,22 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Accueil" >
 
-    <TextView
-        android:id="@+id/tvAccueil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Accueil"
-        android:textSize="20dp" /> 
-
-    <ImageButton
-        android:id="@+id/ibAddRandonneeAccueil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/tvAccueil"
-        android:src="@drawable/ic_action_new" />
-
     <ListView
         android:id="@+id/listViewAccueil"
         android:layout_width="match_parent"
@@ -31,7 +15,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/ibAddRandonneeAccueil"
         android:layout_marginTop="22dp" >
 
     </ListView>

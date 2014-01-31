@@ -9,34 +9,34 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
 import com.example.tppromenades.R;
 
 public class Accueil extends Activity implements OnClickListener, OnItemClickListener {
 
-	 
-	 private List<Promenade> listePromenade;
+	private List<Promenade> listePromenade;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_accueil);
-		
-		final ImageButton btnAjout = (ImageButton) findViewById(R.id.ibAddRandonneeAccueil);
-		btnAjout.setOnClickListener(this);
-		
+				
 		ListView listeViewPromenade = (ListView)findViewById(R.id.listViewAccueil);
 		listePromenade = new ArrayList<Promenade>();
 		remplirPromenade();
 		PromenadeAdapter adapter = new PromenadeAdapter(this, R.layout.activity_accueil_listview,listePromenade);
 		listeViewPromenade.setAdapter(adapter);
-		//createMap();
+		
 		listeViewPromenade.setClickable(true);
 		listeViewPromenade.setOnItemClickListener(this);
 	}
@@ -45,29 +45,27 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 	{
 		// pour l'instant pas avec le fichier de bd
 		listePromenade.clear();
-		listePromenade.add(new Promenade("Premande grand Lyon", 45.6, "1H30"));
-		listePromenade.add(new Promenade("Marennes city", 75.6, "4H42"));
-		listePromenade.add(new Promenade("Caluire", 23, "2H30"));
-		listePromenade.add(new Promenade("Ecully",12, "30min"));
-		listePromenade.add(new Promenade("Tartimuche", 32, "3H"));
-		listePromenade.add(new Promenade("Premande grand Lyon", 45.6, "1H30"));
-		listePromenade.add(new Promenade("Marennes city", 75.6, "4H42"));
-		listePromenade.add(new Promenade("Caluire", 23, "2H30"));
-		listePromenade.add(new Promenade("Ecully",12, "30min"));
-		listePromenade.add(new Promenade("Tartimuche", 32, "3H"));
-		listePromenade.add(new Promenade("Premande grand Lyon", 45.6, "1H30"));
-		listePromenade.add(new Promenade("Marennes city", 75.6, "4H42"));
-		listePromenade.add(new Promenade("Caluire", 23, "2H30"));
-		listePromenade.add(new Promenade("Ecully",12, "30min"));
-		listePromenade.add(new Promenade("Tartimuche", 32, "3H"));
+		listePromenade.add(new Promenade("Premande grand Lyon", "Magnifique sur Lyon qui va faire l'application android et puis par la suite ca va être trop génial car il faut que....", 45.6, "1H30",1));
+		listePromenade.add(new Promenade("Marennes city","De la campagne encore et encore....", 75.6, "4H42",3));
+		listePromenade.add(new Promenade("Caluire","La ville autrement", 23, "2H30",1.5));
+		listePromenade.add(new Promenade("Ecully","Chemin de l'INPS", 12, "30min",2));
+		listePromenade.add(new Promenade("Tartimuche","Raclette party", 32, "3H",3));
+		listePromenade.add(new Promenade("Premande grand Lyon", 45.6, "1H30",4));
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.accueil, menu);
-		return true;
+        //Création d'un MenuInflater qui va permettre d'instancier un Menu XML en un objet Menu
+        MenuInflater inflater = getMenuInflater();
+        //Instanciation du menu XML spécifier en un objet Menu
+        inflater.inflate(R.menu.menu_general, menu);
+        return true;
 	} 
+	
+	public void goAjoutRandonnee(MenuItem item){
+		Intent intent = new Intent(Accueil.this, AjoutRandonnee.class);	
+		startActivity(intent);
+	}
 	
 	public void onClick(View v) {
 		Intent intent = null;

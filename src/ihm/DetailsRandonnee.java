@@ -15,14 +15,19 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetailsRandonnee extends Activity implements OnClickListener {
 
+	private ShareActionProvider myShareActionProvider;
 	private GoogleMap map;
 	private Promenade maPromenade;
 	@Override
@@ -37,11 +42,14 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 		TextView tvName = (TextView) findViewById(R.id.name);
 		TextView tvDuration = (TextView) findViewById(R.id.duration);
 		TextView tvLength = (TextView) findViewById(R.id.length);
-		
+		TextView description = (TextView) findViewById(R.id.description);
+		RatingBar difficulteRandonnee = (RatingBar)findViewById(R.id.difficulte);
 		Intent i = getIntent();
 		maPromenade = (Promenade)i.getSerializableExtra("Promenade");		
 
+		difficulteRandonnee.setRating((float) maPromenade.get_difficulty());
 		tvName.setText("Nom : " + maPromenade.get_name());
+		description.setText(maPromenade.get_description());
 		tvDuration.setText("Durée : " + maPromenade.get_duration());
 		tvLength.setText("Distance : " + maPromenade.get_length());
 		Toast.makeText(getApplicationContext(), "Nom : " + maPromenade.get_name(), Toast.LENGTH_SHORT).show();
@@ -50,10 +58,32 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.details_randonnee, menu);
-		return true;
-	}
+        //Création d'un MenuInflater qui va permettre d'instancier un Menu XML en un objet Menu
+        MenuInflater inflater = getMenuInflater();
+        //Instanciation du menu XML spécifier en un objet Menu
+        inflater.inflate(R.menu.menu_partage, menu);
+        MenuItem itemProvider = menu.findItem(R.id.menu_item_share);
+        myShareActionProvider = (ShareActionProvider)itemProvider.getActionProvider();
+        myShareActionProvider.setShareHistoryFileName(
+          ShareActionProvider.DEFAULT_SHARE_HISTORY_FILE_NAME);
+        myShareActionProvider.setShareIntent(createShareIntent());
+        return true;
+	} 
+	private Intent createShareIntent() {
+		String partageRando = "";
+		partageRando = "Je souhaite vous faire partager la randonnée " + maPromenade.get_name()+" que j'ai trouvé sur l'application tpPromenades\n";
+		partageRando+= "Voici le détails de cette randonnée :\n";
+		partageRando+="Nom : " + maPromenade.get_name()+"\n";
+		partageRando+="Description : " + maPromenade.get_description()+"\n";
+		partageRando+="Distance : " + maPromenade.get_length()+"\n";
+		partageRando+="Durée : " + maPromenade.get_duration()+"\n";
+		partageRando+="Difficulté : " + maPromenade.get_difficulty()+"\n";
+		
+		  Intent shareIntent = new Intent(Intent.ACTION_SEND);
+		        shareIntent.setType("text/plain");
+		        shareIntent.putExtra(Intent.EXTRA_TEXT, partageRando);
+		        return shareIntent;
+		    }
  
 	public void createMap()
 	{

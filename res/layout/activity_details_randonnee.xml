@@ -37,28 +37,51 @@
         android:text="Nom : " />
 
     <TextView
-        android:id="@+id/length"
+        android:id="@+id/description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/name"
         android:layout_below="@+id/name"
-        android:layout_marginTop="5dp"
-        android:text="Distance" />
-    
+        android:text="Description : " />
+
     <TextView
         android:id="@+id/duration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/length"
         android:layout_below="@+id/length"
-        android:layout_marginTop="5dp"
-        android:text="Détails de la randonnée" />
-    
+        android:text="Duree" />
+
+    <TextView
+        android:id="@+id/length"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/description"
+        android:layout_below="@+id/description"
+        android:text="Distance" />
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="500dp"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/difficulte" />
+
+    <TextView
+        android:id="@+id/tvDifficulte"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/duration"
         android:layout_below="@+id/duration"
-        android:layout_marginTop="31dp" />
+        android:text="Difficulté" />
+
+    <RatingBar
+        android:id="@+id/difficulte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/duration"
+        android:layout_marginTop="27dp" />
+
 </RelativeLayout>

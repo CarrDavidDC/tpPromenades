@@ -9,12 +9,14 @@ import bdd.TablePromenade;
 public class Promenade implements Serializable {
     private int _gid;
     private String _name;
+    private String _description;
     private double _length;
     private String _duration;
     private String _theme;
-    private float _difficulty;
+    private double _difficulty;
     private String _id;
     private String _project;
+    private int nbCaractDescriptionMax = 100;
     
     public Promenade(String _name) {
 		super();
@@ -43,6 +45,16 @@ public class Promenade implements Serializable {
 		this._duration = _duration;
 	}
 
+	
+	public Promenade(String _name, String description, double _length, String _duration, double _difficulty) {
+		super();
+		this._name = _name;
+		this._description = description;
+		this._length =  _length;
+		this._duration = _duration;
+		this._difficulty = _difficulty;
+	}
+	
 	public Promenade(int _gid, String _name, double _length, String _duration,
 			String _theme, float _difficulty, String _id, String _project) {
 		super();
@@ -82,6 +94,22 @@ public class Promenade implements Serializable {
 	}
 
 	
+	public String get_smallDescription()
+	{
+		if(_description.length() > nbCaractDescriptionMax)
+			return _description.substring(0, nbCaractDescriptionMax);
+		else
+			return _description;
+	}
+	
+	public String get_description() {
+		return _description;
+	}
+
+	public void set_description(String _description) {
+		this._description = _description;
+	}
+
 	public int get_gid() {
 		return _gid;
 	}
@@ -122,11 +150,11 @@ public class Promenade implements Serializable {
 		this._theme = _theme;
 	}
 
-	public float get_difficulty() {
+	public double get_difficulty() {
 		return _difficulty;
 	}
 
-	public void set_difficulty(float _difficulty) {
+	public void set_difficulty(double _difficulty) {
 		this._difficulty = _difficulty;
 	}
 
