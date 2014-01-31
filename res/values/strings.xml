@@ -17,7 +17,11 @@
     <string name="title_activity_mdp_oublie">MdpOublie</string>
     <string name="title_activity_inscription_via_mail">InscriptionViaMail</string>
     <string name="title_activity_ajout_randonnee">AjoutRandonnee</string>
-
+    
+	<string name="title_activity_ajout_randonnee">AjoutRandonnee</string>
+	
+	
+	
     <string-array name="lstDifficulte">
         <item>1</item>
         <item>2</item>
