@@ -44,6 +44,7 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 		TextView tvLength = (TextView) findViewById(R.id.length);
 		TextView description = (TextView) findViewById(R.id.description);
 		RatingBar difficulteRandonnee = (RatingBar)findViewById(R.id.difficulte);
+		difficulteRandonnee.setEnabled(false);
 		Intent i = getIntent();
 		maPromenade = (Promenade)i.getSerializableExtra("Promenade");		
 
@@ -51,7 +52,7 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 		tvName.setText("Nom : " + maPromenade.get_name());
 		description.setText(maPromenade.get_description());
 		tvDuration.setText("Durée : " + maPromenade.get_duration());
-		tvLength.setText("Distance : " + maPromenade.get_length());
+		tvLength.setText("Distance : " + maPromenade.get_length() +" kms");
 		Toast.makeText(getApplicationContext(), "Nom : " + maPromenade.get_name(), Toast.LENGTH_SHORT).show();
 		
 	}
