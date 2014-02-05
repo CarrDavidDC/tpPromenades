@@ -48,8 +48,7 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
 	private class ViewHolder {
 		TextView name;
 		TextView description;
-		TextView length;
-		TextView duration;
+		TextView lengthDuration;
 	}
 	
 	@Override
@@ -65,9 +64,8 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
 
             holder = new ViewHolder();
             holder.description = (TextView) view.findViewById(R.id.description);
-            holder.duration = (TextView) view.findViewById(R.id.duration);
-            holder.length = (TextView) view
-                    .findViewById(R.id.length);
+            holder.lengthDuration = (TextView) view
+                    .findViewById(R.id.lengthDuration);
             holder.name = (TextView) view
                     .findViewById(R.id.name);
             view.setTag(holder);
@@ -76,8 +74,7 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.duration.setText("Durée : " + p.get_duration());
-        holder.length.setText("Distance : " + p.get_length()+ " kms");
+        holder.lengthDuration.setText(p.get_length()+ " kms - " + p.get_durationHour() + "h"+p.get_durationMinute()+" - Dénivelé : " + p.get_altitude());
         holder.name.setText(p.get_name());
         holder.description.setText(p.get_description());
         return view;

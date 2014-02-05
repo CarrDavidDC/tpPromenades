@@ -9,8 +9,10 @@ public class Promenade implements Serializable {
     private int _gid;
     private String _name;
     private String _description;
+    private double _altitude;
     private double _length;
-    private String _duration;
+    private int _durationHour;
+    private int _durationMinute;
     private String _theme;
     private double _difficulty;
     private String _id;
@@ -28,39 +30,43 @@ public class Promenade implements Serializable {
     
     
     
-	public Promenade(String _name, double _length, String _duration,
+	public Promenade(String _name, double _length, int _durationHour, int _durationMinute,
 			float _difficulty) {
 		super();
 		this._name = _name;
 		this._length = _length;
-		this._duration = _duration;
+		this._durationHour = _durationHour;
+		this._durationMinute = _durationMinute;
 		this._difficulty = _difficulty;
 	}
 
-	public Promenade(String _name, double _length, String _duration) {
+	public Promenade(String _name, double _length, int _durationHour, int _durationMinute) {
 		super();
 		this._name = _name;
 		this._length =  _length;
-		this._duration = _duration;
+		this._durationHour = _durationHour;
+		this._durationMinute = _durationMinute;
 	}
 
 	
-	public Promenade(String _name, String description, double _length, String _duration, double _difficulty) {
+	public Promenade(String _name, String description, double _length, int _durationHour, int _durationMinute, double _difficulty) {
 		super();
 		this._name = _name;
 		this._description = description;
 		this._length =  _length;
-		this._duration = _duration;
+		this._durationHour = _durationHour;
+		this._durationMinute = _durationMinute;
 		this._difficulty = _difficulty;
 	}
 	
-	public Promenade(int _gid, String _name, double _length, String _duration,
+	public Promenade(int _gid, String _name, double _length, int _durationHour, int _durationMinute,
 			String _theme, float _difficulty, String _id, String _project) {
 		super();
 		this._gid = _gid;
 		this._name = _name;
 		this._length = _length;
-		this._duration = _duration;
+		this._durationHour = _durationHour;
+		this._durationMinute = _durationMinute;
 		this._theme = _theme;
 		this._difficulty = _difficulty;
 		this._id = _id;
@@ -80,7 +86,7 @@ public class Promenade implements Serializable {
 	@Override
 	public String toString() {
 		return "Promenade [_gid=" + _gid + ", _name=" + _name + ", _length="
-				+ _length + ", _duration=" + _duration + ", _theme=" + _theme
+				+ _length + ", _duration=" + this._durationHour+"h"+this._durationMinute + ", _theme=" + _theme
 				+ ", _difficulty=" + _difficulty + ", _id=" + _id
 				+ ", _project=" + _project + "]";
 	}
@@ -121,17 +127,35 @@ public class Promenade implements Serializable {
 	public double get_length() {
 		return _length;
 	}
+	
+	
+
+	public double get_altitude() {
+		return _altitude;
+	}
+
+	public void set_altitude(double altitude) {
+		this._altitude = altitude;
+	}
 
 	public void set_length(double _length) {
 		this._length = _length;
 	}
 
-	public String get_duration() {
-		return _duration;
+	public int get_durationHour() {
+		return _durationHour;
 	}
 
-	public void set_duration(String _duration) {
-		this._duration = _duration;
+	public void set_durationHour(int _duration) {
+		this._durationHour = _duration;
+	}
+	
+	public int get_durationMinute() {
+		return _durationMinute;
+	}
+
+	public void set_durationMinute(int _duration) {
+		this._durationMinute = _duration;
 	}
 
 	public String get_theme() {

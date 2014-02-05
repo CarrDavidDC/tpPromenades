@@ -25,6 +25,8 @@ import android.location.LocationManager;
 
 import java.util.ArrayList;
 
+import reglage.ReglageSingleton;
+
 import bdd.DatabaseHandler;
 import bdd.DownloadData;
 import bdd.TablePromenade;
@@ -56,6 +58,9 @@ public class Connexion extends Activity implements LocationListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        ReglageSingleton.getInstance().setRequetePourTriRandonnee(null);
+        
         final Context context = this;
 		
 		final Button btnInscription = (Button) findViewById(R.id.btnInscription);
@@ -106,16 +111,7 @@ public class Connexion extends Activity implements LocationListener{
 			}
 		});
 
-		ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-		DatabaseHandler db = new DatabaseHandler(this);
-		if (mWifi.isConnected()) {
-			Toast.makeText(this.getApplicationContext(), "Create file database ok", Toast.LENGTH_LONG).show();
-			DownloadData d = (DownloadData) new DownloadData(this,db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
-		}
-		else {
-			Toast.makeText(this.getApplicationContext(), "Unable to download data without Wifi connection", Toast.LENGTH_LONG).show();
-		}
+		
 	}
 
 	@Override

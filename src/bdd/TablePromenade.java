@@ -2,11 +2,15 @@ package bdd;
 
 import java.util.ArrayList;
 
+import reglage.ReglageSingleton;
+
 import metier.Promenade;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 public class TablePromenade {
 	private DatabaseHandler _db;
@@ -15,7 +19,13 @@ public class TablePromenade {
 	public static final String TABLE_NAME = "promenade";
 	public static final String ID = "id_prom";
 	public static final String NAME = "name";
-	public static final String[] COLUMNS = {ID,NAME};
+	public static final String DESCRIPTION = "description";
+	public static final String ALTITUDE = "altitude";
+	public static final String DURATIONHOUR = "durationheure";
+	public static final String DURATIONMINUTE = "durationminute";
+	public static final String LENGTH = "length";
+	public static final String DIFFICULTY = "difficulty";
+	public static final String[] COLUMNS = {ID,NAME,DESCRIPTION,ALTITUDE,DURATIONHOUR,DURATIONMINUTE,LENGTH,DIFFICULTY};
 	
 	public TablePromenade(DatabaseHandler db, ArrayList<Promenade> promenades) {
 		_db = db;
@@ -38,6 +48,12 @@ public class TablePromenade {
 		//on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
 		values.put(ID, c);
 		values.put(NAME, p.get_name());
+		values.put(DESCRIPTION, p.get_description());
+		values.put(ALTITUDE, p.get_altitude());
+		values.put(DURATIONHOUR, p.get_durationHour());
+		values.put(DURATIONMINUTE, p.get_durationMinute());
+		values.put(LENGTH, p.get_length());
+		values.put(DIFFICULTY, p.get_difficulty());
 		//on insère l'objet dans la BDD via le ContentValues
 		db.insert(TABLE_NAME, null, values);
 		db.close();
@@ -52,7 +68,7 @@ public class TablePromenade {
         Log.d("supprimer","suppression des enregistrements");
 	}
 	
-	public ArrayList<Promenade> selectionnerTout() {
+	public ArrayList<Promenade> selectionnerTout(Context context) {
 		SQLiteDatabase db = _db.getReadableDatabase();
 		Cursor c = db.query(TABLE_NAME, 				// nom de la table
 				COLUMNS,  								// liste des colonnes
@@ -60,60 +76,23 @@ public class TablePromenade {
 				null, 									// récupère le paramètre
 				null, 									// clause GROUP BY
 				null, 									// clause HAVING
-				null, 									// clause ORDER BY
-				null);									// limite
+				ReglageSingleton.getInstance().getRequetePourTriRandonnee() 									// clause ORDER BY
+				);	
+		// limite
 		ArrayList<Promenade> listePromenade = new ArrayList<Promenade>();
 	    while (c.moveToNext()) {
 	    	Promenade p = new Promenade();
 	    	p.set_gid(Integer.parseInt(c.getString(0)));
 	    	p.set_name(c.getString(1));
+	    	p.set_description(c.getString(2));
+	    	p.set_altitude(c.getDouble(3));
+	    	p.set_durationHour(c.getInt(4));
+	    	p.set_durationMinute(c.getInt(5));
+	    	p.set_length(c.getDouble(6));
+	    	p.set_difficulty(c.getDouble(7));
 	    	System.out.println("Promenade SQLITE : " + p.toString());
 	    	listePromenade.add(p);
 	    }
 	    return listePromenade;
-	}
-	
-	/*public Promenade selectionner(int id) {
-		SQLiteDatabase db = _db.getReadableDatabase();
-		Cursor c = db.query(TABLE_NAME, 				// nom de la table
-				COLUMNS,  								// liste des colonnes
-				ID + "= ?", 							// clause WHERE
-				new String[] { String.valueOf(id) }, 	// récupère le paramètre
-				null, 									// clause GROUP BY
-				null, 									// clause HAVING
-				null, 									// clause ORDER BY
-				null);									// limite
-	    if (c != null) {
-	        c.moveToFirst();
-	 	Promenade p = new Promenade();
-	    p.set_id(Integer.parseInt(c.getString(0)));
-	    p.set_intitule(c.getString(1));
-	    p.set_difficulte(Integer.parseInt(c.getString(2)));
-	    Log.d("selectionner("+id+")", p.toString());
-	    return p;
-	}*/
-
-	/*public int modifier(int id, Promenade p) {
-		SQLiteDatabase db = _db.getWritableDatabase();
-		ContentValues values = new ContentValues();
-		values.put(ID, p.get_id());
-		values.put(INTITULE, p.get_intitule());
-		values.put(DIFFICULTE, p.get_difficulte());
-		int i = db.update(TABLE_NAME, 
-				values, 
-				ID + " = ?", 
-				new String[] { String.valueOf(p.get_id()) });
-		db.close();
-		return i;
-	}
-	
-	public void supprimer(Promenade p) {
-        SQLiteDatabase db = _db.getWritableDatabase();
-        db.delete(TABLE_NAME,
-        		ID + " = ?",
-                new String[] { String.valueOf(p.get_id()) });
-        db.close();
-        Log.d("supprimer", p.toString());
- 
-    }*/
+	   }
 }

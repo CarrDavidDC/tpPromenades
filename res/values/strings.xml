@@ -20,6 +20,12 @@
     
 	<string name="title_activity_ajout_randonnee">AjoutRandonnee</string>
 	
+	<string name="nomAZ">Trier par nom A->Z</string>
+	<string name="nomZA">Trier par nom Z->A</string>
+	<string name="distanceDecroissante">Distance décroissante</string>
+	<string name="distanceCroissante">Distance croissante</string>
+	<string name="difficulteDecroissante">Difficulté décroissante</string>
+	<string name="difficulteCroissante">Difficulté croissante</string>
 	
 	
     <string-array name="lstDifficulte">
@@ -32,8 +38,22 @@
 
     <string name="title_activity_details_randonnee">DetailsRandonnee</string>
     <string name="title_activity_publier_avis">PublierAvis</string>
+     <string name="title_activity_reglage">Réglages</string>
     <string name="title_activity_liste_avis">ListeAvis</string>
     <string name="title_activity_ajout_fichier_gps">AjoutFichierGPS</string>
     <string name="title_activity_enregistrer_chemin_randonnee">EnregistrerCheminRandonnee</string>
+    
+    <string name="listebox_tri_title">Choose a country</string>
+ 
+    <string-array name="listebox_tri_choix">
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
     
 </resources>

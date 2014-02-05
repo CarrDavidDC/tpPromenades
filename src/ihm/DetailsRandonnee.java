@@ -51,7 +51,7 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 		difficulteRandonnee.setRating((float) maPromenade.get_difficulty());
 		tvName.setText("Nom : " + maPromenade.get_name());
 		description.setText(maPromenade.get_description());
-		tvDuration.setText("Durée : " + maPromenade.get_duration());
+		tvDuration.setText("Durée : " + maPromenade.get_durationHour() + "h"+maPromenade.get_durationMinute());
 		tvLength.setText("Distance : " + maPromenade.get_length() +" kms");
 		Toast.makeText(getApplicationContext(), "Nom : " + maPromenade.get_name(), Toast.LENGTH_SHORT).show();
 		
@@ -77,7 +77,7 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 		partageRando+="Nom : " + maPromenade.get_name()+"\n";
 		partageRando+="Description : " + maPromenade.get_description()+"\n";
 		partageRando+="Distance : " + maPromenade.get_length()+"\n";
-		partageRando+="Durée : " + maPromenade.get_duration()+"\n";
+		partageRando+="Durée : " + maPromenade.get_durationHour() + "h"+maPromenade.get_durationMinute()+"\n";
 		partageRando+="Difficulté : " + maPromenade.get_difficulty()+"\n";
 		
 		  Intent shareIntent = new Intent(Intent.ACTION_SEND);

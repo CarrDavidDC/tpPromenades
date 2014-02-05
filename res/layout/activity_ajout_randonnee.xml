@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".AjoutRandonnee" >
+    tools:context=".AjoutRandonnee"
+    android:background="@drawable/img_accueil" >
 
     <TextView
         android:id="@+id/tvAjoutRandonnee"
@@ -14,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Ajout randonnée"
-        android:textSize="20dp" />
+        android:textSize="20dp"        
+        android:textColor="@android:color/white" />
 
     <ImageButton
         android:id="@+id/ibPrecedentAjoutRandonnee"
@@ -31,7 +33,8 @@
         android:layout_alignLeft="@+id/tvAjoutRandonnee"
         android:layout_alignRight="@+id/btnEnregistrerAjoutRandonnee"
         android:layout_below="@+id/tvDistanceRandonnee"
-        android:ems="10" />
+        android:ems="10" 
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@+id/btnPlus"
@@ -42,7 +45,8 @@
         android:layout_alignRight="@+id/etNomRandonnee"
         android:layout_below="@+id/tvDistanceRandonnee"
         android:layout_toRightOf="@+id/distanceRandonnee"
-        android:text="+" />
+        android:text="+"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnMoins"
@@ -51,7 +55,8 @@
         android:layout_height="30dp"
         android:layout_alignBottom="@+id/distanceRandonnee"
         android:layout_toLeftOf="@+id/distanceRandonnee"
-        android:text="-" />
+        android:text="-" 
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/tvNomRandonnee"
@@ -60,7 +65,8 @@
         android:layout_alignLeft="@+id/etNomRandonnee"
         android:layout_below="@+id/ibPrecedentAjoutRandonnee"
         android:layout_marginTop="14dp"
-        android:text="Nom de la randonnée" />
+        android:text="Nom de la randonnée"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/tvNomRandonnee"
@@ -69,14 +75,16 @@
         android:layout_alignLeft="@+id/etNomRandonnee"
         android:layout_below="@+id/ibPrecedentAjoutRandonnee"
         android:layout_marginTop="14dp"
-        android:text="Nom de la randonnée" />
+        android:text="Nom de la randonnée"
+        android:textColor="@android:color/white" />
     <EditText
         android:id="@+id/etNomRandonnee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/tvAjoutRandonnee"
         android:layout_below="@+id/tvNomRandonnee"
-        android:ems="10" />
+        android:ems="10"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/tvDifficulteDuParcours"
@@ -84,7 +92,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/ibPrecedentAjoutRandonnee"
         android:layout_below="@+id/etNomRandonnee"
-        android:text="Difficulté du parcours" />
+        android:text="Difficulté du parcours" 
+        android:textColor="@android:color/white"/>
 
     <RatingBar
         android:id="@+id/difficulteRandonnee"
@@ -100,7 +109,8 @@
         android:layout_alignLeft="@+id/tvDistanceRandonnee"
         android:layout_below="@+id/distanceRandonnee"
         android:layout_marginTop="15dp"
-        android:text="Temps" />
+        android:text="Temps" 
+        android:textColor="@android:color/white"/>
 
     <Spinner
         android:id="@+id/listeboxMinute"
@@ -108,7 +118,8 @@
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/labelHeure"
         android:layout_alignRight="@+id/btnPlus"
-        android:layout_marginRight="14dp" />
+        android:layout_marginRight="14dp"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/tvDistanceRandonnee"
@@ -116,14 +127,16 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/etNomRandonnee"
         android:layout_below="@+id/difficulteRandonnee"
-        android:text="Distance (km)" />
+        android:text="Distance (km)"
+        android:textColor="@android:color/white" />
 
     <Spinner
         android:id="@+id/listboxHeure"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignLeft="@+id/distanceRandonnee"
-        android:layout_alignTop="@+id/labelTemps" />
+        android:layout_alignTop="@+id/labelTemps"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/labelHeure"
@@ -131,8 +144,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/listboxHeure"
         android:layout_alignRight="@+id/tvNomRandonnee"
-        android:text="H"
-        android:textSize="15dp" />
+        android:text="h"
+        android:textSize="15dp"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -141,7 +155,8 @@
         android:layout_alignLeft="@+id/labelTemps"
         android:layout_below="@+id/listboxHeure"
         android:layout_marginTop="15dp"
-        android:text="Description" />
+        android:text="Description"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/etDescription"
@@ -150,7 +165,8 @@
         android:layout_alignLeft="@+id/tvDescription"
         android:layout_below="@+id/tvDescription"
         android:ems="10"
-        android:inputType="textMultiLine" >
+        android:inputType="textMultiLine"
+        android:textColor="@android:color/white" >
 
         <requestFocus />
     </EditText>
@@ -161,6 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Envoyer" />
+        android:text="Envoyer"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

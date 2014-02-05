@@ -67,7 +67,6 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 	
 	protected void onPreExecute() {
 		super.onPreExecute(); 
-		Toast.makeText(_parent.getApplicationContext(), "Downloading data...", Toast.LENGTH_LONG).show();
 	}
 	
 	@Override
@@ -80,17 +79,16 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 					JSONArray prom = values.getJSONArray(i);
 					String name = prom.getString(0);
 					double length = Float.parseFloat(prom.getString(1));
-					String duration = prom.getString(2);
+					int duration = prom.getInt(2);
 					String theme = prom.getString(3);
 					float difficulty = Float.valueOf(prom.getString(4));
 					String id = prom.getString(5);
 					String project = prom.getString(6);
 					Integer gid = Integer.parseInt(prom.getString(7));
-					Promenade p = new Promenade(gid, name, length, duration, theme, difficulty, id, project);
+					Promenade p = new Promenade(gid, name, length, duration,duration, theme, difficulty, id, project);
 					_promenadelist.add(p);
 				}
 				TablePromenade tp = new TablePromenade(_db,_promenadelist);
-				//tp.selectionnerTout();
 			}
 			else if(_url == _urlGPSCoordonates) {
 				

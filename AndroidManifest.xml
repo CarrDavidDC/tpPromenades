@@ -60,6 +60,10 @@
             android:label="@string/title_activity_mdp_oublie" >
         </activity>
         <activity
+            android:name="ihm.Reglage"
+            android:label="@string/title_activity_reglage" >
+        </activity>
+        <activity
             android:name="ihm.InscriptionViaMail"
             android:label="@string/title_activity_inscription_via_mail" >
         </activity>

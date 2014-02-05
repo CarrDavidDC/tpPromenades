@@ -3,6 +3,8 @@ package ihm;
 import java.util.ArrayList;
 import java.util.List;
 
+import reglage.ReglageSingleton;
+
 import listener.CounterListener;
 import android.app.Activity;
 import android.content.Intent;
@@ -55,7 +57,7 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 		
 		btnPlus.setOnClickListener(listenerIncrement);
 		btnPlus.setOnTouchListener(listenerIncrement);
-		
+		Toast.makeText(this.getApplicationContext(), ReglageSingleton.getInstance().getRequetePourTriRandonnee(), Toast.LENGTH_LONG).show();
 		btnMoins = (Button) findViewById(R.id.btnMoins);
 		btnMoins.setOnClickListener(listenerDecrement);
 		btnMoins.setOnTouchListener(listenerDecrement);

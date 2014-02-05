@@ -119,7 +119,8 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 		int heure = Integer.valueOf(ajoutRandonnee.getListeboxHeure().getSelectedItem().toString());
 		int minute = Integer.valueOf(ajoutRandonnee.getListeboxMinute().getSelectedItem().toString());
 		String description = ajoutRandonnee.getEtDescription().getText().toString();
-		if(nomRandonnee.equals("") || distance == 0 || heure == 0 || minute == 0 || difficulte == 0 || description.equals(""))
+		
+		if(nomRandonnee.equals("") || distance == 0 || (heure == 0 && minute == 0) || difficulte == 0 || description.equals(""))
 		{
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 			 alertDialogBuilder.setTitle("Erreur !");
@@ -133,7 +134,7 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 				AlertDialog alertDialog = alertDialogBuilder.create();
 				alertDialog.show();
 		}else{
-			Promenade maPromenade = new Promenade(nomRandonnee, description, distance,heure+"h"+minute,difficulte);
+			Promenade maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte);
 			TablePromenade tableProme = new TablePromenade(new DatabaseHandler(context));
 			tableProme.ajouter(maPromenade);
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);

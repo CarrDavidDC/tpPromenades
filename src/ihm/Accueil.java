@@ -3,10 +3,16 @@ package ihm;
 import java.util.ArrayList;
 import java.util.List;
 
+import reglage.ReglageSingleton;
+
+import ihm.Reglage;
 import metier.Promenade;
 import metier.PromenadeAdapter;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +28,7 @@ import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 import bdd.DatabaseHandler;
+import bdd.DownloadData;
 import bdd.TablePromenade;
 
 import com.example.tppromenades.R;
@@ -33,7 +40,12 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_accueil);
-				
+		ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+		DatabaseHandler db = new DatabaseHandler(this);
+		if (mWifi.isConnected()) {
+			DownloadData d = (DownloadData) new DownloadData(this,db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
+		}		
 		ListView listeViewPromenade = (ListView)findViewById(R.id.listViewAccueil);
 		listePromenade = new ArrayList<Promenade>();
 		remplirPromenade();
@@ -48,9 +60,7 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 	{
 		// pour l'instant pas avec le fichier de bd
 		TablePromenade tP = new TablePromenade(new DatabaseHandler(this));
-		ArrayList<Promenade> listePromenadeBd = tP.selectionnerTout();
-		EditText nbPromenade = (EditText)findViewById(R.id.nbPromenade);
-		nbPromenade.setText("Nb Promenade (supp plus tard...) : " + listePromenadeBd.size());
+		ArrayList<Promenade> listePromenadeBd = tP.selectionnerTout(this.getApplicationContext());
 		listePromenade.clear();
 		listePromenade = listePromenadeBd;
 	}
@@ -66,6 +76,11 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 	
 	public void goAjoutRandonnee(MenuItem item){
 		Intent intent = new Intent(Accueil.this, AjoutRandonnee.class);	
+		startActivity(intent);
+	}
+	
+	public void goReglage(MenuItem item){
+		Intent intent = new Intent(Accueil.this, Reglage.class);	
 		startActivity(intent);
 	}
 	
