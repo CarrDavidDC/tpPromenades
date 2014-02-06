@@ -1,8 +1,10 @@
 package metier;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.ArrayList;
 
+import android.graphics.Bitmap;
 import bdd.TablePromenade;
 
 public class Promenade implements Serializable {
@@ -18,7 +20,8 @@ public class Promenade implements Serializable {
     private String _id;
     private String _project;
     private int nbCaractDescriptionMax = 100;
-    
+    private byte[] _image;
+    private Bitmap _imageFin;
     public Promenade(String _name) {
 		super();
 		this._name = _name;
@@ -49,6 +52,17 @@ public class Promenade implements Serializable {
 	}
 
 	
+	public Promenade(String _name, String description, double _length, int _durationHour, int _durationMinute, double _difficulty, byte[] data) {
+		super();
+		this._name = _name;
+		this._description = description;
+		this._length =  _length;
+		this._durationHour = _durationHour;
+		this._durationMinute = _durationMinute;
+		this._difficulty = _difficulty;
+		this._image = data;
+	}
+	
 	public Promenade(String _name, String description, double _length, int _durationHour, int _durationMinute, double _difficulty) {
 		super();
 		this._name = _name;
@@ -57,6 +71,7 @@ public class Promenade implements Serializable {
 		this._durationHour = _durationHour;
 		this._durationMinute = _durationMinute;
 		this._difficulty = _difficulty;
+		this._image = null;
 	}
 	
 	public Promenade(int _gid, String _name, double _length, int _durationHour, int _durationMinute,
@@ -188,5 +203,23 @@ public class Promenade implements Serializable {
 
 	public void set_project(String _project) {
 		this._project = _project;
+	}
+
+	public byte[] get_image() {
+		return _image;
+	}
+
+	public void set_image(byte[] _image) {
+		this._image = _image;
+	}
+
+	public Bitmap get_imageFin() {
+		return _imageFin;
+	}
+
+	public void set_imageFin(Bitmap _imageFin) {
+		this._imageFin = _imageFin;
 	}	
+	
+	
 }

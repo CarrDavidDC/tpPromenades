@@ -170,7 +170,7 @@
 
         <requestFocus />
     </EditText>
-
+        
     <Button
         android:id="@+id/btnEnregistrerAjoutRandonnee"
         android:layout_width="wrap_content"
@@ -179,5 +179,14 @@
         android:layout_centerHorizontal="true"
         android:text="Envoyer"
         android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button_selectpic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvAjoutRandonnee"
+        android:layout_toRightOf="@+id/distanceRandonnee"
+        android:text="Upload" />
 
 </RelativeLayout>

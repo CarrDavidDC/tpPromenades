@@ -43,15 +43,16 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 		ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 		DatabaseHandler db = new DatabaseHandler(this);
-		if (mWifi.isConnected()) {
-			DownloadData d = (DownloadData) new DownloadData(this,db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
-		}		
+		//if (mWifi.isConnected()) {
+			//DownloadData d = (DownloadData) new DownloadData(this,db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
+		//}		
 		ListView listeViewPromenade = (ListView)findViewById(R.id.listViewAccueil);
 		listePromenade = new ArrayList<Promenade>();
 		remplirPromenade();
 		PromenadeAdapter adapter = new PromenadeAdapter(this, R.layout.activity_accueil_listview,listePromenade);
 		listeViewPromenade.setAdapter(adapter);
-		
+	//	Button button1 = (Button)findViewById(R.id.button1);
+		//button1.setOnClickListener(this);
 		listeViewPromenade.setClickable(true);
 		listeViewPromenade.setOnItemClickListener(this);
 	}
@@ -88,9 +89,6 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 		Intent intent = null;
 		
 		switch (v.getId()) {
-			case R.id.ibAddRandonneeAccueil:
-				intent = new Intent(Accueil.this, AjoutRandonnee.class);	
-				break;
 			default:
 				break;
 		}
@@ -104,7 +102,6 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 		Intent intent = new Intent(Accueil.this, DetailsRandonnee.class);
 		intent.putExtra("Promenade", value);
 		startActivity(intent);
-		finish();
 	}
 
 }

@@ -4,6 +4,8 @@ import ihm.Accueil;
 import ihm.AjoutRandonnee;
 import ihm.Connexion;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 
 import bdd.DatabaseHandler;
@@ -15,6 +17,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
@@ -134,7 +138,16 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 				AlertDialog alertDialog = alertDialogBuilder.create();
 				alertDialog.show();
 		}else{
-			Promenade maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte);
+			
+			Promenade maPromenade;
+			if(ajoutRandonnee.getBitmap() != null)
+			{
+				byte[] data = getBitmapAsByteArray(ajoutRandonnee.getBitmap());
+				maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte,data);
+			}
+			else
+				maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte);
+			
 			TablePromenade tableProme = new TablePromenade(new DatabaseHandler(context));
 			tableProme.ajouter(maPromenade);
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -151,5 +164,10 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 			Intent intent = new Intent(ajoutRandonnee, Accueil.class);	
 			ajoutRandonnee.startActivity(intent);
 		}
+	}
+	private byte[] getBitmapAsByteArray(Bitmap bitmap) {
+	    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	    bitmap.compress(CompressFormat.PNG, 0, outputStream);       
+	    return outputStream.toByteArray();
 	}
 }

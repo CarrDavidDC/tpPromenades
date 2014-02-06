@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 	//-- Base de données
-	private static final int DATABASE_VERSION = 7;
+	private static final int DATABASE_VERSION = 11;
     private static final String DATABASE_NAME = "PromenadeDB.db";
     private Context context;
 	//-- Table promenade
@@ -19,7 +19,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	    "durationheure integer null," +
 	    "durationminute integer null," +
 	    "length double null," +
-	    "difficulty double null);";
+	    "difficulty double null," +
+	    "image mediumblob null);";
 	
 	public static final String PROMENADE_TABLE_DROP = "DROP TABLE IF EXISTS promenade;";
 

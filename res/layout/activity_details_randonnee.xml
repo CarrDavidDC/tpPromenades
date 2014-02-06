@@ -2,95 +2,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_promenade_vide"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".DetailsRandonnee"
-    android:background="@drawable/img_promenade_vide" >
+    android:id="@+id/relativeLayout" >
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
-    <ImageButton
-        android:id="@+id/ibPrecedentDetailsRandonnee" 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ic_action_back" />
+        android:orientation="vertical"
+          >
 
-    <TextView
-        android:id="@+id/tvDetailsRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/name"
-        android:layout_alignTop="@+id/ibPrecedentDetailsRandonnee"
-        android:layout_marginRight="23dp"
-        android:text="Détails de la randonnée"
-        android:textSize="15dp" />
-    
+        <ImageButton
+            android:id="@+id/ibPrecedentDetailsRandonnee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_action_back" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ibPrecedentDetailsRandonnee"
-        android:layout_below="@+id/ibPrecedentDetailsRandonnee"
-        android:layout_marginTop="16dp"
-        android:text="Nom : " />
+        <TextView
+            android:id="@+id/tvDetailsRandonnee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/name"
+            android:layout_alignTop="@+id/ibPrecedentDetailsRandonnee"
+            android:layout_marginRight="23dp"
+            android:text="Détails de la randonnée"
+            android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/name"
-        android:layout_below="@+id/name"
-        android:text="Description : " />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ibPrecedentDetailsRandonnee"
+            android:layout_below="@+id/ibPrecedentDetailsRandonnee"
+            android:layout_marginTop="16dp"
+            android:text="Nom : " />
 
-    <TextView
-        android:id="@+id/duration"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/length"
-        android:layout_below="@+id/length"
-        android:text="Duree" />
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_below="@+id/name"
+            android:text="Description : " />
 
-    <TextView
-        android:id="@+id/length"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/description"
-        android:layout_below="@+id/description"
-        android:text="Distance" />
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/length"
+            android:layout_below="@+id/length"
+            android:text="Duree" />
 
-   
+        <TextView
+            android:id="@+id/length"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/description"
+            android:layout_below="@+id/description"
+            android:text="Distance" />
 
-    <TextView
-        android:id="@+id/tvDifficulte"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/duration"
-        android:layout_below="@+id/duration"
-        android:text="Difficulté" />
+        <TextView
+            android:id="@+id/tvDifficulte"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/duration"
+            android:layout_below="@+id/duration"
+            android:text="Difficulté" />
 
-    <RatingBar
-        android:id="@+id/difficulte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/duration"
-        android:layout_marginTop="27dp" />
-
-     <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.MapFragment"
-        android:layout_width="500dp"
-        android:layout_height="200dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/difficulte"
-        android:layout_weight="1" />
+        <RatingBar
+            android:id="@+id/difficulte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/duration"
+            android:layout_marginTop="27dp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

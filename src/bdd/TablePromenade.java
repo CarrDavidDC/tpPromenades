@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -25,7 +26,8 @@ public class TablePromenade {
 	public static final String DURATIONMINUTE = "durationminute";
 	public static final String LENGTH = "length";
 	public static final String DIFFICULTY = "difficulty";
-	public static final String[] COLUMNS = {ID,NAME,DESCRIPTION,ALTITUDE,DURATIONHOUR,DURATIONMINUTE,LENGTH,DIFFICULTY};
+	public static final String IMAGE = "image";
+	public static final String[] COLUMNS = {ID,NAME,DESCRIPTION,ALTITUDE,DURATIONHOUR,DURATIONMINUTE,LENGTH,DIFFICULTY,IMAGE};
 	
 	public TablePromenade(DatabaseHandler db, ArrayList<Promenade> promenades) {
 		_db = db;
@@ -54,6 +56,7 @@ public class TablePromenade {
 		values.put(DURATIONMINUTE, p.get_durationMinute());
 		values.put(LENGTH, p.get_length());
 		values.put(DIFFICULTY, p.get_difficulty());
+		values.put(IMAGE, p.get_image());
 		//on insère l'objet dans la BDD via le ContentValues
 		db.insert(TABLE_NAME, null, values);
 		db.close();
@@ -90,6 +93,11 @@ public class TablePromenade {
 	    	p.set_durationMinute(c.getInt(5));
 	    	p.set_length(c.getDouble(6));
 	    	p.set_difficulty(c.getDouble(7));
+	    	p.set_image(c.getBlob(8));
+	    /*	if(p.get_image() !=null)
+	    		p.set_imageFin(BitmapFactory.decodeByteArray(p.get_image(), 0, p.get_image().length));
+	    	else*/
+	    		p.set_imageFin(null);
 	    	System.out.println("Promenade SQLITE : " + p.toString());
 	    	listePromenade.add(p);
 	    }

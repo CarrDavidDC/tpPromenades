@@ -57,7 +57,7 @@ public class Connexion extends Activity implements LocationListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+       /* setContentView(R.layout.activity_main);
         
         ReglageSingleton.getInstance().setRequetePourTriRandonnee(null);
         
@@ -109,7 +109,7 @@ public class Connexion extends Activity implements LocationListener{
 			Intent intent = new Intent(Connexion.this, MdpOublie.class);
 			startActivity(intent);
 			}
-		});
+		});*/
 
 		
 	}

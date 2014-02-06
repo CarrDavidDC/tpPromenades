@@ -1,76 +1,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/img_accueil2" >
 
-    <TextView
-        android:id="@+id/tvTitre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivLogo"
-        android:layout_centerHorizontal="true"
-        android:text="tpPromenades"
-        android:textSize="15sp" />
+	<TextView
+	    android:id="@+id/tvLabelTitre"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="67dp"
+	    android:text="@string/app_name"
+	    android:textColor="@android:color/white"
+	    android:textSize="35dp" />
 
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:src="@drawable/randonneur" />
+	<TextView
+	    android:id="@+id/tvLabelVersion"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/tvLabelTitre"
+	    android:layout_centerHorizontal="true"
+	    android:text="@string/version"
+	    android:textColor="@android:color/white"
+	    android:textSize="15dp" />
 
-    <EditText
-        android:id="@+id/etPasswordMainActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="Mot de passe"
-        android:inputType="textPassword" >
+	<TextView
+	    android:id="@+id/tvRealisePar"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_centerVertical="true"
+	    android:text="Réalisée par :"
+	    android:textColor="@android:color/white"
+	    android:textSize="20dp" />
 
-        <requestFocus />
-    </EditText>
+	<TextView
+	    android:id="@+id/tvDev"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/tvRealisePar"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="74dp"
+	    android:text="David - Hugo - Matthieu"
+	    android:textColor="@android:color/white"
+	    android:textSize="25dp" />
 
-    <Button
-        android:id="@+id/btnMdpOublie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnConnexion"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:text="Mot de passe oublié" />
-
-    <Button
-        android:id="@+id/btnConnexion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etPasswordMainActivity"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_toLeftOf="@+id/btnInscription"
-        android:text="Connexion" />
-
-    <Button
-        android:id="@+id/btnInscription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnConnexion"
-        android:layout_alignBottom="@+id/btnConnexion"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="35dp"
-        android:text="Inscription" />
-
-    <EditText
-        android:id="@+id/etLoginMainActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etPasswordMainActivity"
-        android:layout_alignRight="@+id/etPasswordMainActivity"
-        android:layout_marginBottom="19dp"
-        android:ems="10"
-        android:hint="Identifiant" />
+	<TextView
+	    android:id="@+id/tvTapToContinu"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/tvDev"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="20dp"
+	    android:text="tap screen to continue"
+	    android:textColor="@android:color/white"
+	    android:textSize="15dp" />
 
 </RelativeLayout>
