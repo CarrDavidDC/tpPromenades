@@ -3,6 +3,7 @@ package listener;
 import ihm.Accueil;
 import ihm.AjoutRandonnee;
 import ihm.Connexion;
+import ihm.EnregistrerPromenade;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -35,7 +36,7 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 	private Handler mHandler;
 	private AjoutRandonnee ajoutRandonnee;
 	private Context context;
-	
+	private Promenade maPromenade;
     int compteur = 0;
     double pasTemp = pas;
 	Runnable mAddition = new Runnable() {  	            
@@ -139,16 +140,15 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 				alertDialog.show();
 		}else{
 			
-			Promenade maPromenade;
 			if(ajoutRandonnee.getBitmap() != null)
 			{
 				byte[] data = getBitmapAsByteArray(ajoutRandonnee.getBitmap());
-				maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte,data);
+				this.maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte,data);
 			}
 			else
-				maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte);
+				this.maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte);
 			
-			TablePromenade tableProme = new TablePromenade(new DatabaseHandler(context));
+			/*TablePromenade tableProme = new TablePromenade(new DatabaseHandler(context));
 			tableProme.ajouter(maPromenade);
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 			alertDialogBuilder.setTitle("Ajout !");
@@ -160,8 +160,9 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 					}
 				});
 				AlertDialog alertDialog = alertDialogBuilder.create();
-				alertDialog.show();
-			Intent intent = new Intent(ajoutRandonnee, Accueil.class);	
+				alertDialog.show();*/
+			
+			Intent intent = new Intent(ajoutRandonnee, EnregistrerPromenade.class);	
 			ajoutRandonnee.startActivity(intent);
 		}
 	}

@@ -9,54 +9,17 @@
     tools:context=".AjoutRandonnee"
     android:background="@drawable/img_accueil" >
 
-    <TextView
-        android:id="@+id/tvAjoutRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Ajout randonnée"
-        android:textSize="20dp"        
-        android:textColor="@android:color/white" />
-
-    <ImageButton
-        android:id="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ic_action_back" />
-
-    <EditText
-        android:id="@+id/distanceRandonnee"
-        android:layout_width="30dp"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/tvAjoutRandonnee"
-        android:layout_alignRight="@+id/btnEnregistrerAjoutRandonnee"
-        android:layout_below="@+id/tvDistanceRandonnee"
-        android:ems="10" 
-        android:textColor="@android:color/white"/>
-
     <Button
         android:id="@+id/btnPlus"
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignBottom="@+id/distanceRandonnee"
-        android:layout_alignRight="@+id/etNomRandonnee"
-        android:layout_below="@+id/tvDistanceRandonnee"
+        android:layout_alignRight="@+id/btnEnregistrerAjoutRandonnee"
+        android:layout_alignTop="@+id/btnMoins"
         android:layout_toRightOf="@+id/distanceRandonnee"
         android:text="+"
         android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/btnMoins"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/distanceRandonnee"
-        android:layout_toLeftOf="@+id/distanceRandonnee"
-        android:text="-" 
-        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/tvNomRandonnee"
@@ -112,15 +75,6 @@
         android:text="Temps" 
         android:textColor="@android:color/white"/>
 
-    <Spinner
-        android:id="@+id/listeboxMinute"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignBottom="@+id/labelHeure"
-        android:layout_alignRight="@+id/btnPlus"
-        android:layout_marginRight="14dp"
-        android:textColor="@android:color/white" />
-
     <TextView
         android:id="@+id/tvDistanceRandonnee"
         android:layout_width="wrap_content"
@@ -128,14 +82,6 @@
         android:layout_alignLeft="@+id/etNomRandonnee"
         android:layout_below="@+id/difficulteRandonnee"
         android:text="Distance (km)"
-        android:textColor="@android:color/white" />
-
-    <Spinner
-        android:id="@+id/listboxHeure"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/distanceRandonnee"
-        android:layout_alignTop="@+id/labelTemps"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -187,6 +133,49 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tvAjoutRandonnee"
         android:layout_toRightOf="@+id/distanceRandonnee"
-        android:text="Upload" />
+        android:text="Upload picture" />
+
+    <Button
+        android:id="@+id/btnMoins"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/distanceRandonnee"
+        android:layout_toRightOf="@+id/tvDistanceRandonnee"
+        android:text="-"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:id="@+id/distanceRandonnee"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tvDistanceRandonnee"
+        android:layout_toRightOf="@+id/btnMoins"
+        android:ems="10"
+        android:textColor="@android:color/white" />
+
+    <Spinner
+        android:id="@+id/listboxHeure"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/btnPlus"
+        android:layout_alignTop="@+id/labelTemps"
+        android:textColor="@android:color/white" />
+
+    <Spinner
+        android:id="@+id/listeboxMinute"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/tvDescription"
+        android:layout_toRightOf="@+id/tvDescription"
+        android:textColor="@android:color/white" />
+
+    <ImageButton
+        android:id="@+id/ibPrecedentAjoutRandonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvNomRandonnee"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_action_back" />
 
 </RelativeLayout>

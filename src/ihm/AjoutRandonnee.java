@@ -130,7 +130,6 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 				startActivity(intent);
 				break;
 			case R.id.button_selectpic:
-				Toast.makeText(getBaseContext(),"new intent",Toast.LENGTH_SHORT).show();
 				Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
 				photoPickerIntent.setType("image/*");
 				startActivityForResult(photoPickerIntent, 1);

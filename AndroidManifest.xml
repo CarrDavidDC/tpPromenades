@@ -87,7 +87,7 @@
             android:label="@string/title_activity_liste_avis" >
         </activity>
         <activity
-            android:name="ihm.AjoutFichierGPS"
+            android:name="ihm.EnregistrerPromenade"
             android:label="@string/title_activity_ajout_fichier_gps" >
         </activity>
         <activity

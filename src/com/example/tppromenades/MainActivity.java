@@ -19,6 +19,7 @@ import android.location.Location;
 import android.location.LocationManager;
 
 import ihm.Accueil;
+import ihm.EnregistrerPromenade;
 import ihm.Inscription;
 import ihm.MdpOublie;
 
