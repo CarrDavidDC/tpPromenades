@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Blob;
 import java.util.ArrayList;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import android.graphics.Bitmap;
 import bdd.TablePromenade;
 
@@ -22,7 +24,17 @@ public class Promenade implements Serializable {
     private int nbCaractDescriptionMax = 100;
     private byte[] _image;
     private Bitmap _imageFin;
-    public Promenade(String _name) {
+    private String _chemin;
+    
+    public String get_way() {
+		return _chemin;
+	}
+
+	public void set_way(String _chemin) {
+		this._chemin = _chemin;
+	}
+
+	public Promenade(String _name) {
 		super();
 		this._name = _name;
 	}

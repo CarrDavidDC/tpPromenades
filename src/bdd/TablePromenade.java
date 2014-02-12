@@ -27,7 +27,8 @@ public class TablePromenade {
 	public static final String LENGTH = "length";
 	public static final String DIFFICULTY = "difficulty";
 	public static final String IMAGE = "image";
-	public static final String[] COLUMNS = {ID,NAME,DESCRIPTION,ALTITUDE,DURATIONHOUR,DURATIONMINUTE,LENGTH,DIFFICULTY,IMAGE};
+	public static final String WAY = "way";
+	public static final String[] COLUMNS = {ID,NAME,DESCRIPTION,ALTITUDE,DURATIONHOUR,DURATIONMINUTE,LENGTH,DIFFICULTY,IMAGE,WAY};
 	
 	public TablePromenade(DatabaseHandler db, ArrayList<Promenade> promenades) {
 		_db = db;
@@ -57,6 +58,7 @@ public class TablePromenade {
 		values.put(LENGTH, p.get_length());
 		values.put(DIFFICULTY, p.get_difficulty());
 		values.put(IMAGE, p.get_image());
+		values.put(WAY, p.get_way());
 		//on insère l'objet dans la BDD via le ContentValues
 		db.insert(TABLE_NAME, null, values);
 		db.close();
@@ -94,6 +96,7 @@ public class TablePromenade {
 	    	p.set_length(c.getDouble(6));
 	    	p.set_difficulty(c.getDouble(7));
 	    	p.set_image(c.getBlob(8));
+	    	p.set_way(c.getString(9));
 	    /*	if(p.get_image() !=null)
 	    		p.set_imageFin(BitmapFactory.decodeByteArray(p.get_image(), 0, p.get_image().length));
 	    	else*/

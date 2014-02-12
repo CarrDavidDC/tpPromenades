@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import metier.Promenade;
 
@@ -17,6 +18,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -33,13 +36,26 @@ import android.widget.Toast;
  *
  */
 public class DownloadData extends AsyncTask<Void, Integer, Long> {
-	private static final String _urlSentiers = "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json";
-	private static final String _urlGPSCoordonates = "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json";
+	private static final String _URLSENTIERS = "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json";
+	private static final String _URLGPSCOORDINATES = "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json";
+	private static final String _MULTILINESTRING = "MULTILINESTRING";
+	private static final String _LEFTPARENTHESIS = "(";
+	private static final String _RIGHTPARENTHESIS = ")";
+	private static final String _COMMA = ",";
+	private static final String _SPACE = " ";
 	private Activity _parent;
 	private String _url;
 	private ArrayList<Promenade> _promenadelist;
 	private DatabaseHandler _db;
 	
+	public String get_url() {
+		return _url;
+	}
+
+	public void set_url(String _url) {
+		this._url = _url;
+	}
+
 	public ArrayList<Promenade> get_promenadelist() {
 		return _promenadelist;
 	}
@@ -72,7 +88,7 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 	@Override
 	protected Long doInBackground(Void... params) {
 		try {
-			if(_url == _urlSentiers) {
+			if(_url == _URLSENTIERS) {
 				JSONObject object = new JSONObject(readData());
 				JSONArray values = object.getJSONArray("values");
 				for (int i = 0; i < values.length(); i++) {
@@ -90,8 +106,16 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 				}
 				TablePromenade tp = new TablePromenade(_db,_promenadelist);
 			}
-			else if(_url == _urlGPSCoordonates) {
-				
+			else if(_url == _URLGPSCOORDINATES) {
+				JSONObject object = new JSONObject(readData());
+				JSONArray values = object.getJSONArray("values");
+				for (int i = 0; i < values.length(); i++) {
+					String prom = values.getString(i);
+					prom = prom.replace(_MULTILINESTRING, "");
+					prom = prom.replace(_LEFTPARENTHESIS, "");
+					prom = prom.replace(_RIGHTPARENTHESIS, "");
+					_promenadelist.get(i).set_way(prom);
+				}
 			}
 		} 
 		catch (Exception e) { 
@@ -99,6 +123,24 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 		} 
 		return null;
 	}
+	
+	/*************************************************************************************
+	ArrayList<LatLng> chemin = new ArrayList<LatLng>();
+	for (int i = 0; i < values.length(); i++) {
+		String prom = values.getString(i);
+		prom = prom.replace(_MULTILINESTRING, "");
+		prom = prom.replace(_LEFTPARENTHESIS, "");
+		prom = prom.replace(_RIGHTPARENTHESIS, "");
+		StringTokenizer stv = new StringTokenizer(prom, _COMMA); 
+		while(stv.hasMoreTokens()) {
+			StringTokenizer sts = new StringTokenizer(stv.nextToken(), _SPACE);
+			LatLng point = new LatLng(Double.parseDouble(sts.nextToken()),Double.parseDouble(sts.nextToken()));
+			chemin.add(point);
+			//System.out.println("Nouveau point : " + point.toString());
+		}
+		_promenadelist.get(i).set_way(chemin);
+	}
+	 *************************************************************************************/
 		
 	protected String readData() {
 		StringBuilder builder = new StringBuilder();
