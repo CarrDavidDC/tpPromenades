@@ -9,9 +9,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.BitmapFactory;
 import android.util.Log;
-import android.widget.Toast;
 
 public class TablePromenade {
 	private DatabaseHandler _db;
@@ -38,18 +36,26 @@ public class TablePromenade {
 		}
 	}
 	
+	public void sauvegarderPromenades(ArrayList<Promenade> promenades) {
+		for(int i=0 ; i<promenades.size() ; i++) {
+			ajouter(promenades.get(i));
+		}
+	}
+	
 	public TablePromenade(DatabaseHandler db) {
 		_db = db;
+		this.supprimerTout();
 	}
 	
 	public void ajouter(Promenade p) {
-		Log.d("ajout", p.toString());
-		String c = null;
+		System.out.println("AJOUT PROMENADE BD");
+		//String c = null;
+		//Boolean existeDeja = select(p);
 		SQLiteDatabase db = _db.getWritableDatabase();
 		//Création d'un ContentValues (fonctionne comme une HashMap)
 		ContentValues values = new ContentValues();
 		//on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
-		values.put(ID, c);
+		values.put(ID, p.get_gid());
 		values.put(NAME, p.get_name());
 		values.put(DESCRIPTION, p.get_description());
 		values.put(ALTITUDE, p.get_altitude());
@@ -64,6 +70,20 @@ public class TablePromenade {
 		db.close();
 	}
 	
+	/*private Boolean select(Promenade p) {
+		SQLiteDatabase db = _db.getReadableDatabase();
+		Cursor c = db.query(TABLE_NAME, 				// nom de la table
+				COLUMNS,  								// liste des colonnes
+				null, 									// clause WHERE
+				null, 									// récupère le paramètre
+				null, 									// clause GROUP BY
+				null, 									// clause HAVING
+				ReglageSingleton.getInstance().getRequetePourTriRandonnee() // clause ORDER BY
+				);	
+		return true;
+		return false;
+	}*/
+
 	public void supprimerTout() {
 		SQLiteDatabase db = _db.getWritableDatabase();
         db.delete(TABLE_NAME,
@@ -84,6 +104,7 @@ public class TablePromenade {
 				ReglageSingleton.getInstance().getRequetePourTriRandonnee() 									// clause ORDER BY
 				);	
 		// limite
+		System.out.println("NOMBRE DE PROMENADES TROUVEES EN BASE : " + c.getCount());
 		ArrayList<Promenade> listePromenade = new ArrayList<Promenade>();
 	    while (c.moveToNext()) {
 	    	Promenade p = new Promenade();
@@ -105,5 +126,5 @@ public class TablePromenade {
 	    	listePromenade.add(p);
 	    }
 	    return listePromenade;
-	   }
+    }
 }
