@@ -27,6 +27,7 @@ import com.example.tppromenades.R;
 import bdd.DatabaseHandler;
 import bdd.DownloadData;
 import bdd.TablePromenade;
+import listener.CounterListener;
 import metier.Promenade;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -58,6 +59,9 @@ public class EnregistrerPromenade extends FragmentActivity  implements LocationL
 	private boolean enCoursEnregistrement;
 	private Button idEnregistrementPromenade;
 	private Button idEnregistrer;
+	private Promenade maPromenade;
+	private ArrayList<LatLng> arrayListPosition;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		enCoursEnregistrement = false;
@@ -66,13 +70,18 @@ public class EnregistrerPromenade extends FragmentActivity  implements LocationL
 		  // Getting reference to the SupportMapFragment of activity_main.xml
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                 .getMap();
+		Intent i = getIntent();
+		maPromenade = (Promenade)i.getSerializableExtra("Promenade");	
 		idEnregistrementPromenade = (Button) findViewById(R.id.idEnregistrementPromenade);
-		idEnregistrementPromenade.setOnClickListener(this);
 		idEnregistrer = (Button) findViewById(R.id.idEnregistrer);
-		idEnregistrer.setOnClickListener(this);
+		CounterListener listenerValidation = new CounterListener("enregistrerPromenade",maPromenade, this,this);
+		CounterListener departPromenade = new CounterListener("departPromenade",maPromenade, this,this);
+		idEnregistrementPromenade.setOnClickListener(departPromenade);
+		idEnregistrer.setOnClickListener(listenerValidation);
 		idEnregistrer.setEnabled(false);
         // Enabling MyLocation Layer of Google Map
         map.setMyLocationEnabled(true);
+        arrayListPosition = new ArrayList<LatLng>();
        // map.setOnMyLocationChangeListener((OnMyLocationChangeListener) this);
 
         // Getting LocationManager object from System Service LOCATION_SERVICE
@@ -84,49 +93,48 @@ public class EnregistrerPromenade extends FragmentActivity  implements LocationL
         provider = lm.getBestProvider(criteria, true);
 	}
 	
-		@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			// Inflate the menu; this adds items to the action bar if it is present.
-			return true;
-		}
-      
-		@Override
-		protected void onResume() {
-		    super.onResume();
-		    lm.requestLocationUpdates(provider, 2000, 1, this);
-		}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		return true;
+	}
+  
+	@Override
+	protected void onResume() {
+	    super.onResume();
+	    lm.requestLocationUpdates(provider, 2000, 1, this);
+	}
 
-		@Override
-		protected void onPause() {
-		    super.onPause();
-		    lm.removeUpdates(this);
-		}
+	@Override
+	protected void onPause() {
+	    super.onPause();
+	    lm.removeUpdates(this);
+	}
 		
-	  @Override
-	  public void onLocationChanged(Location location) {
-		  
-			  	latitude = location.getLatitude();
-			  	longitude = location.getLongitude();
-			  	altitude = location.getAltitude();
-			  	accuracy = location.getAccuracy();
-			  	
-			  	String msg = String.format(
-			  			getResources().getString(R.string.new_location), latitude,
-			  			longitude, altitude, accuracy);
-			  	
-			  	updatePosition();
-		  
+	 @Override
+	 public void onLocationChanged(Location location) {		  
+		  	latitude = location.getLatitude();
+		  	longitude = location.getLongitude();
+		  	altitude = location.getAltitude();
+		  	accuracy = location.getAccuracy();
+		  	
+		  	String msg = String.format(
+		  			getResources().getString(R.string.new_location), latitude,
+		  			longitude, altitude, accuracy);
+		  	
+		  	updatePosition();		  
 	  }
 	  
-	  private void updatePosition()
+	  public void updatePosition()
 	  {
 		  if(enCoursEnregistrement){
-		  LatLng myPosition = new LatLng(latitude, longitude);
-		  map.clear();
-		  map.addMarker(new MarkerOptions().position(myPosition).title("Start"));
-		  CameraPosition cameraPosition = new CameraPosition.Builder().target(myPosition).zoom(16.0f).build();
-          CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-          map.moveCamera(cameraUpdate); 
+			  LatLng myPosition = new LatLng(latitude, longitude);
+			  map.clear();
+			  map.addMarker(new MarkerOptions().position(myPosition).title("Start"));
+			  CameraPosition cameraPosition = new CameraPosition.Builder().target(myPosition).zoom(16.0f).build();
+			  CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+			  map.moveCamera(cameraUpdate); 
+			  arrayListPosition.add(myPosition);
 		  }
 	  }
 
@@ -149,25 +157,50 @@ public class EnregistrerPromenade extends FragmentActivity  implements LocationL
 	}
 
 	@Override
-	public void onClick(View v) {
-
-		Toast.makeText(getBaseContext(),"On click",Toast.LENGTH_SHORT).show();
+	public void onClick(View v) {	
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.idEnregistrementPromenade:
-				if(enCoursEnregistrement)
-				{
-					enCoursEnregistrement = false;
-					idEnregistrer.setEnabled(true);
-					idEnregistrementPromenade.setEnabled(false);
-				}else{
-					idEnregistrementPromenade.setText("Stop");
-					enCoursEnregistrement = true;
-					updatePosition();
-				}
-			break;
 		default:
 			break;
+		}
 	}
+	
+	public double getLatitude()
+	{
+		return this.latitude;
+	}
+	
+	public double getLongitude()
+	{
+		return this.longitude;
+	}
+	
+	public Button getButtonIdEnregistrer()
+	{
+		return this.idEnregistrer;
+	}
+	
+	public Button getButtonIdEnregistrement()
+	{
+		return this.idEnregistrementPromenade;
+	}
+	
+	public boolean getEnCoursEnregistrement()
+	{
+		return this.enCoursEnregistrement;
+	}
+	
+	public void setEnCoursEnregistrement(boolean b)
+	{
+		this.enCoursEnregistrement = b;
+	}
+	
+	public ArrayList<LatLng> getArrayListPosition()
+	{
+		return this.arrayListPosition;
+	}
+	
+	public Promenade getMaPromenade(){
+		return this.maPromenade;
 	}
 }

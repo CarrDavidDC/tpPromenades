@@ -99,7 +99,7 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 	            Uri selectedImageUri = data.getData();
 	            imagepath = getPath(selectedImageUri);
 	            try {
-					bitmap =          BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImageUri));
+					bitmap =   BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImageUri));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

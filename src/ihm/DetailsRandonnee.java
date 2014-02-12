@@ -66,8 +66,11 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 		Bitmap img = null;
 		if(maPromenade.get_image() != null)
 		{
+			Toast.makeText(getBaseContext(),"J'ai une image",Toast.LENGTH_SHORT).show();
 			img = BitmapFactory.decodeByteArray(maPromenade.get_image(), 0, maPromenade.get_image().length);
 			ivLogo.setImageBitmap(img);
+		}else{
+			Toast.makeText(getBaseContext(),"Je n'ai pas d'image",Toast.LENGTH_SHORT).show();
 		}
 		
 	}

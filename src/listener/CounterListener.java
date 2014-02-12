@@ -35,8 +35,10 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 	private double pas;
 	private Handler mHandler;
 	private AjoutRandonnee ajoutRandonnee;
+	private EnregistrerPromenade enregistrerPromenade;
 	private Context context;
 	private Promenade maPromenade;
+	private boolean enCoursEnregistrement;
     int compteur = 0;
     double pasTemp = pas;
 	Runnable mAddition = new Runnable() {  	            
@@ -75,28 +77,48 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 		this.context  = c;
 	}
 	
+	public CounterListener(String signe, Promenade p, EnregistrerPromenade e, Context c)
+	{
+		super();
+		this.action = signe;
+		this.enregistrerPromenade= e;
+		this.context  = c;
+		this.maPromenade = p;
+		enCoursEnregistrement = false;
+	}
+	
 	@Override
 	public void onClick(View v) {
 		if(action.equals("validation"))
 		{
 			traitementAjoutRandonnee();
 		}else{
-			// TODO Auto-generated method stub
-			double a=Double.parseDouble(distanceRandonnee.getText().toString());
-			double b = 0;
-			if(action.equals("+"))
+			if(action.equals("enregistrerPromenade"))
 			{
-				b=a+pas;
-			}else if(action.equals("-"))
-			{
-				b=a-pas;
-				if(b < 0)
+				traitementEnregistrerRandonnee();
+			}else{
+				if(action.equals("departPromenade"))
 				{
-					b = 0;
+					traitementDepartRandonnee();
+				}else{
+				// TODO Auto-generated method stub
+					double a=Double.parseDouble(distanceRandonnee.getText().toString());
+					double b = 0;
+					if(action.equals("+"))
+					{
+						b=a+pas;
+					}else if(action.equals("-"))
+					{
+						b=a-pas;
+						if(b < 0)
+						{
+							b = 0;
+						}
+					}
+			        double roundOff = (double) Math.round(b * 10) / 10;
+			        distanceRandonnee.setText(new Double(roundOff).toString());
 				}
 			}
-	        double roundOff = (double) Math.round(b * 10) / 10;
-	        distanceRandonnee.setText(new Double(roundOff).toString());
 		}
 	}
 
@@ -116,7 +138,66 @@ public class CounterListener implements OnClickListener,OnTouchListener{
         return false;
 	}
 	
-
+	
+	private void traitementDepartRandonnee()
+	{
+		if(enregistrerPromenade.getEnCoursEnregistrement())
+		{
+			enregistrerPromenade.setEnCoursEnregistrement(false);
+			enregistrerPromenade.getButtonIdEnregistrer().setEnabled(true);
+			enregistrerPromenade.getButtonIdEnregistrement().setEnabled(false);
+		}else{
+			if(enregistrerPromenade.getLatitude() != 0 && enregistrerPromenade.getLongitude() != 0)
+			{
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+				alertDialogBuilder.setTitle("Bientôt le départ !");
+				 alertDialogBuilder.setMessage("Etes vous prêt(e) pour commencer ?");
+				  alertDialogBuilder.setCancelable(true);
+				  alertDialogBuilder.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							dialog.cancel();
+							Toast.makeText(context,"A vos marques...",5000).show();
+							Toast.makeText(context,"Prêts...",5000).show();
+							Toast.makeText(context,"Partez...",5000).show();
+							enregistrerPromenade.getButtonIdEnregistrement().setText("Stop");
+							enregistrerPromenade.setEnCoursEnregistrement(true);
+						}
+					});
+				  alertDialogBuilder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							dialog.cancel();
+						}
+					});
+					AlertDialog alertDialog = alertDialogBuilder.create();
+					alertDialog.show();
+			}else{
+				Toast.makeText(context,"Géolocalisation en cours...",Toast.LENGTH_SHORT).show();
+			}
+			enregistrerPromenade.updatePosition();
+		}
+	}
+	
+	private void traitementEnregistrerRandonnee()
+	{
+		TablePromenade tableProme = new TablePromenade(new DatabaseHandler(context));
+		maPromenade.set_way(enregistrerPromenade.getArrayListPosition().toString());
+		tableProme.ajouter(maPromenade);
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+		alertDialogBuilder.setTitle("Ajout !");
+		 alertDialogBuilder.setMessage("Votre randonnée a été correctement ajoutée.");
+		  alertDialogBuilder.setCancelable(false);
+		  alertDialogBuilder.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					dialog.cancel();
+					Intent intent = new Intent(enregistrerPromenade, Accueil.class);	
+					enregistrerPromenade.startActivity(intent);
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+	}
+	
+	
 	private void traitementAjoutRandonnee(){
 		String nomRandonnee = ajoutRandonnee.getEtNomRandonnee().getText().toString();
 		float difficulte = ajoutRandonnee.getDifficulteRandonnee().getRating();
@@ -146,23 +227,11 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 				this.maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte,data);
 			}
 			else
+			{
 				this.maPromenade = new Promenade(nomRandonnee, description, distance,heure,minute,difficulte);
-			
-			/*TablePromenade tableProme = new TablePromenade(new DatabaseHandler(context));
-			tableProme.ajouter(maPromenade);
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-			alertDialogBuilder.setTitle("Ajout !");
-			 alertDialogBuilder.setMessage("Votre randonnée a été correctement ajoutée.");
-			  alertDialogBuilder.setCancelable(false);
-			  alertDialogBuilder.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
-						dialog.cancel();
-					}
-				});
-				AlertDialog alertDialog = alertDialogBuilder.create();
-				alertDialog.show();*/
-			
+			}
 			Intent intent = new Intent(ajoutRandonnee, EnregistrerPromenade.class);	
+			intent.putExtra("Promenade", this.maPromenade);
 			ajoutRandonnee.startActivity(intent);
 		}
 	}

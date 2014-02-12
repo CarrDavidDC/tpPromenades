@@ -58,9 +58,9 @@ public class MainActivity extends Activity{
 		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 
 		if (mWifi.isConnected()) {
-			DatabaseHandler db = new DatabaseHandler(this);
+			//DatabaseHandler db = new DatabaseHandler(this);
 			//DownloadData d = (DownloadData) new DownloadData(this, db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
-			DownloadData d = (DownloadData) new DownloadData(this, db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json").execute();
+		//	DownloadData d = (DownloadData) new DownloadData(this, db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json").execute();
 			//d.set_url("https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json");
 			//d.execute();
 		}

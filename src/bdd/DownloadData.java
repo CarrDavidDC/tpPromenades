@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import com.google.android.gms.maps.model.LatLng;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 	private String _url;
 	private ArrayList<Promenade> _promenadelist;
 	private DatabaseHandler _db;
+	private Context c;
 	
 	public String get_url() {
 		return _url;
@@ -67,12 +69,13 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 		_url = url;
 	}
 	
-	public DownloadData(Activity parent, DatabaseHandler db, String url) {
+	public DownloadData(Activity parent, DatabaseHandler db, String url,Context cont) {
 		super();
 		_parent = parent;
 		_db = db;
 		_promenadelist = new ArrayList<Promenade>();
 		_url = url;
+		c = cont;
 	}
 	
 	public DownloadData(Activity parent, String url) {
@@ -104,6 +107,8 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 					Promenade p = new Promenade(gid, name, length, duration,duration, theme, difficulty, id, project);
 					_promenadelist.add(p);
 				}
+				
+				Toast.makeText(c,"Nb ligne " + _promenadelist.size(),Toast.LENGTH_SHORT).show();
 				TablePromenade tp = new TablePromenade(_db,_promenadelist);
 			}
 			else if(_url == _URLGPSCOORDINATES) {

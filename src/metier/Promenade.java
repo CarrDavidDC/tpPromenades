@@ -24,14 +24,14 @@ public class Promenade implements Serializable {
     private int nbCaractDescriptionMax = 100;
     private byte[] _image;
     private Bitmap _imageFin;
-    private String _chemin;
+    private String _way;
     
     public String get_way() {
-		return _chemin;
+		return _way;
 	}
 
 	public void set_way(String _chemin) {
-		this._chemin = _chemin;
+		this._way = _chemin;
 	}
 
 	public Promenade(String _name) {
@@ -53,6 +53,8 @@ public class Promenade implements Serializable {
 		this._durationHour = _durationHour;
 		this._durationMinute = _durationMinute;
 		this._difficulty = _difficulty;
+		this._way = null;
+		this._image = null;
 	}
 
 	public Promenade(String _name, double _length, int _durationHour, int _durationMinute) {
@@ -61,6 +63,8 @@ public class Promenade implements Serializable {
 		this._length =  _length;
 		this._durationHour = _durationHour;
 		this._durationMinute = _durationMinute;
+		this._way = null;
+		this._image = null;
 	}
 
 	
@@ -73,6 +77,8 @@ public class Promenade implements Serializable {
 		this._durationMinute = _durationMinute;
 		this._difficulty = _difficulty;
 		this._image = data;
+		this._way = null;
+		this._image = null;
 	}
 	
 	public Promenade(String _name, String description, double _length, int _durationHour, int _durationMinute, double _difficulty) {
@@ -84,6 +90,7 @@ public class Promenade implements Serializable {
 		this._durationMinute = _durationMinute;
 		this._difficulty = _difficulty;
 		this._image = null;
+		this._way = null;
 	}
 	
 	public Promenade(int _gid, String _name, double _length, int _durationHour, int _durationMinute,
@@ -98,6 +105,8 @@ public class Promenade implements Serializable {
 		this._difficulty = _difficulty;
 		this._id = _id;
 		this._project = _project;
+		this._way = null;
+		this._image = null;
 	}
 	
 	
