@@ -1,8 +1,14 @@
 package ihm;
 
-import reglage.ReglageSingleton;
+import java.util.ArrayList;
+
 import map.CreateCourse;
+import metier.Historique;
 import metier.Promenade;
+
+import bdd.DatabaseHandler;
+import bdd.TableHistorique;
+import bdd.TablePromenade;
 
 import com.google.android.gms.maps.MapFragment;
 import com.example.tppromenades.R;
@@ -25,6 +31,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -39,6 +46,10 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 	private GoogleMap map;
 	private Promenade maPromenade;
 	private ImageView ivLogo;
+	private Button voirCarte;
+	private Button votreHistorique;
+	
+	
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +66,18 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 		TextView description = (TextView) findViewById(R.id.description);
 		RatingBar difficulteRandonnee = (RatingBar)findViewById(R.id.difficulte);
 		difficulteRandonnee.setEnabled(false);
+
+		Button voirCarte = (Button) findViewById(R.id.apercuMap);
+		Button votreHistorique = (Button) findViewById(R.id.voirHistorique);
+		voirCarte.setOnClickListener(this);
+		votreHistorique.setOnClickListener(this);
 		Intent i = getIntent();
 		maPromenade = (Promenade)i.getSerializableExtra("Promenade");		
 		ivLogo= (ImageView)findViewById(R.id.ivLogo);
 		difficulteRandonnee.setRating((float) maPromenade.get_difficulty());
 		tvName.setText("Nom : " + maPromenade.get_name());
 		description.setText(maPromenade.get_description());
-		tvDuration.setText("Durée : " + maPromenade.get_durationHour() + "h"+maPromenade.get_durationMinute());
+		tvDuration.setText("Durée : " + maPromenade.getDurationToString());
 		tvLength.setText("Distance : " + maPromenade.get_length() +" kms");
 		Bitmap img = null;
 		if(maPromenade.get_image() != null)
@@ -69,10 +85,17 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 			Toast.makeText(getBaseContext(),"J'ai une image",Toast.LENGTH_SHORT).show();
 			img = BitmapFactory.decodeByteArray(maPromenade.get_image(), 0, maPromenade.get_image().length);
 			ivLogo.setImageBitmap(img);
-		}else{
-			Toast.makeText(getBaseContext(),"Je n'ai pas d'image",Toast.LENGTH_SHORT).show();
 		}
 		
+		TableHistorique tb = new TableHistorique(new DatabaseHandler(this));
+		ArrayList<Historique> listHistorique = tb.selectionnerSelonIdRandonnee(this.getApplicationContext(), maPromenade.get_gid());
+
+		Toast.makeText(getBaseContext(),"listHistorique : " + listHistorique.size(),Toast.LENGTH_SHORT).show();
+		for(int z = 0; z < listHistorique.size(); z++)
+		{
+			Toast.makeText(getBaseContext(),"idPromenade : " + listHistorique.get(z).get_idPromenade(),Toast.LENGTH_SHORT).show();
+		}
+		Toast.makeText(getBaseContext(),"idPromenadeMaPromenade : " + maPromenade.get_gid(),Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -110,10 +133,16 @@ public class DetailsRandonnee extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		Intent intent = null;
-		
 		switch (v.getId()) {
 			case R.id.ibPrecedentDetailsRandonnee:
 				intent = new Intent(DetailsRandonnee.this, Accueil.class);	
+				break;
+			case R.id.voirHistorique:
+				
+				break;
+			case R.id.apercuMap:
+					intent = new Intent(DetailsRandonnee.this, DetailsRandonneeApercuMap.class);
+					intent.putExtra("Promenade", maPromenade);
 				break;
 			default:
 				break;

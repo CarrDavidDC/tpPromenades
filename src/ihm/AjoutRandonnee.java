@@ -3,9 +3,6 @@ package ihm;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-
-import reglage.ReglageSingleton;
-
 import listener.CounterListener;
 import android.app.Activity;
 import android.content.Intent;
@@ -34,8 +31,6 @@ import com.example.tppromenades.R;
 public class AjoutRandonnee extends Activity implements OnClickListener{
 
 	private double pas = 0.1;
-	private Button btnPlus;
-	private Button btnMoins;
 	private Button btnEnregistrerAjoutRandonnee;
 	private EditText distanceRandonnee;
 	private EditText etNomRandonnee;
@@ -54,31 +49,17 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 
 		final ImageButton btnRetour = (ImageButton) findViewById(R.id.ibPrecedentAjoutRandonnee);
 		btnRetour.setOnClickListener(this);
-		btnPlus = (Button) findViewById(R.id.btnPlus);
-		distanceRandonnee = (EditText) findViewById(R.id.distanceRandonnee);
 		etDescription = (EditText) findViewById(R.id.etDescription);
 		etNomRandonnee = (EditText) findViewById(R.id.etNomRandonnee);
 		difficulteRandonnee = (RatingBar)findViewById(R.id.difficulteRandonnee);
-		listeboxMinute= (Spinner)findViewById(R.id.listeboxMinute);
-		listeboxHeure= (Spinner)findViewById(R.id.listboxHeure);
 		button_selectpic = (Button)findViewById(R.id.button_selectpic);
-		DatabaseHandler db = new DatabaseHandler(this);
-		CounterListener listenerIncrement = new CounterListener("+", distanceRandonnee,pas,this,this);
-		CounterListener listenerDecrement = new CounterListener("-", distanceRandonnee,pas,this,this);
 		CounterListener listenerValidation = new CounterListener("validation", distanceRandonnee,pas,this,this);
 		button_selectpic.setOnClickListener(this);
-		btnPlus.setOnClickListener(listenerIncrement);
-		btnPlus.setOnTouchListener(listenerIncrement);
-		btnMoins = (Button) findViewById(R.id.btnMoins);
-		btnMoins.setOnClickListener(listenerDecrement);
-		btnMoins.setOnTouchListener(listenerDecrement);
-	
-		distanceRandonnee.setText("0");
 		
 		btnEnregistrerAjoutRandonnee = (Button) findViewById(R.id.btnEnregistrerAjoutRandonnee);
 		btnEnregistrerAjoutRandonnee.setOnClickListener(listenerValidation);
-		addItemsOnSpinnerHeures();
-		addItemsOnSpinnerMinutes();
+		//addItemsOnSpinnerHeures();
+		//addItemsOnSpinnerMinutes();
 	}
 
 	@Override
@@ -141,7 +122,7 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 	}
  
 	
-	private void addItemsOnSpinnerHeures() {
+	/*private void addItemsOnSpinnerHeures() {
 		 
 		Spinner listeboxMinute = (Spinner) findViewById(R.id.listeboxMinute);
 		List<String> list = new ArrayList<String>();
@@ -166,7 +147,7 @@ public class AjoutRandonnee extends Activity implements OnClickListener{
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		listboxHeure.setAdapter(dataAdapter);
 	  }
-
+*/
 	public EditText getDistanceRandonnee() {
 		return distanceRandonnee;
 	}

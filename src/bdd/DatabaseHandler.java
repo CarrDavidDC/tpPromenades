@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 	//-- Base de données
-	private static final int DATABASE_VERSION = 12;
+	private static final int DATABASE_VERSION = 13;
     private static final String DATABASE_NAME = "PromenadeDB.db";
     private Context context;
 	//-- Table promenade
@@ -25,6 +25,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	
 	public static final String PROMENADE_TABLE_DROP = "DROP TABLE IF EXISTS promenade;";
 
+	public static final String HISTORIQUE_TABLE_CREATE =
+		    "CREATE TABLE historique (" +
+		    "id_historique INTEGER PRIMARY KEY, " +
+		    "id_prom NOT NULL," +
+		    "altitude double not null," +
+		    "durationheure integer not null," +
+		    "durationminute integer not null," +
+		    "length double not null," + 
+		    "way TEXT not null);";
+		
+		public static final String HISTORIQUE_TABLE_DROP = "DROP TABLE IF EXISTS historique;";
+		
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		this.context = context;
@@ -33,11 +45,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(PROMENADE_TABLE_CREATE);
+		db.execSQL(HISTORIQUE_TABLE_CREATE);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL(PROMENADE_TABLE_DROP);
+		db.execSQL(HISTORIQUE_TABLE_DROP);
 		onCreate(db);
 	}	
 	

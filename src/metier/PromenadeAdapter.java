@@ -5,12 +5,16 @@ import java.util.List;
 import com.example.tppromenades.R;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
 
@@ -49,6 +53,7 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
 		TextView name;
 		TextView description;
 		TextView lengthDuration;
+		ImageView img;
 	}
 	
 	@Override
@@ -68,15 +73,21 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
                     .findViewById(R.id.lengthDuration);
             holder.name = (TextView) view
                     .findViewById(R.id.name);
+            holder.img = (ImageView)view.findViewById(R.id.imgPromenade);
             view.setTag(holder);
 
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.lengthDuration.setText(p.get_length()+ " kms - " + p.get_durationHour() + "h"+p.get_durationMinute()+" - Dénivelé : " + p.get_altitude());
+        holder.lengthDuration.setText(p.get_length()+ " kms - " + p.getDurationToString()+ " - Dénivelé : " + p.get_altitude());
         holder.name.setText(p.get_name());
         holder.description.setText(p.get_description());
+        if(p.get_image() != null)
+        {
+        	Bitmap img = BitmapFactory.decodeByteArray(p.get_image(), 0, p.get_image().length);
+			holder.img.setImageBitmap(img);
+        }
         return view;
 	}
 

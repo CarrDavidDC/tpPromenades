@@ -1,181 +1,129 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".AjoutRandonnee"
-    android:background="@drawable/img_accueil" >
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:weightSum="1"
+  android:background="@drawable/img_accueil">
 
-    <Button
-        android:id="@+id/btnPlus"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/distanceRandonnee"
-        android:layout_alignRight="@+id/btnEnregistrerAjoutRandonnee"
-        android:layout_alignTop="@+id/btnMoins"
-        android:layout_toRightOf="@+id/distanceRandonnee"
-        android:text="+"
-        android:textColor="@android:color/white" />
+<LinearLayout
+    android:id="@+id/llFirstPercent"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".10"
+    android:gravity="center"
+    android:orientation="horizontal" >
+						 <ImageButton
+		        android:id="@+id/ibPrecedentAjoutRandonnee"
+		        android:layout_width="0px"
+		        android:layout_height="wrap_content"
+		 						android:layout_weight="1"
+		        android:src="@drawable/ic_action_back" />
+						 <LinearLayout
+    android:id="@+id/llFirstSecondPercent"
+    android:layout_width="0px"
+    android:layout_weight="2"
+    android:orientation="horizontal"
+		        android:layout_height="wrap_content" >
+    </LinearLayout>
+			        <Button
+				        android:id="@+id/button_selectpic"
+				        android:layout_width="0px"
+ 						android:layout_weight="3"
+				        android:gravity="center"
+				        android:layout_height="wrap_content"
+				        android:text="@string/titleUploadFileAdd" />
+</LinearLayout>
 
-    <TextView
-        android:id="@+id/tvNomRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etNomRandonnee"
-        android:layout_below="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_marginTop="14dp"
-        android:text="Nom de la randonnée"
-        android:textColor="@android:color/white" />
+<LinearLayout
+    android:id="@+id/llSecondPercent"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".7"
+    android:gravity="center"
+    android:orientation="vertical" >
+		<LinearLayout
+	    android:id="@+id/llSecondFirstPercent"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight=".3"
+	    android:gravity="center"
+	    android:orientation="vertical" >
+			         <TextView
+			        android:id="@+id/tvNomRandonnee"
+		        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			            android:gravity="center"
+			        android:text="@string/titleNameAdd"
+			        android:textColor="@android:color/white" />
+			    <EditText
+			        android:id="@+id/etNomRandonnee"
+		        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			        android:ems="10"
+			        android:textColor="@android:color/white" />
+    	</LinearLayout>
+    <LinearLayout
+    android:id="@+id/llSecondSecondPercent"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".3"
+    android:gravity="center"
+    android:orientation="vertical" >
+		    <TextView
+		        android:id="@+id/tvDescription"
+		        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+			        android:text="@string/titleDescriptionAdd"
+		        android:textColor="@android:color/white" />
+		
+		    <EditText
+		        android:id="@+id/etDescription"
+		        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+		        android:ems="10"
+		        android:inputType="textMultiLine"
+		        android:textColor="@android:color/white" >
+		
+		        <requestFocus />
+		    </EditText>
+     </LinearLayout>
+    <LinearLayout
+    android:id="@+id/llSecondThirdPercent"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".3"
+    android:gravity="center"
+    android:orientation="vertical" >
+		    <TextView
+		        android:id="@+id/tvDifficulteDuParcours"
+		        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"		        
+			        android:text="@string/titleDifficultyAdd"
+		        android:textColor="@android:color/white"/>
+		
+		    <RatingBar
+		        android:id="@+id/difficulteRandonnee"
+		        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+		        android:layout_centerHorizontal="true" />    
+	</LinearLayout>
+</LinearLayout>
 
-    <TextView
-        android:id="@+id/tvNomRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etNomRandonnee"
-        android:layout_below="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_marginTop="14dp"
-        android:text="Nom de la randonnée"
-        android:textColor="@android:color/white" />
-    <EditText
-        android:id="@+id/etNomRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/tvAjoutRandonnee"
-        android:layout_below="@+id/tvNomRandonnee"
-        android:ems="10"
-        android:textColor="@android:color/white" />
+<LinearLayout
+    android:id="@+id/llThirdPercent"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".15"
+    android:gravity="center"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/tvDifficulteDuParcours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_below="@+id/etNomRandonnee"
-        android:text="Difficulté du parcours" 
-        android:textColor="@android:color/white"/>
-
-    <RatingBar
-        android:id="@+id/difficulteRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDifficulteDuParcours"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/labelTemps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDistanceRandonnee"
-        android:layout_below="@+id/distanceRandonnee"
-        android:layout_marginTop="15dp"
-        android:text="Temps" 
-        android:textColor="@android:color/white"/>
-
-    <TextView
-        android:id="@+id/tvDistanceRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etNomRandonnee"
-        android:layout_below="@+id/difficulteRandonnee"
-        android:text="Distance (km)"
-        android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/labelHeure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/listboxHeure"
-        android:layout_alignRight="@+id/tvNomRandonnee"
-        android:text="h"
-        android:textSize="15dp"
-        android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/labelTemps"
-        android:layout_below="@+id/listboxHeure"
-        android:layout_marginTop="15dp"
-        android:text="Description"
-        android:textColor="@android:color/white" />
-
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDescription"
-        android:layout_below="@+id/tvDescription"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:textColor="@android:color/white" >
-
-        <requestFocus />
-    </EditText>
-        
-    <Button
+        <Button
         android:id="@+id/btnEnregistrerAjoutRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Envoyer"
+        android:layout_width="fill_parent"
+            android:layout_height="wrap_content"        
+			    android:text="@string/titleButtonAdd"
         android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/button_selectpic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/tvAjoutRandonnee"
-        android:layout_toRightOf="@+id/distanceRandonnee"
-        android:text="Upload picture" />
-
-    <Button
-        android:id="@+id/btnMoins"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/distanceRandonnee"
-        android:layout_toRightOf="@+id/tvDistanceRandonnee"
-        android:text="-"
-        android:textColor="@android:color/white" />
-
-    <EditText
-        android:id="@+id/distanceRandonnee"
-        android:layout_width="30dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/tvDistanceRandonnee"
-        android:layout_toRightOf="@+id/btnMoins"
-        android:ems="10"
-        android:textColor="@android:color/white" />
-
-    <Spinner
-        android:id="@+id/listboxHeure"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/btnPlus"
-        android:layout_alignTop="@+id/labelTemps"
-        android:textColor="@android:color/white" />
-
-    <Spinner
-        android:id="@+id/listeboxMinute"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/tvDescription"
-        android:layout_toRightOf="@+id/tvDescription"
-        android:textColor="@android:color/white" />
-
-    <ImageButton
-        android:id="@+id/ibPrecedentAjoutRandonnee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvNomRandonnee"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ic_action_back" />
-
-</RelativeLayout>
+</LinearLayout>
+</LinearLayout>

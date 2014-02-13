@@ -1,78 +1,93 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".PublierAvis"
-    android:background="@drawable/img_accueil" >
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:weightSum="1"
+  android:background="@drawable/img_accueil">
 
-    <ImageButton
-        android:id="@+id/retourAccueil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ic_action_back" />
+<LinearLayout
+    android:id="@+id/llFirstPercent"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".10"
+    android:gravity="center"
+    android:orientation="horizontal" >
+			       <ImageButton
+			            android:id="@+id/retourAccueil"
+			            android:layout_width="0px"
+			            android:layout_height="wrap_content"
+ 						android:layout_weight="1"
+			            android:src="@drawable/ic_action_back" />
+			
+			        <TextView
+			            android:id="@+id/tvReglage"
+			            android:layout_width="0px"
+			            android:layout_height="wrap_content"
+ 						android:layout_weight="4"
+ 						android:gravity="center"
+			            android:text="Tri des randonnées"
+			            android:textSize="15dp" />
+</LinearLayout>
 
-    <RadioGroup
+<LinearLayout
+    android:id="@+id/llSecondPercent"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".9"
+    android:gravity="center|center_vertical"
+    android:orientation="vertical" >
+
+			     <RadioGroup
         android:id="@+id/rg1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp" >
-
+	
         <RadioButton
             android:id="@+id/nomAZ"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:checked="true"
             android:text="@string/nomAZ"
             android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/nomZA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
             android:text="@string/nomZA"
             android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/distanceDecroissante"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:text="@string/distanceDecroissante"
             android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/distanceCroissante"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:text="@string/distanceCroissante"
             android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/difficulteDecroissante"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:text="@string/difficulteDecroissante"
             android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/difficulteCroissante"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:text="@string/difficulteCroissante"
             android:textColor="@android:color/white" />
-    </RadioGroup>
-
-</RelativeLayout>
+    </RadioGroup>  	 
+</LinearLayout>
+</LinearLayout>

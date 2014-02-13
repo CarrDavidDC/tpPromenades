@@ -20,8 +20,6 @@ import android.location.LocationManager;
 
 import ihm.Accueil;
 import ihm.EnregistrerPromenade;
-import ihm.Inscription;
-import ihm.MdpOublie;
 
 import java.util.ArrayList;
 
@@ -53,20 +51,6 @@ public class MainActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-   
-		ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-
-		if (mWifi.isConnected()) {
-			//DatabaseHandler db = new DatabaseHandler(this);
-			//DownloadData d = (DownloadData) new DownloadData(this, db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
-		//	DownloadData d = (DownloadData) new DownloadData(this, db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json").execute();
-			//d.set_url("https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json");
-			//d.execute();
-		}
-		else {
-			Toast.makeText(this.getApplicationContext(), "Unable to download data without Wifi connection", Toast.LENGTH_LONG).show();
-		}
 	}
 
 	@Override

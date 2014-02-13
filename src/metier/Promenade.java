@@ -25,8 +25,24 @@ public class Promenade implements Serializable {
     private byte[] _image;
     private Bitmap _imageFin;
     private String _way;
+    private ArrayList<LatLng> _arrayLatLng;
     
-    public String get_way() {
+    
+    
+    public ArrayList<LatLng> get_arrayLatLng() {
+		return _arrayLatLng;
+	}
+
+	public void set_arrayLatLng(ArrayList<LatLng> arrayLatLng) {
+		if(this._arrayLatLng != null)
+			this._arrayLatLng = arrayLatLng;
+		else{
+			this._arrayLatLng = new ArrayList<LatLng>();
+			this._arrayLatLng = arrayLatLng;			
+		}
+	}
+
+	public String get_way() {
 		return _way;
 	}
 
@@ -40,9 +56,27 @@ public class Promenade implements Serializable {
 	}
     
     public Promenade() {
-    	
+
+		this._arrayLatLng = new ArrayList<LatLng>();
     }
-    
+        
+    public String getDurationToString()
+    {
+    	String durationToString = "";
+    	if(_durationHour == 0)
+    	{
+    		durationToString = _durationMinute+" min";
+    	}else{
+    		durationToString = _durationHour + " h ";
+    		if(_durationMinute < 10)
+    		{
+    			durationToString += "0"+_durationMinute;
+    		}else{
+    			durationToString += String.valueOf(_durationMinute);
+    		}
+    	}
+    	return durationToString;
+    }
     
     
 	public Promenade(String _name, double _length, int _durationHour, int _durationMinute,
@@ -55,6 +89,7 @@ public class Promenade implements Serializable {
 		this._difficulty = _difficulty;
 		this._way = null;
 		this._image = null;
+		this._arrayLatLng = new ArrayList<LatLng>();
 	}
 
 	public Promenade(String _name, double _length, int _durationHour, int _durationMinute) {
@@ -65,6 +100,7 @@ public class Promenade implements Serializable {
 		this._durationMinute = _durationMinute;
 		this._way = null;
 		this._image = null;
+		this._arrayLatLng = new ArrayList<LatLng>();
 	}
 
 	
@@ -78,7 +114,20 @@ public class Promenade implements Serializable {
 		this._difficulty = _difficulty;
 		this._image = data;
 		this._way = null;
-		this._image = null;
+		this._arrayLatLng = new ArrayList<LatLng>();
+	}
+	
+	public Promenade(String _name, String description, double _difficulty, byte[] data) {
+		super();
+		this._name = _name;
+		this._description = description;
+		this._length =  0;
+		this._durationHour = 0;
+		this._durationMinute = 0;
+		this._difficulty = _difficulty;
+		this._image = data;
+		this._way = null;
+		this._arrayLatLng = new ArrayList<LatLng>();
 	}
 	
 	public Promenade(String _name, String description, double _length, int _durationHour, int _durationMinute, double _difficulty) {
@@ -91,6 +140,20 @@ public class Promenade implements Serializable {
 		this._difficulty = _difficulty;
 		this._image = null;
 		this._way = null;
+		this._arrayLatLng = new ArrayList<LatLng>();
+	}
+	
+	public Promenade(String _name, String description,double _difficulty) {
+		super();
+		this._name = _name;
+		this._description = description;
+		this._length =  0;
+		this._durationHour = 0;
+		this._durationMinute = 0;
+		this._difficulty = _difficulty;
+		this._image = null;
+		this._way = null;
+		this._arrayLatLng = new ArrayList<LatLng>();
 	}
 	
 	public Promenade(int _gid, String _name, double _length, int _durationHour, int _durationMinute,
@@ -107,6 +170,7 @@ public class Promenade implements Serializable {
 		this._project = _project;
 		this._way = null;
 		this._image = null;
+		this._arrayLatLng = new ArrayList<LatLng>();
 	}
 	
 	

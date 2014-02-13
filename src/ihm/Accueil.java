@@ -3,8 +3,6 @@ package ihm;
 import java.util.ArrayList;
 import java.util.List;
 
-import reglage.ReglageSingleton;
-
 import ihm.Reglage;
 import metier.Promenade;
 import metier.PromenadeAdapter;
@@ -36,6 +34,7 @@ import com.example.tppromenades.R;
 public class Accueil extends Activity implements OnClickListener, OnItemClickListener {
 
 	private List<Promenade> listePromenade;
+	private Button button1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,6 +42,8 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 		ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 		DatabaseHandler db = new DatabaseHandler(this);
+		button1 = (Button)findViewById(R.id.button1);
+		button1.setOnClickListener(this);
 		if (mWifi.isConnected()) {
 			DownloadData d = (DownloadData) new DownloadData(this,db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json",getBaseContext()).execute();
 
@@ -89,6 +90,11 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 		Intent intent = null;
 		
 		switch (v.getId()) {
+		case R.id.button1:
+			intent = new Intent(Accueil.this, DetailsRandonneeApercuMap.class);
+			//intent.putExtra("Promenade", value);
+			startActivity(intent);
+			break;
 			default:
 				break;
 		}

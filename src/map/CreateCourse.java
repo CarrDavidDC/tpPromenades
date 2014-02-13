@@ -6,6 +6,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 
@@ -14,7 +16,7 @@ public class CreateCourse {
 	private String description;
 	private ArrayList<Marker> marker;
 	private ArrayList<LatLng> latLng;
-	private PolygonOptions rectOptions;
+	private PolylineOptions polyLine;
 	private GoogleMap map;
 	
 	public CreateCourse(String title, String description, GoogleMap laMap) {
@@ -23,7 +25,7 @@ public class CreateCourse {
 		this.marker = new ArrayList<Marker>();
 		this.latLng = new ArrayList<LatLng>();
 		this.map = laMap;
-		this.rectOptions = new PolygonOptions();
+		this.polyLine = new PolylineOptions();
 	}
 	
 	
@@ -103,7 +105,7 @@ public class CreateCourse {
 								.snippet("Description de l'étape n°"+(i+1)));
 				marker.add(m);			
 			}
-			rectOptions.add(latLng.get(i));
+			polyLine.add(latLng.get(i));
 		}
 	}
 	
@@ -150,11 +152,11 @@ public class CreateCourse {
 	public void setMarker(ArrayList<Marker> marker) {
 		this.marker = marker;
 	}
-	public PolygonOptions getRectOptions() {
-		return rectOptions;
+	public PolylineOptions getPolyline() {
+		return polyLine;
 	}
-	public void setRectOptions(PolygonOptions rectOptions) {
-		this.rectOptions = rectOptions;
+	public void setPolyline(PolylineOptions polyLine) {
+		this.polyLine = polyLine;
 	}
 	
 	
