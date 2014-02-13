@@ -151,16 +151,10 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 				}
 				String id = prom.getString(5);
 				String project = prom.getString(6);
-				//System.out.println("AAAAAAA");
 				int gid = Integer.parseInt(prom.getString(7));
-				//System.out.println("BBBBBBB");
 				Promenade p = new Promenade(gid, name, length, heures, minutes, theme, difficulty, id, project);
-				//System.out.println("CCCCCCC" + i);
 				_promenadelist.add(p);
-			}
-			//System.out.println(_promenadelist.size());
-			//Toast.makeText(_context,"Nb lignes promenades " + _promenadelist.size(),Toast.LENGTH_SHORT).show();
-						
+			}						
 			_url = _URLGPSCOORDINATES;
 			object = new JSONObject(readData());
 			values = object.getJSONArray("values");
@@ -169,11 +163,26 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 				prom = prom.replace(_MULTILINESTRING, "");
 				prom = prom.replace(_LEFTPARENTHESIS, "");
 				prom = prom.replace(_RIGHTPARENTHESIS, "");
-				_promenadelist.get(i).set_way(prom);
+				StringTokenizer st = new StringTokenizer(prom,_COMMA);
+				System.out.println("NB AVANT = " + st.countTokens());
+				String chaine = "";
+				//System.out.println("NOUVELLE CHAINE");
+				while(st.hasMoreTokens()) {
+					String pt = st.nextToken();
+					//System.out.println("AVANT = " + pt);
+					String[] point = pt.split(_SPACE);
+					pt = point[1] + _SPACE + point[0];	
+					if(st.hasMoreTokens())
+						chaine += pt + _COMMA;
+					else
+						chaine += pt;
+				}
+				//StringTokenizer st22 = new StringTokenizer(chaine,_COMMA);
+				//System.out.println("NB APRES = " + st22.countTokens());
+				//System.out.println("CHAINE = " + points.toString());
+				//System.out.println("CHAINE = " + prom);
+				_promenadelist.get(i).set_way(chaine);
 			}
-			/*for (int i = 0; i < _promenadelist.size(); i++) {
-				System.out.println(_promenadelist.get(i).toString());
-			}*/
 			_tp.sauvegarderPromenades(_promenadelist);
 		} 
 		catch (Exception e) { 
@@ -181,49 +190,6 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 		} 
 		return null;
 	}
-	
-	/*@Override
-	protected Long doInBackground(Void... params) {
-		try {
-			if(_url == _URLSENTIERS) {
-				JSONObject object = new JSONObject(readData());
-				JSONArray values = object.getJSONArray("values");
-				for (int i = 0; i < values.length(); i++) {
-					JSONArray prom = values.getJSONArray(i);
-					String name = prom.getString(0);
-					double length = Float.parseFloat(prom.getString(1));
-					int duration = prom.getInt(2);
-					String theme = prom.getString(3);
-					float difficulty = Float.valueOf(prom.getString(4));
-					String id = prom.getString(5);
-					String project = prom.getString(6);
-					Integer gid = Integer.parseInt(prom.getString(7));
-					Promenade p = new Promenade(gid, name, length, duration,duration, theme, difficulty, id, project);
-					_promenadelist.add(p);
-				}
-				
-				Toast.makeText(_context,"Nb lignes promenades " + _promenadelist.size(),Toast.LENGTH_SHORT).show();
-				TablePromenade tp = new TablePromenade(_db);
-				tp.sauvegarderPromenades(_promenadelist);
-			}
-			else if(_url == _URLGPSCOORDINATES) {
-				JSONObject object = new JSONObject(readData());
-				JSONArray values = object.getJSONArray("values");
-				Toast.makeText(_context,"Nb lignes GPS" + values.length(),Toast.LENGTH_SHORT).show();
-				for (int i = 0; i < values.length(); i++) {
-					String prom = values.getString(i);
-					prom = prom.replace(_MULTILINESTRING, "");
-					prom = prom.replace(_LEFTPARENTHESIS, "");
-					prom = prom.replace(_RIGHTPARENTHESIS, "");
-					_promenadelist.get(i).set_way(prom);
-				}
-			}
-		} 
-		catch (Exception e) { 
-			e.printStackTrace(); 
-		} 
-		return null;
-	}*/
 	
 	/*************************************************************************************
 	ArrayList<LatLng> chemin = new ArrayList<LatLng>();

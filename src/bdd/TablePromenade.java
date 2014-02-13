@@ -13,6 +13,7 @@ import android.util.Log;
 
 public class TablePromenade {
 	private DatabaseHandler _db;
+	private TablePromenade _instance;
 	
 	//-- Opérations CRUD
 	public static final String TABLE_NAME = "promenade";

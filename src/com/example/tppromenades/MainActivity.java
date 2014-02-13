@@ -29,6 +29,7 @@ public class MainActivity extends Activity{
 		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 
 		if (mWifi.isConnected()) {
+			System.out.println("WIFI");
 			DatabaseHandler db = new DatabaseHandler(this);
 			DownloadData d = (DownloadData) new DownloadData(this, db).execute();
 			
@@ -45,11 +46,6 @@ public class MainActivity extends Activity{
 			}
 			System.out.println("DOWNLOAD TERMINE");
 			d.get_tp().selectionnerTout(this.getApplicationContext());
-			//DownloadData d = (DownloadData) new DownloadData(this, db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
-			//new TablePromenade(db).selectionnerTout(this.getApplicationContext());
-			//DownloadData d = (DownloadData) new DownloadData(this, db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json").execute();
-			//d.set_url("https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/the_geom.json");
-			//d.execute();
 		}
 		else {
 			Toast.makeText(this.getApplicationContext(), "Unable to download data without Wifi connection", Toast.LENGTH_LONG).show();
@@ -68,11 +64,12 @@ public class MainActivity extends Activity{
 	@Override
 	public boolean onTouchEvent(MotionEvent evt)
 	{
-	    /*if(evt.getAction() == MotionEvent.ACTION_DOWN)
+		// PLUTÔT FAIRE CA DANS POSTEXECUTE DE DOWNLOADDATA
+	    if(evt.getAction() == MotionEvent.ACTION_DOWN)
 	    {
 	    	Intent intent = new Intent(MainActivity.this, Accueil.class);
 			startActivity(intent);
-	    }*/
+	    }
 	    return true;
 	    
 	}  
