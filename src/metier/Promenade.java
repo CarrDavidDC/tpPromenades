@@ -80,7 +80,7 @@ public class Promenade implements Serializable {
     
     
 	public Promenade(String _name, double _length, int _durationHour, int _durationMinute,
-			float _difficulty) {
+			double _difficulty) {
 		super();
 		this._name = _name;
 		this._length = _length;
@@ -157,7 +157,7 @@ public class Promenade implements Serializable {
 	}
 	
 	public Promenade(int _gid, String _name, double _length, int _durationHour, int _durationMinute,
-			String _theme, float _difficulty, String _id, String _project) {
+			String _theme, double _difficulty, String _id, String _project) {
 		super();
 		this._gid = _gid;
 		this._name = _name;
@@ -188,7 +188,8 @@ public class Promenade implements Serializable {
 		return "Promenade [_gid=" + _gid + ", _name=" + _name + ", _length="
 				+ _length + ", _duration=" + this._durationHour+"h"+this._durationMinute + ", _theme=" + _theme
 				+ ", _difficulty=" + _difficulty + ", _id=" + _id
-				+ ", _project=" + _project + "]";
+				+ ", _project=" + _project
+				+ " _gps=" + _way + "]";
 	}
 
 	

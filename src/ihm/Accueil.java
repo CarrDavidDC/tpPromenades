@@ -45,7 +45,7 @@ public class Accueil extends Activity implements OnClickListener, OnItemClickLis
 		button1 = (Button)findViewById(R.id.button1);
 		button1.setOnClickListener(this);
 		if (mWifi.isConnected()) {
-			DownloadData d = (DownloadData) new DownloadData(this,db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json",getBaseContext()).execute();
+			DownloadData d = (DownloadData) new DownloadData(this,db, "https://download.data.grandlyon.com/ws/grandlyon/evg_esp_veg.evgsentiernature/all.json").execute();
 
 			Toast.makeText(getBaseContext(),"Ajout du gd lyon",Toast.LENGTH_SHORT).show();
 		}		
