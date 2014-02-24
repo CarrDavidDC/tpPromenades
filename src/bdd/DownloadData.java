@@ -95,6 +95,7 @@ public class DownloadData extends AsyncTask<Void, Integer, Long> {
 		_db = db;
 		_tp = new TablePromenade(_db);
 		_promenadelist = new ArrayList<Promenade>();
+		_context = db.get_context();
 	}
 	
 	protected void onPreExecute() {

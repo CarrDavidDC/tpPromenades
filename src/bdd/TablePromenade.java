@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import reglage.ReglageSingleton;
 
+import metier.Historique;
 import metier.Promenade;
 import android.content.ContentValues;
 import android.content.Context;
@@ -38,6 +39,7 @@ public class TablePromenade {
 	}
 	
 	public void sauvegarderPromenades(ArrayList<Promenade> promenades) {
+		supprimerTout() ;
 		for(int i=0 ; i<promenades.size() ; i++) {
 			ajouter(promenades.get(i));
 		}
@@ -45,18 +47,17 @@ public class TablePromenade {
 	
 	public TablePromenade(DatabaseHandler db) {
 		_db = db;
-		this.supprimerTout();
 	}
 	
 	public void ajouter(Promenade p) {
 		System.out.println("AJOUT PROMENADE BD");
-		//String c = null;
+		String c = null;
 		//Boolean existeDeja = select(p);
 		SQLiteDatabase db = _db.getWritableDatabase();
 		//Création d'un ContentValues (fonctionne comme une HashMap)
 		ContentValues values = new ContentValues();
 		//on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
-		values.put(ID, p.get_gid());
+		values.put(ID, c);
 		values.put(NAME, p.get_name());
 		values.put(DESCRIPTION, p.get_description());
 		values.put(ALTITUDE, p.get_altitude());
@@ -70,25 +71,11 @@ public class TablePromenade {
 		db.insert(TABLE_NAME, null, values);
 		db.close();
 	}
-	
-	/*private Boolean select(Promenade p) {
-		SQLiteDatabase db = _db.getReadableDatabase();
-		Cursor c = db.query(TABLE_NAME, 				// nom de la table
-				COLUMNS,  								// liste des colonnes
-				null, 									// clause WHERE
-				null, 									// récupère le paramètre
-				null, 									// clause GROUP BY
-				null, 									// clause HAVING
-				ReglageSingleton.getInstance().getRequetePourTriRandonnee() // clause ORDER BY
-				);	
-		return true;
-		return false;
-	}*/
 
 	public void supprimerTout() {
 		SQLiteDatabase db = _db.getWritableDatabase();
         db.delete(TABLE_NAME,
-        		null,
+        		DESCRIPTION+" is null",
                 null);
         db.close();
         Log.d("supprimer","suppression des enregistrements");
@@ -119,13 +106,42 @@ public class TablePromenade {
 	    	p.set_difficulty(c.getDouble(7));
 	    	p.set_image(c.getBlob(8));
 	    	p.set_way(c.getString(9));
-	    /*	if(p.get_image() !=null)
-	    		p.set_imageFin(BitmapFactory.decodeByteArray(p.get_image(), 0, p.get_image().length));
-	    	else*/
-	    		p.set_imageFin(null);
+	    	p.set_imageFin(null);
 	    	System.out.println("Promenade SQLITE : " + p.toString());
 	    	listePromenade.add(p);
 	    }
 	    return listePromenade;
     }
+	
+	public ArrayList<Promenade> selectionnerSelonRecherche(Context context, String recherche) {
+		SQLiteDatabase db = _db.getReadableDatabase();
+		Cursor c = db.query(TABLE_NAME, 				// nom de la table
+				COLUMNS,  								// liste des colonnes
+				NAME +" like '%"+recherche+"%'", 									// clause WHERE
+				null, 									// récupère le paramètre
+				null, 									// clause GROUP BY
+				null, 									// clause HAVING
+				null 									// clause ORDER BY
+				);	
+
+		// limite*/
+		ArrayList<Promenade> listePromenade = new ArrayList<Promenade>();
+	    while (c.moveToNext()) {
+	    	Promenade p = new Promenade();
+	    	p.set_gid(Integer.parseInt(c.getString(0)));
+	    	p.set_name(c.getString(1));
+	    	p.set_description(c.getString(2));
+	    	p.set_altitude(c.getDouble(3));
+	    	p.set_durationHour(c.getInt(4));
+	    	p.set_durationMinute(c.getInt(5));
+	    	p.set_length(c.getDouble(6));
+	    	p.set_difficulty(c.getDouble(7));
+	    	p.set_image(c.getBlob(8));
+	    	p.set_way(c.getString(9));
+	    	p.set_imageFin(null);
+	    	System.out.println("Promenade SQLITE : " + p.toString());
+	    	listePromenade.add(p);
+	    }
+	    return listePromenade;
+	   }
 }

@@ -1,5 +1,6 @@
 package metier;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import com.example.tppromenades.R;
@@ -52,7 +53,9 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
 	private class ViewHolder {
 		TextView name;
 		TextView description;
-		TextView lengthDuration;
+		TextView length;
+		TextView duration;
+		TextView denivele;
 		ImageView img;
 	}
 	
@@ -69,8 +72,12 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
 
             holder = new ViewHolder();
             holder.description = (TextView) view.findViewById(R.id.description);
-            holder.lengthDuration = (TextView) view
-                    .findViewById(R.id.lengthDuration);
+            holder.length = (TextView) view
+                    .findViewById(R.id.tvDistance);
+            holder.duration = (TextView) view
+                    .findViewById(R.id.tvDuree);
+            holder.denivele = (TextView) view
+                    .findViewById(R.id.tvDenivele);
             holder.name = (TextView) view
                     .findViewById(R.id.name);
             holder.img = (ImageView)view.findViewById(R.id.imgPromenade);
@@ -80,15 +87,34 @@ public class PromenadeAdapter extends  ArrayAdapter<Promenade>{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.lengthDuration.setText(p.get_length()+ " kms - " + p.getDurationToString()+ " - Dénivelé : " + p.get_altitude());
-        holder.name.setText(p.get_name());
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(1);
+        df.setDecimalSeparatorAlwaysShown(true);
+        holder.length.setText(p.get_length_arrondi()+ " kms");
+        holder.duration.setText(p.getDurationToString());
+        holder.denivele.setText(String.valueOf(p.get_altitude()) + "m");
+        
+        holder.name.setText(p.get_name().toUpperCase());
         holder.description.setText(p.get_description());
-        if(p.get_image() != null)
+      /*  if(p.get_image() != null)
         {
         	Bitmap img = BitmapFactory.decodeByteArray(p.get_image(), 0, p.get_image().length);
 			holder.img.setImageBitmap(img);
+			holder.img.setI
+        }*/
+        if(p.get_length_arrondi() > 10)
+        {
+        	holder.img.setImageResource(R.drawable.img_difficile);
+        }else if(p.get_length_arrondi() > 5)
+        {
+        	holder.img.setImageResource(R.drawable.img_moyen);
+        }else{
+        	holder.img.setImageResource(R.drawable.img_facile);
         }
         return view;
 	}
 
+	private int getImageId(Context context, String imageName) {
+	    return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
+	}	
 }

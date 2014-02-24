@@ -4,7 +4,7 @@
   android:layout_height="fill_parent"
   android:orientation="vertical"
   android:weightSum="1"
-  android:background="@drawable/img_accueil2">
+  android:background="@drawable/img_accueil">
 
 <LinearLayout
     android:id="@+id/llFirstPercent"
@@ -12,22 +12,18 @@
     android:layout_height="0dp"
     android:layout_weight=".10"
     android:gravity="center"
-    android:orientation="horizontal" >
-			       <ImageButton
-			            android:id="@+id/ibPrecedentDetailsRandonnee"
-			            android:layout_width="0px"
-			            android:layout_height="wrap_content"
- 						android:layout_weight="1"
-			            android:src="@drawable/ic_action_back" />
-			
+    android:alpha="0.6"
+    android:background="#E7E9E9"
+    android:orientation="horizontal" >			
 			        <TextView
-			            android:id="@+id/tvDetailsRandonnee"
+			            android:id="@+id/name"
 			            android:layout_width="0px"
 			            android:layout_height="wrap_content"
  						android:layout_weight="4"
  						android:gravity="center"
-			            android:text="Détails de la randonnée"
-			            android:textSize="15dp" />
+ 						android:textStyle="bold"
+ 									            android:text="@string/titleLabelNomDetails"
+			            android:textSize="17dp" />
 </LinearLayout>
 
 <LinearLayout
@@ -35,52 +31,116 @@
     android:layout_width="fill_parent"
     android:layout_height="0dp"
     android:layout_weight=".45"
-    android:layout_marginLeft="10px"
-    android:gravity="left"
+    android:background="#E7E9E9"
+    android:alpha="0.6"
     android:orientation="vertical" >
-
-          <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0px"
-            android:text="@string/titleLabelNomDetails" />
-
+<LinearLayout
+android:orientation="horizontal"
+android:weightSum="1"
+android:layout_weight="1"
+    android:layout_marginLeft="10px"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content">
         <TextView
             android:id="@+id/description"
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_weight="1"
-            android:layout_height="0px"
+            android:layout_height="fill_parent"
+             android:textSize="13dp"
             android:text="@string/titleLabelDescriptionDetails" />
+</LinearLayout>
+	<LinearLayout
+android:orientation="horizontal"
+android:weightSum="1"
+android:layout_weight="1"
+android:layout_width="fill_parent"
 
+android:layout_height="wrap_content">
+	<ImageView
+				android:id="@+id/imgTime"
+				android:layout_width="0px"
+				android:layout_height="fill_parent"
+				android:layout_weight=".25"
+				android:adjustViewBounds="true"
+				android:gravity="center"
+				android:src="@drawable/chrono" />
         <TextView
             android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0px"
+            android:layout_width="0px"
+            android:layout_weight=".75"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_height="fill_parent"
             android:text="@string/titleLabelDureeDetails" />
-
+</LinearLayout>
+	<LinearLayout
+android:orientation="horizontal"
+android:weightSum="1"
+android:layout_weight="1"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content">
+	<ImageView
+				android:id="@+id/imgBorne"
+				android:layout_width="0px"
+				android:layout_height="fill_parent"
+				android:layout_weight=".25"
+				android:adjustViewBounds="true"
+				android:gravity="center"
+				android:src="@drawable/borne2" />
         <TextView
             android:id="@+id/length"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0px"
+            android:layout_width="0px"
+            android:layout_weight=".75"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_height="fill_parent"
             android:text="@string/titleLabelDistanceDetails" />
-
+</LinearLayout>
+<LinearLayout
+android:orientation="horizontal"
+android:weightSum="1"
+android:layout_weight="1"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content">
+	<ImageView
+				android:id="@+id/imgMontagne"
+				android:layout_width="0px"
+				android:layout_height="fill_parent"
+				android:layout_weight=".25"
+				android:adjustViewBounds="true"
+				android:gravity="center"
+				android:src="@drawable/montagne" />
+        <TextView
+            android:id="@+id/denivele"
+            android:layout_width="0px"
+            android:layout_weight=".75"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_height="fill_parent"
+            android:text="Dénivele" />
+</LinearLayout>
+<LinearLayout
+android:orientation="horizontal"
+android:weightSum="1"
+android:layout_weight="1"
+android:layout_width="fill_parent"
+android:layout_marginLeft="10px"
+android:layout_height="wrap_content">
         <TextView
             android:id="@+id/tvDifficulte"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0px"
+            android:layout_width="0px"
+            android:layout_weight=".2"
+            android:textStyle="bold"
+            android:layout_height="fill_parent"
             android:text="@string/titleLabelDifficulteDetails" />
 
         <RatingBar
             android:id="@+id/difficulte"
             android:isIndicator="false"
-            android:layout_width="wrap_content"
-            android:layout_weight="2"
-            android:layout_height="0px" />
-        
+            android:layout_width="0px"
+            android:layout_weight=".8"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
 </LinearLayout>
 
 <LinearLayout
@@ -109,12 +169,16 @@
         android:layout_width="0px"
 		android:layout_height="wrap_content"
  		android:layout_weight="1"
+    android:alpha="0.7"
+    android:background="#E7E9E9"
         android:text="@string/titleButtonCarteDetails" />
         <Button
         android:id="@+id/voirHistorique"
         android:layout_width="0px"
 		android:layout_height="wrap_content"
  		android:layout_weight="1"
+    android:alpha="0.7"
+    android:background="#E7E9E9"
         android:text="@string/titleButtonHistoriqueDetails" />
 </LinearLayout>
 </LinearLayout>

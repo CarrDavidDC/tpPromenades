@@ -1,40 +1,152 @@
 <LinearLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="horizontal"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content">
-
-  <ImageView
-      android:id="@+id/imgPromenade"
-      android:layout_width="65dp"
-      android:layout_height="65dp"
-      android:layout_alignParentTop="true"
-      android:src="@drawable/img_promenade_vide" />
-    <LinearLayout
 android:orientation="vertical"
+android:weightSum="1"
 android:layout_width="fill_parent"
-android:layout_marginLeft="2dp"
 android:layout_height="wrap_content">
+<LinearLayout
+android:orientation="horizontal"
+android:weightSum="1"
+android:layout_weight=".01"
+android:layout_width="fill_parent"
+android:background="@drawable/background_accueillistview_black"
+android:layout_height="wrap_content">
+</LinearLayout>
+<LinearLayout
+android:orientation="horizontal"
+android:weightSum="1"
+android:layout_weight=".99"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content">
+	<LinearLayout
+	android:orientation="vertical"
+	android:layout_width="0px"
+	android:layout_weight=".02"
+	android:layout_height="fill_parent"
+android:background="@drawable/background_accueillistview_blue">
+	</LinearLayout>
+	<LinearLayout
+	android:orientation="vertical"
+	android:layout_width="0px"
+	android:layout_marginLeft="2dp"
+	android:layout_weight=".2"
+	android:layout_height="fill_parent">
+		<ImageView
+		android:id="@+id/imgPromenade"
+		android:layout_width="fill_parent"
+		android:adjustViewBounds="true"
+		android:layout_height="fill_parent"
+		android:src="@drawable/img_promenade_vide" />
+	</LinearLayout>
+	<LinearLayout
+	android:layout_weight=".78"
+	android:orientation="vertical"
+	android:layout_width="0px"
+	android:layout_marginLeft="7dp"
+	android:layout_marginBottom="20dp"
+	android:layout_height="wrap_content">
 		<TextView
 		android:id="@+id/name"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-	        android:textSize="15dp" 
-	         android:textColor="@android:color/white"/>
-	
+		android:textSize="16dp" 
+		android:textColor="@android:color/black"
+		android:typeface="serif"
+		android:gravity="center"
+		android:text="NAME"/>
+
 		<TextView
 		android:id="@+id/description"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-	         android:textColor="@android:color/white"/>
-		<TextView
-		android:id="@+id/lengthDuration"
+		android:textSize="12dp" 
+		android:textColor="@android:color/black"
+		android:text="Description"/>
+		<LinearLayout
+		android:orientation="horizontal"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center_horizontal"
-	         android:textColor="@android:color/white"/>
+		android:weightSum="1"
+		android:layout_height="wrap_content">
+			<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="0px"
+			android:layout_height="fill_parent"
+			android:weightSum="1"
+			android:layout_weight=".3">
 	
-	</LinearLayout>
+				<ImageView
+				android:id="@+id/imgBorne"
+				android:layout_width="0px"
+				android:layout_height="fill_parent"
+				android:layout_weight=".25"
+				android:adjustViewBounds="true"
+				android:gravity="center"
+				android:src="@drawable/borne2" />
 	
+				<TextView
+				android:id="@+id/tvDistance"
+				android:gravity="center"
+				android:layout_width="0px"
+				android:layout_height="fill_parent"			
+				android:layout_weight=".75"
+				android:textStyle="bold"
+				android:textColor="@android:color/black"
+				android:text="Distance"/>
+			</LinearLayout>
+			<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="0px"
+			android:layout_height="fill_parent"
+			android:weightSum="1"
+			android:layout_weight=".3">
 	
+				<ImageView
+				android:id="@+id/imgTime"
+				android:layout_width="0px"
+				android:layout_height="fill_parent"
+				android:layout_weight=".25"
+				android:adjustViewBounds="true"
+				android:gravity="center"
+				android:src="@drawable/chrono" />
+	
+				<TextView
+				android:id="@+id/tvDuree"
+				android:gravity="center"
+				android:layout_width="0px"
+				android:layout_height="fill_parent"			
+				android:layout_weight=".75"
+				android:textStyle="bold"
+				android:textColor="@android:color/black"
+				android:text="Duree"/>
+			</LinearLayout>
+			<LinearLayout
+			 android:orientation="horizontal"
+			android:layout_width="0px"
+			android:layout_height="fill_parent"
+			android:weightSum="1"
+			android:layout_weight=".3">
+
+			    <ImageView
+			        android:id="@+id/imgMontagne"
+			        android:layout_width="0px"
+			        android:layout_height="fill_parent"
+			        android:layout_weight=".25"
+			        android:adjustViewBounds="true"
+			        android:gravity="right"
+			        android:src="@drawable/montagne" />
+
+			    <TextView
+			        android:id="@+id/tvDenivele"
+			        android:layout_width="0px"
+			        android:gravity="center"
+			        android:layout_height="fill_parent"
+			        android:layout_weight=".75"
+			        android:text="Dénivele"
+			        android:textStyle="bold"
+			        android:textColor="@android:color/black" />
+			</LinearLayout>
+			
+		</LinearLayout> 
+	</LinearLayout>  
+</LinearLayout>	
 </LinearLayout>

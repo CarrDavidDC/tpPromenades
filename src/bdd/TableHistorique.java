@@ -72,8 +72,8 @@ public class TableHistorique {
 		SQLiteDatabase db = _db.getReadableDatabase();
 		Cursor c = db.query(TABLE_NAME, 				// nom de la table
 				COLUMNS,  								// liste des colonnes
-				IDPROMENADE +"=?", 									// clause WHERE
-				new String[] { String.valueOf(idPromenade) }, 									// récupère le paramètre
+				IDPROMENADE +"="+idPromenade, 									// clause WHERE
+				null, 									// récupère le paramètre
 				null, 									// clause GROUP BY
 				null, 									// clause HAVING
 				null 									// clause ORDER BY
@@ -81,8 +81,6 @@ public class TableHistorique {
 
 		// limite
 		ArrayList<Historique> listeHistorique = new ArrayList<Historique>();
-
-    	Toast.makeText(context,"Dans le cursor : "+idPromenade,Toast.LENGTH_SHORT).show();
 	    while (c.moveToNext()) {
 			
 	    	Historique p = new Historique();
@@ -98,6 +96,22 @@ public class TableHistorique {
 	    return listeHistorique;
 	   }
 	
+	public boolean getHistoriqueSelonRandonnee(Context context, int idPromenade) {
+		SQLiteDatabase db = _db.getReadableDatabase();
+		Cursor c = db.query(TABLE_NAME, 				// nom de la table
+				COLUMNS,  								// liste des colonnes
+				IDPROMENADE +"="+idPromenade, 									// clause WHERE
+				null, 									// récupère le paramètre
+				null, 									// clause GROUP BY
+				null, 									// clause HAVING
+				null 									// clause ORDER BY
+				);	
+
+	    while (c.moveToNext()) {
+			return true;
+	    }
+	    return false;
+	   }
 	public ArrayList<Historique> selectionner(Context context) {
 		SQLiteDatabase db = _db.getReadableDatabase();
 		Cursor c = db.query(TABLE_NAME, 				// nom de la table

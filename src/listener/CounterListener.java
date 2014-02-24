@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -48,6 +49,7 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 	private Context context;
 	private Promenade maPromenade;
 	private ArrayList<LatLng> listLatLng;
+	
     int compteur = 0;
     double pasTemp = pas;
 	Runnable mAddition = new Runnable() {  	            
@@ -175,6 +177,9 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 	
 	private void traitementEnregistrerPromenadeHistorique()
 	{
+		long diff = enregistrerPromenade.getDateArrivee().getTime() - enregistrerPromenade.getDateDepart().getTime(); 
+		long nbHeure = (diff / (1000*60*60));
+		long nbMin =  (diff / (1000*60));
 		ArrayList<LatLng> listOfLatLng = 	detailsRandonneeApercuMap.getArrayListPosition();
 		double distanceTotal = 0;
 		for(int i = 0; i < listOfLatLng.size()-1;i++)
@@ -183,12 +188,14 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 			LatLng nextPoint = listOfLatLng.get(i+1);
 			distanceTotal+= getDistance(currentPoint,nextPoint);
 		}
+		
+		
 		Historique h = new Historique();
-		h.set_length(distanceTotal);
+		h.set_length(distanceTotal/1000);
 		
 		h.set_altitude(0);
-		h.set_durationHour(maPromenade.get_durationHour());
-		h.set_durationMinute(maPromenade.get_durationMinute());
+		h.set_durationHour((int)nbHeure);
+		h.set_durationMinute((int)(long)nbMin);
 		h.set_idPromenade(maPromenade.get_gid());
 		h.set_way(Parser.arrayListLatLngToString(listOfLatLng));
 
@@ -293,6 +300,7 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 			enregistrerPromenade.setEnCoursEnregistrement(false);
 			enregistrerPromenade.getButtonIdEnregistrer().setEnabled(true);
 			enregistrerPromenade.getButtonIdEnregistrement().setEnabled(false);
+			enregistrerPromenade.setDateArrivee(new Date());
 		}else{
 			if(enregistrerPromenade.getLatitude() != 0 && enregistrerPromenade.getLongitude() != 0)
 			{
@@ -309,6 +317,7 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 							enregistrerPromenade.getButtonIdEnregistrement().setText("Stop");
 							enregistrerPromenade.setEnCoursEnregistrement(true);
 							enregistrerPromenade.updatePosition();
+							enregistrerPromenade.setDateDepart(new Date());
 						}
 					});
 				  alertDialogBuilder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
@@ -327,6 +336,9 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 	
 	private void traitementEnregistrerRandonnee()
 	{
+		long diff = enregistrerPromenade.getDateArrivee().getTime() - enregistrerPromenade.getDateDepart().getTime(); 
+		long nbHeure = (diff / (1000*60*60));
+		long nbMin =  (diff / (1000*60));
 		ArrayList<LatLng> listOfLatLng = 	enregistrerPromenade.getArrayListPosition();
 		double distanceTotal = 0;
 		for(int i = 0; i < listOfLatLng.size()-1;i++)
@@ -335,10 +347,28 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 			LatLng nextPoint = listOfLatLng.get(i+1);
 			distanceTotal+= getDistance(currentPoint,nextPoint);
 		}
-		Toast.makeText(context,"La distance totale est..."+distanceTotal,Toast.LENGTH_SHORT).show();
-		Toast.makeText(context,"Array list : "+enregistrerPromenade.getArrayListPosition().toString(),Toast.LENGTH_SHORT).show();
-	
-		maPromenade.set_length(distanceTotal);
+
+		ArrayList<Double> listOfAltitude = enregistrerPromenade.getListOfAltitude();
+		double altitudePositive = 0;
+		for(int i = 0; i < listOfAltitude.size();i++)
+		{
+			if(i >0)
+			{
+				double altitudePrecedente = listOfAltitude.get(i-1);
+				double differenceAltitude = listOfAltitude.get(i)-altitudePrecedente;
+				if(differenceAltitude > 0)
+				{
+					altitudePositive+= differenceAltitude;
+				}
+			}
+		}
+		
+		maPromenade.setListOfAltitude(listOfAltitude);
+
+		Toast.makeText(context,"Dénivele + = " + altitudePositive,Toast.LENGTH_SHORT).show();
+		maPromenade.set_length(distanceTotal/1000);
+		maPromenade.set_durationHour((int) nbHeure);
+		maPromenade.set_durationMinute((int) nbMin);
 		maPromenade.set_way(Parser.arrayListLatLngToString(enregistrerPromenade.getArrayListPosition()));
 		TablePromenade tableProme = new TablePromenade(new DatabaseHandler(context));
 		tableProme.ajouter(maPromenade);

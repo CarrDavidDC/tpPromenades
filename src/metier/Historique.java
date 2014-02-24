@@ -16,7 +16,23 @@ public class Historique {
        _way=null;
     }
     
-    
+    public String getDurationToString()
+    {
+    	String durationToString = "";
+    	if(_durationHour == 0)
+    	{
+    		durationToString = _durationMinute+" min";
+    	}else{
+    		durationToString = _durationHour + " h ";
+    		if(_durationMinute < 10)
+    		{
+    			durationToString += "0"+_durationMinute;
+    		}else{
+    			durationToString += String.valueOf(_durationMinute);
+    		}
+    	}
+    	return durationToString;
+    }
     
 	public String get_way() {
 		return _way;

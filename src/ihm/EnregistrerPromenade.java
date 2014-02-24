@@ -23,6 +23,8 @@ import android.location.LocationManager;
 import ihm.Accueil;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import com.example.tppromenades.R;
 import bdd.DatabaseHandler;
 import bdd.DownloadData;
@@ -66,8 +68,12 @@ public class EnregistrerPromenade extends FragmentActivity  implements LocationL
 	private boolean firstLocationChange;
 	private PolylineOptions polyLine;
 	private ArrayList<Double> listOfAltitude;
+	private Date dateDepart;
+	private Date dateArrivee;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		dateDepart = new Date();
+		dateArrivee = new Date();
 		enCoursEnregistrement = false;
 		firstLocationChange = true;
 		listOfAltitude = new ArrayList<Double>();
@@ -229,4 +235,48 @@ public class EnregistrerPromenade extends FragmentActivity  implements LocationL
 	public Promenade getMaPromenade(){
 		return this.maPromenade;
 	}
+
+
+
+	public Date getDateDepart() {
+		return dateDepart;
+	}
+
+
+
+	public ArrayList<Double> getListOfAltitude() {
+		return listOfAltitude;
+	}
+
+
+
+	public void setListOfAltitude(ArrayList<Double> listOfAltitude) {
+		this.listOfAltitude = listOfAltitude;
+	}
+
+
+
+	public void setArrayListPosition(ArrayList<LatLng> arrayListPosition) {
+		this.arrayListPosition = arrayListPosition;
+	}
+
+
+
+	public Date getDateArrivee() {
+		return dateArrivee;
+	}
+
+
+
+	public void setDateDepart(Date dateDepart) {
+		this.dateDepart = dateDepart;
+	}
+
+
+
+	public void setDateArrivee(Date dateArrivee) {
+		this.dateArrivee = dateArrivee;
+	}
+	
+	
 }

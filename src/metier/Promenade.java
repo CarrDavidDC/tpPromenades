@@ -26,10 +26,39 @@ public class Promenade implements Serializable {
     private Bitmap _imageFin;
     private String _way;
     private ArrayList<LatLng> _arrayLatLng;
+    private ArrayList<Double> listOfAltitude;
+    private String listOfAltitudeString;
     
+    public String getListOfAltitude()
+    {
+    	String s = "";
+    	for(int i = 0; i < listOfAltitude.size();i++)
+    	{
+    		if(i == (listOfAltitude.size()-1))
+    				s += Double.toString(listOfAltitude.get(i))+",";
+    		else
+    			s += Double.toString(listOfAltitude.get(i))+",";
+    	}
+    	return s;
     
+    }
     
-    public ArrayList<LatLng> get_arrayLatLng() {
+    public void setListOfAltitudeString(String listOfAltitudeString) {
+		this.listOfAltitudeString = listOfAltitudeString;
+	}
+    
+    public String getAltitude()
+    {
+    	return this.listOfAltitudeString;
+    }
+    
+    public void setListOfAltitude(ArrayList<Double> listOfAltitude) {
+		this.listOfAltitude = listOfAltitude;
+	}
+
+
+
+	public ArrayList<LatLng> get_arrayLatLng() {
 		return _arrayLatLng;
 	}
 
@@ -58,6 +87,7 @@ public class Promenade implements Serializable {
     public Promenade() {
 
 		this._arrayLatLng = new ArrayList<LatLng>();
+		listOfAltitude = new ArrayList<Double>();
     }
         
     public String getDurationToString()
@@ -229,6 +259,11 @@ public class Promenade implements Serializable {
 		return _length;
 	}
 	
+	public double get_length_arrondi()
+	{
+		double pow = Math.pow(10, 1);
+		return (Math.floor(_length*pow))/pow;
+	}
 	
 
 	public double get_altitude() {

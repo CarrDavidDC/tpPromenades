@@ -43,7 +43,7 @@
             android:id="@+id/tvRealisePar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Réalisée par :"
+            android:text="@string/realiseePar"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
 </LinearLayout>
@@ -60,17 +60,9 @@
             android:id="@+id/tvDev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="David - Hugo - Matthieu"
+            android:text="@string/nomDeveloppeurs"
             android:textColor="@android:color/white"
             android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/tvTapToContinu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="tap screen to continue"
-            android:textColor="@android:color/white"
-            android:textSize="15dp" />
 </LinearLayout>
 </LinearLayout>

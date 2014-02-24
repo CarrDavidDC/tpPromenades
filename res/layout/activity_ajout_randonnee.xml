@@ -12,6 +12,9 @@
     android:layout_height="0dp"
     android:layout_weight=".10"
     android:gravity="center"
+    
+    android:background="#E7E9E9"
+    android:alpha="0.6"
     android:orientation="horizontal" >
 						 <ImageButton
 		        android:id="@+id/ibPrecedentAjoutRandonnee"
@@ -41,6 +44,9 @@
     android:layout_height="0dp"
     android:layout_weight=".7"
     android:gravity="center"
+    
+    android:background="#E7E9E9"
+    android:alpha="0.6"
     android:orientation="vertical" >
 		<LinearLayout
 	    android:id="@+id/llSecondFirstPercent"
@@ -53,15 +59,16 @@
 			        android:id="@+id/tvNomRandonnee"
 		        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
 			            android:gravity="center"
 			        android:text="@string/titleNameAdd"
-			        android:textColor="@android:color/white" />
+			        android:textColor="@android:color/black" />
 			    <EditText
 			        android:id="@+id/etNomRandonnee"
 		        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 			        android:ems="10"
-			        android:textColor="@android:color/white" />
+			        android:textColor="@android:color/black" />
     	</LinearLayout>
     <LinearLayout
     android:id="@+id/llSecondSecondPercent"
@@ -75,8 +82,9 @@
 		        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textStyle="bold"
 			        android:text="@string/titleDescriptionAdd"
-		        android:textColor="@android:color/white" />
+		        android:textColor="@android:color/black" />
 		
 		    <EditText
 		        android:id="@+id/etDescription"
@@ -84,7 +92,7 @@
             android:layout_height="wrap_content"
 		        android:ems="10"
 		        android:inputType="textMultiLine"
-		        android:textColor="@android:color/white" >
+		        android:textColor="@android:color/black" >
 		
 		        <requestFocus />
 		    </EditText>
@@ -99,9 +107,10 @@
 		    <TextView
 		        android:id="@+id/tvDifficulteDuParcours"
 		        android:layout_width="wrap_content"
-            android:layout_height="wrap_content"		        
+            android:layout_height="wrap_content"	
+            android:textStyle="bold"	        
 			        android:text="@string/titleDifficultyAdd"
-		        android:textColor="@android:color/white"/>
+		        android:textColor="@android:color/black"/>
 		
 		    <RatingBar
 		        android:id="@+id/difficulteRandonnee"
@@ -117,6 +126,9 @@
     android:layout_height="0dp"
     android:layout_weight=".15"
     android:gravity="center"
+    
+    android:background="#E7E9E9"
+    android:alpha="0.6"
     android:orientation="vertical" >
 
         <Button
@@ -124,6 +136,6 @@
         android:layout_width="fill_parent"
             android:layout_height="wrap_content"        
 			    android:text="@string/titleButtonAdd"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/black" />
 </LinearLayout>
 </LinearLayout>
