@@ -34,7 +34,7 @@
     <string name="title_activity_enregistrer_chemin_randonnee">EnregistrerCheminRandonnee</string>
     <string name="title_activity_ajout_fichier_gps">AjoutFichierGPS</string>
 
-    
+    <string name="chargement">Chargement des données</string>
    
 	<!-- 
    	   	Pour la vue "activity_reglage"   

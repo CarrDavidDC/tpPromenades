@@ -230,7 +230,6 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 				ecartMin = distance;
 			}
 		}
-		Toast.makeText(context,"La distance est de : "+ecartMin,5000).show();
 		if(ecartMin < distanceMaxEcart)
 			return true;
 		else{
@@ -365,7 +364,6 @@ public class CounterListener implements OnClickListener,OnTouchListener{
 		
 		maPromenade.setListOfAltitude(listOfAltitude);
 
-		Toast.makeText(context,"Dénivele + = " + altitudePositive,Toast.LENGTH_SHORT).show();
 		maPromenade.set_length(distanceTotal/1000);
 		maPromenade.set_durationHour((int) nbHeure);
 		maPromenade.set_durationMinute((int) nbMin);

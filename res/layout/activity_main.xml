@@ -64,5 +64,18 @@
             android:textColor="@android:color/white"
             android:textSize="25dp" />
 
+        <ProgressBar
+            android:id="@+id/pbHeaderProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/tvChargement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chargement"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+
 </LinearLayout>
 </LinearLayout>
